@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MarketMap } from "@/components/MarketMap";
+import { Pillars } from "@/components/Pillars";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
@@ -14,7 +15,9 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>{site.tagline}.</h1>
-        <p className={styles.lede}>{site.description}</p>
+        <div className={styles.pillars}>
+          <Pillars />
+        </div>
         <a href={site.contactHref} className="button button-primary">
           Get in touch <span className="arrow">→</span>
         </a>

@@ -1,4 +1,31 @@
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mark {
+  display: block;
+  width: auto;
+  height: 30px;
+}
+
+.sail {
+  fill: var(--sand);
+}
+
+.outline {
+  fill: var(--navy);
+}
+
+.lines {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 20;
+  stroke-linecap: round;
+}
+
+.word {
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 700;

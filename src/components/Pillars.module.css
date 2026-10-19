@@ -1,0 +1,88 @@
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  width: min(100%, 760px);
+  margin: 0;
+  padding: clamp(18px, 3vh, 26px) 0 0;
+  border-top: 1px solid rgb(26 50 99 / 0.16);
+  list-style: none;
+}
+
+.pillar {
+  display: grid;
+  grid-template-columns: auto;
+  align-content: start;
+  gap: 8px;
+}
+
+.glyph {
+  width: clamp(32px, 5vh, 44px);
+  height: clamp(32px, 5vh, 44px);
+  margin-bottom: clamp(4px, 1vh, 10px);
+  overflow: visible;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 1.25;
+}
+
+.dot {
+  fill: var(--navy);
+  stroke: none;
+  opacity: 0.4;
+}
+
+.faint {
+  opacity: 0.25;
+}
+
+.accent {
+  fill: var(--amber);
+  stroke: none;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.line {
+  font-size: clamp(0.9375rem, min(1.3vw, 2.2vh), 1.0625rem);
+  line-height: 1.45;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+/* Narrow screens: one row per pillar, glyph on the left. */
+@media (max-width: 760px) {
+  .pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pillar {
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: center;
+  }
+
+  .glyph {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+}
+
+/* Very short screens (phones held sideways): drop the glyphs to keep one screen. */
+@media (max-height: 500px) {
+  .glyph {
+    display: none;
+  }
+}

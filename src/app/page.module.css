@@ -18,12 +18,23 @@
 }
 
 .main {
+  position: relative;
   align-self: center;
   justify-self: start;
   display: grid;
   justify-items: start;
   gap: clamp(18px, 3.4vh, 32px);
   padding-bottom: 4vh;
+}
+
+/* A soft clearing in the map so nodes never sit behind the copy. */
+.main::before {
+  content: "";
+  position: absolute;
+  inset: -8% -14% -8% -10%;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--cream) 72%, rgb(252 247 243 / 0));
+  pointer-events: none;
 }
 
 .title {
@@ -34,11 +45,8 @@
   animation: rise 1s var(--ease) both;
 }
 
-.lede {
-  max-width: 44ch;
-  font-size: clamp(1rem, min(1.5vw, 2.4vh), 1.1875rem);
-  line-height: 1.6;
-  color: var(--slate);
+.pillars {
+  width: 100%;
   animation: rise 1s 120ms var(--ease) both;
 }
 
@@ -73,14 +81,14 @@
     padding-bottom: 0;
   }
 
-  .lede {
-    max-width: 60ch;
+  .title {
+    max-width: 22ch;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .title,
-  .lede,
+  .pillars,
   .main > a {
     animation: none;
   }

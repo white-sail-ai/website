@@ -18,9 +18,12 @@ src/
   app/
     layout.tsx        fonts (Montserrat + Roboto Slab via next/font), metadata
     globals.css       brand tokens, base type, buttons
-    page.tsx          the single screen: header, headline, CTA, footer over the map
+    page.tsx          the single screen: header, headline, pillars, CTA, footer over the map
+    icon.svg          favicon (sail mark on a navy circle)
   components/
-    Header, Footer, Logo
+    Header, Footer
+    Logo              sail mark + wordmark
+    Pillars           Depth / Scale / Compounding with their line glyphs
     MarketMap         canvas "live market map" filling the background
   lib/site.ts         site name, tagline, description, email links
 ```
@@ -35,6 +38,7 @@ Colors and type come from the Whitesail Labs pitch deck:
 | --------- | --------- | ------------------------------------------ |
 | `--navy`  | `#1A3263` | ink, primary button                        |
 | `--cream` | `#FCF7F3` | page background                            |
+| `--sand`  | `#F3EEE8` | sail fill in the logo                      |
 | `--amber` | `#FAB95B` | accent (live dot, map signals); not for text |
 | `--slate` | `#4C5A75` | secondary text                             |
 
@@ -42,5 +46,4 @@ Headlines are set in Montserrat Bold and body text in Roboto Slab, as in the dec
 
 ## Open items
 
-- **Logo**: `components/Logo.tsx` renders a text wordmark for now. Drop the logo files into `public/` and swap them in there. Add `src/app/icon.png` (or `icon.svg`) for the favicon.
 - **Privacy / Terms**: the footer links don't go anywhere yet (`components/Footer.tsx`).

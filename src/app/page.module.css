@@ -1,58 +1,51 @@
 .page {
-  position: relative;
-  isolation: isolate;
+  --inset: max(var(--gutter), calc((100vw - var(--max)) / 2));
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100vh;
   height: 100dvh;
-  padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2));
+  padding-inline: var(--inset);
   overflow: hidden;
 }
 
-.map {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  mask-image: linear-gradient(90deg, transparent 22%, #000 72%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 22%, #000 72%);
+.main {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(20px, 4vh, 44px);
+  min-height: 0;
 }
 
-.main {
-  position: relative;
-  align-self: center;
-  justify-self: start;
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 24px clamp(32px, 5vw, 80px);
+  padding-top: clamp(8px, 3vh, 40px);
+}
+
+.lead {
   display: grid;
   justify-items: start;
-  gap: clamp(18px, 3.4vh, 32px);
-  padding-bottom: 4vh;
-}
-
-/* A soft clearing in the map so nodes never sit behind the copy. */
-.main::before {
-  content: "";
-  position: absolute;
-  inset: -8% -14% -8% -10%;
-  z-index: -1;
-  background: radial-gradient(closest-side, var(--cream) 72%, rgb(252 247 243 / 0));
-  pointer-events: none;
-}
-
-.title {
-  max-width: 13ch;
-  font-size: clamp(2.25rem, min(6.4vw, 10vh), 5.25rem);
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  gap: clamp(16px, 3vh, 28px);
   animation: rise 1s var(--ease) both;
 }
 
+.title {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, min(4.6vw, 7.4vh), 4.25rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
 .pillars {
-  width: 100%;
   animation: rise 1s 120ms var(--ease) both;
 }
 
-.main > a {
-  margin-top: 4px;
-  animation: rise 1s 240ms var(--ease) both;
+/* The map band runs edge to edge, outside the content column. */
+.map {
+  min-height: 0;
+  margin-inline: calc(-1 * var(--inset));
+  animation: fade 1.4s 240ms var(--ease) both;
 }
 
 @keyframes rise {
@@ -62,34 +55,35 @@
   }
 }
 
-@media (max-width: 760px) {
-  .map {
-    mask-image: linear-gradient(180deg, transparent 42%, #000 85%);
-    -webkit-mask-image: linear-gradient(180deg, transparent 42%, #000 85%);
-  }
-
-  .main {
-    align-self: start;
-    padding-top: 6vh;
+@keyframes fade {
+  from {
+    opacity: 0;
   }
 }
 
-/* Phones held sideways: tighten so everything still fits on one screen. */
+@media (max-width: 760px) {
+  .intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 22px;
+  }
+}
+
+/* Phones held sideways: a two-line headline and a smaller button leave room for the map. */
 @media (max-height: 500px) {
-  .main {
-    gap: 14px;
-    padding-bottom: 0;
+  .title {
+    max-width: 24ch;
   }
 
-  .title {
-    max-width: 22ch;
+  .lead :global(.button) {
+    height: 40px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .title,
+  .lead,
   .pillars,
-  .main > a {
+  .map {
     animation: none;
   }
 }

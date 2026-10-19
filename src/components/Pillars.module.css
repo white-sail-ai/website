@@ -53,12 +53,26 @@
   font-size: clamp(0.9375rem, min(1.3vw, 2.2vh), 1.0625rem);
   line-height: 1.4;
   color: var(--navy);
+  text-wrap: balance;
 }
 
-/* Very short screens (phones held sideways): smaller glyphs. */
+/* Very short screens (phones held sideways): a compact 2×2 grid of text, so the map keeps room. */
 @media (max-height: 500px) {
+  .pillars {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+
+  .pillar {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
   .glyph {
-    width: 24px;
-    height: 24px;
+    display: none;
+  }
+
+  .line {
+    font-size: 0.8125rem;
   }
 }

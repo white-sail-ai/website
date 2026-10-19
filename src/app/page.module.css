@@ -135,6 +135,13 @@
   }
 }
 
+/* Small phones: a slightly smaller headline leaves the map more room. */
+@media (max-width: 760px) and (max-height: 720px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 560px), (max-height: 500px) {
   .legend {
     display: none;

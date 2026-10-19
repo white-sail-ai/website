@@ -17,6 +17,12 @@
   color-scheme: light;
 }
 
+@media (max-height: 720px) {
+  :root {
+    --header-h: 60px;
+  }
+}
+
 @media (max-height: 500px) {
   :root {
     --header-h: 56px;

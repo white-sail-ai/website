@@ -28,6 +28,18 @@ function ScaleGlyph() {
   );
 }
 
+// The shared map as stacked layers, with the firm's own layer on top.
+function JudgmentGlyph() {
+  return (
+    <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
+      <path d="M4 30 L24 40 L44 30" className={styles.faint} />
+      <path d="M4 23 L24 33 L44 23" />
+      <path d="M24 6 L44 16 L24 26 L4 16 Z" />
+      <circle cx="24" cy="16" r="3" className={styles.accent} />
+    </svg>
+  );
+}
+
 function CompoundingGlyph() {
   return (
     <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
@@ -44,6 +56,11 @@ function CompoundingGlyph() {
 const pillars = [
   { label: "Deeper", line: "Every investor is now a quant.", Glyph: DepthGlyph },
   { label: "At scale", line: "The whole universe as a watchlist.", Glyph: ScaleGlyph },
+  {
+    label: "On your terms",
+    line: "Manage your own layers. Run your own judgment.",
+    Glyph: JudgmentGlyph,
+  },
   { label: "Compounding", line: "Research that never resets.", Glyph: CompoundingGlyph },
 ];
 

@@ -23,7 +23,7 @@ src/
   components/
     Header, Footer
     Logo              sail mark + wordmark
-    Pillars           Depth / Scale / Compounding with their line glyphs
+    Pillars           Deeper / At scale / On your terms / Compounding, with line glyphs
     MarketMap         canvas "live market map" filling the screen behind the content
   lib/site.ts         site name, tagline, description, email links
 ```

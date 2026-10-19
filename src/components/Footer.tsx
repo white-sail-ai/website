@@ -6,7 +6,7 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`glass ${styles.footer}`}>
       <span>
         © {year} {site.legalName}
       </span>

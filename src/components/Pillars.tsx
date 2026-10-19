@@ -42,8 +42,8 @@ function CompoundingGlyph() {
 }
 
 const pillars = [
-  { label: "Depth", line: "Every investor is now a quant.", Glyph: DepthGlyph },
-  { label: "Scale", line: "The whole universe as a watchlist.", Glyph: ScaleGlyph },
+  { label: "Deeper", line: "Every investor is now a quant.", Glyph: DepthGlyph },
+  { label: "At scale", line: "The whole universe as a watchlist.", Glyph: ScaleGlyph },
   { label: "Compounding", line: "Research that never resets.", Glyph: CompoundingGlyph },
 ];
 

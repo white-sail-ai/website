@@ -16,7 +16,7 @@ export function Logo() {
         />
         <path className={styles.lines} d="M257.334 291H188.109M211.717 230H142.491M302.952 169H233.726" />
       </svg>
-      <span className={styles.word}>Whitesail</span>
+      <span className={styles.word}>Whitesail Labs</span>
     </span>
   );
 }

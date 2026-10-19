@@ -5,13 +5,17 @@ import { Pillars } from "@/components/Pillars";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
-// A single screen: the copy on top, and the live market map in its own band filling the rest.
+// A single screen: the live market map runs behind everything, the copy sits on a
+// translucent panel at the top, and the middle stays open onto the map.
 export default function Home() {
   return (
     <div className={styles.page}>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.intro}>
+      <div className={styles.map}>
+        <MarketMap />
+      </div>
+      <div className={`glass ${styles.panel}`}>
+        <Header />
+        <main className={styles.intro}>
           <div className={styles.lead}>
             <h1 className={styles.title}>{site.tagline}.</h1>
             <a href={site.contactHref} className="button button-primary">
@@ -21,11 +25,17 @@ export default function Home() {
           <div className={styles.pillars}>
             <Pillars />
           </div>
-        </div>
-        <div className={styles.map}>
-          <MarketMap />
-        </div>
-      </main>
+        </main>
+      </div>
+      <div className={styles.window}>
+        <span className={styles.caption}>
+          <span className={styles.live} aria-hidden="true" />
+          Live market map
+        </span>
+        <span className={`${styles.caption} ${styles.legend}`}>
+          Companies · Markets · Relationships
+        </span>
+      </div>
       <Footer />
     </div>
   );

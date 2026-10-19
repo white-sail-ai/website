@@ -50,8 +50,7 @@ function buildMap(w: number, h: number) {
     const hub = rand() > 0.93;
     return {
       x: centers[cluster].x + Math.cos(angle) * dist * spreadX,
-      // Keep clear of the captions along the top and bottom edges.
-      y: Math.min(h - 30, Math.max(38, centers[cluster].y + Math.sin(angle) * dist * spreadY)),
+      y: Math.min(h - 12, Math.max(12, centers[cluster].y + Math.sin(angle) * dist * spreadY)),
       r: hub ? 3.2 + rand() * 1.4 : 1.3 + rand() * 1.4,
       phase: rand() * Math.PI * 2,
       cluster,
@@ -289,11 +288,6 @@ export function MarketMap() {
   return (
     <div ref={wrapRef} className={styles.map}>
       <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
-      <div className={styles.caption}>
-        <span className={styles.live} aria-hidden="true" />
-        Live market map
-      </div>
-      <div className={`${styles.caption} ${styles.legend}`}>Companies · Markets · Relationships</div>
     </div>
   );
 }

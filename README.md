@@ -18,13 +18,13 @@ src/
   app/
     layout.tsx        fonts (Montserrat + Roboto Slab via next/font), metadata
     globals.css       brand tokens, base type, buttons
-    page.tsx          the single screen: headline, CTA and pillars on top, the map band below
+    page.tsx          the single screen: map behind everything, copy on a translucent panel
     icon.svg          favicon (sail mark on a navy circle)
   components/
     Header, Footer
     Logo              sail mark + wordmark
     Pillars           Depth / Scale / Compounding with their line glyphs
-    MarketMap         canvas "live market map" band; fills the space left on screen
+    MarketMap         canvas "live market map" filling the screen behind the content
   lib/site.ts         site name, tagline, description, email links
 ```
 

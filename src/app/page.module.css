@@ -1,18 +1,26 @@
 .page {
   --inset: max(var(--gutter), calc((100vw - var(--max)) / 2));
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100vh;
   height: 100dvh;
-  padding-inline: var(--inset);
   overflow: hidden;
 }
 
-.main {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: clamp(20px, 4vh, 44px);
-  min-height: 0;
+/* The live map runs behind the whole screen. */
+.map {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  animation: fade 1.4s 240ms var(--ease) both;
+}
+
+.panel {
+  padding-inline: var(--inset);
+  padding-bottom: clamp(20px, 4vh, 44px);
+  border-bottom: 1px solid rgb(26 50 99 / 0.12);
 }
 
 .intro {
@@ -41,11 +49,58 @@
   animation: rise 1s 120ms var(--ease) both;
 }
 
-/* The map band runs edge to edge, outside the content column. */
-.map {
+/* The open middle of the screen. Pointer events pass through to the map. */
+.window {
+  position: relative;
   min-height: 0;
-  margin-inline: calc(-1 * var(--inset));
-  animation: fade 1.4s 240ms var(--ease) both;
+  pointer-events: none;
+}
+
+.caption {
+  position: absolute;
+  top: 14px;
+  left: var(--inset);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgb(252 247 243 / 0.85);
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.legend {
+  top: auto;
+  right: var(--inset);
+  bottom: 14px;
+  left: auto;
+  margin: 0 -10px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.live {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.live::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--amber);
+  border-radius: 50%;
+  animation: ping 2s var(--ease) infinite;
 }
 
 @keyframes rise {
@@ -61,11 +116,28 @@
   }
 }
 
+@keyframes ping {
+  from {
+    opacity: 0.9;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
 @media (max-width: 760px) {
   .intro {
     grid-template-columns: 1fr;
     align-items: start;
     gap: 22px;
+  }
+}
+
+@media (max-width: 560px), (max-height: 500px) {
+  .legend {
+    display: none;
   }
 }
 
@@ -83,7 +155,8 @@
 @media (prefers-reduced-motion: reduce) {
   .lead,
   .pillars,
-  .map {
+  .map,
+  .live::after {
     animation: none;
   }
 }

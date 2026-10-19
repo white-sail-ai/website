@@ -5,12 +5,5 @@
   letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;
-}
-
-.navy {
   color: var(--navy);
-}
-
-.sand {
-  color: var(--sand);
 }

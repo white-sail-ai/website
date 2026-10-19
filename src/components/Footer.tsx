@@ -1,5 +1,4 @@
 import { site } from "@/lib/site";
-import { Logo } from "./Logo";
 import styles from "./Footer.module.css";
 
 export async function Footer() {
@@ -7,27 +6,23 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={`dark ${styles.footer}`}>
-      <div className={`container ${styles.inner}`}>
-        <div className={styles.brand}>
-          <Logo tone="sand" />
-          <p className={styles.tagline}>{site.tagline}.</p>
-        </div>
-        <div className={styles.meta}>
-          {/* Placeholder links: not routed yet. */}
-          <nav className={styles.legal} aria-label="Legal">
-            <a className={styles.link} aria-disabled="true">
-              Privacy
-            </a>
-            <a className={styles.link} aria-disabled="true">
-              Terms
-            </a>
-          </nav>
-          <p className={styles.copyright}>
-            © {year} {site.legalName}
-          </p>
-        </div>
+    <footer className={styles.footer}>
+      <div className={styles.legal}>
+        <span>
+          © {year} {site.legalName}
+        </span>
+        {/* Placeholder links: not routed yet. */}
+        <a className={styles.link} aria-disabled="true">
+          Privacy
+        </a>
+        <a className={styles.link} aria-disabled="true">
+          Terms
+        </a>
       </div>
+      <span className={styles.status}>
+        <span className={styles.live} aria-hidden="true" />
+        Live market map
+      </span>
     </footer>
   );
 }

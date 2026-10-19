@@ -1,0 +1,87 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  height: 100dvh;
+  padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2));
+  overflow: hidden;
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  mask-image: linear-gradient(90deg, transparent 22%, #000 72%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 22%, #000 72%);
+}
+
+.main {
+  align-self: center;
+  justify-self: start;
+  display: grid;
+  justify-items: start;
+  gap: clamp(18px, 3.4vh, 32px);
+  padding-bottom: 4vh;
+}
+
+.title {
+  max-width: 13ch;
+  font-size: clamp(2.25rem, min(6.4vw, 10vh), 5.25rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  animation: rise 1s var(--ease) both;
+}
+
+.lede {
+  max-width: 44ch;
+  font-size: clamp(1rem, min(1.5vw, 2.4vh), 1.1875rem);
+  line-height: 1.6;
+  color: var(--slate);
+  animation: rise 1s 120ms var(--ease) both;
+}
+
+.main > a {
+  margin-top: 4px;
+  animation: rise 1s 240ms var(--ease) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (max-width: 760px) {
+  .map {
+    mask-image: linear-gradient(180deg, transparent 42%, #000 85%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 42%, #000 85%);
+  }
+
+  .main {
+    align-self: start;
+    padding-top: 6vh;
+  }
+}
+
+/* Phones held sideways: tighten so everything still fits on one screen. */
+@media (max-height: 500px) {
+  .main {
+    gap: 14px;
+    padding-bottom: 0;
+  }
+
+  .lede {
+    max-width: 60ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .lede,
+  .main > a {
+    animation: none;
+  }
+}

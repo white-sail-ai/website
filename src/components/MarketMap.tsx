@@ -33,23 +33,24 @@ function mulberry32(seed: number) {
 
 function buildMap(w: number, h: number) {
   const rand = mulberry32(8200);
-  const count = Math.round(Math.min(170, Math.max(56, (w * h) / 4200)));
+  const count = Math.round(Math.min(200, Math.max(56, (w * h) / 3600)));
   const clusters = Math.max(3, Math.min(MAX_CLUSTERS, Math.round(w / 180)));
-  const spread = Math.min(w / clusters, h) * 0.62;
+  const spreadX = (w / clusters) * 0.78;
+  const spreadY = h * 0.22;
 
   const centers = Array.from({ length: clusters }, (_, i) => ({
     x: w * (0.06 + 0.88 * ((i + 0.5) / clusters)) + (rand() - 0.5) * w * 0.05,
-    y: h * (0.3 + rand() * 0.4),
+    y: h * (0.2 + rand() * 0.6),
   }));
 
   const nodes: MapNode[] = Array.from({ length: count }, (_, i) => {
     const cluster = i % clusters;
     const angle = rand() * Math.PI * 2;
-    const dist = Math.sqrt(rand()) * spread;
+    const dist = Math.sqrt(rand());
     const hub = rand() > 0.93;
     return {
-      x: centers[cluster].x + Math.cos(angle) * dist * 1.25,
-      y: Math.min(h - 12, Math.max(12, centers[cluster].y + Math.sin(angle) * dist)),
+      x: centers[cluster].x + Math.cos(angle) * dist * spreadX,
+      y: Math.min(h - 12, Math.max(12, centers[cluster].y + Math.sin(angle) * dist * spreadY)),
       r: hub ? 3.2 + rand() * 1.4 : 1.3 + rand() * 1.4,
       phase: rand() * Math.PI * 2,
       cluster,
@@ -287,11 +288,6 @@ export function MarketMap() {
   return (
     <div ref={wrapRef} className={styles.map}>
       <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
-      <div className={styles.caption}>
-        <span className={styles.live} aria-hidden="true" />
-        Live market map
-      </div>
-      <div className={`${styles.caption} ${styles.legend}`}>Companies · Markets · Relationships</div>
     </div>
   );
 }

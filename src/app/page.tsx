@@ -1,25 +1,25 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { Contact } from "@/components/sections/Contact";
-import { Hero } from "@/components/sections/Hero";
-import { HowWeWork } from "@/components/sections/HowWeWork";
-import { Pillars } from "@/components/sections/Pillars";
-import { Product } from "@/components/sections/Product";
-import { Team } from "@/components/sections/Team";
+import { MarketMap } from "@/components/MarketMap";
+import { site } from "@/lib/site";
+import styles from "./page.module.css";
 
+// A single screen: the live market map fills the background, copy sits over its quiet side.
 export default function Home() {
   return (
-    <>
+    <div className={styles.page}>
+      <div className={styles.map}>
+        <MarketMap />
+      </div>
       <Header />
-      <main>
-        <Hero />
-        <Product />
-        <Pillars />
-        <HowWeWork />
-        <Team />
-        <Contact />
+      <main className={styles.main}>
+        <h1 className={styles.title}>{site.tagline}.</h1>
+        <p className={styles.lede}>{site.description}</p>
+        <a href={site.contactHref} className="button button-primary">
+          Get in touch <span className="arrow">→</span>
+        </a>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

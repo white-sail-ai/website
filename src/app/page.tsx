@@ -1,4 +1,5 @@
 import { Attributes } from "@/components/Attributes";
+import { ContactButton } from "@/components/ContactButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MarketMap } from "@/components/MarketMap";
@@ -27,9 +28,7 @@ export default function Home() {
             <p className={styles.subline}>
               {problem} <strong>{promise}</strong>
             </p>
-            <a href={site.contactHref} className="button button-primary">
-              Get in touch <span className="arrow">→</span>
-            </a>
+            <ContactButton />
           </div>
         </main>
       </div>

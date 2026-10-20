@@ -105,6 +105,7 @@ a {
   font-weight: 600;
   letter-spacing: -0.005em;
   white-space: nowrap;
+  cursor: pointer;
   transition:
     background-color 0.2s var(--ease),
     color 0.2s var(--ease);
@@ -125,4 +126,14 @@ a {
 
 .button-primary:hover {
   background: #223d75;
+}
+
+.button-ghost {
+  border-color: rgb(26 50 99 / 0.24);
+  background: transparent;
+  color: var(--navy);
+}
+
+.button-ghost:hover {
+  border-color: var(--navy);
 }

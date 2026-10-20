@@ -3,7 +3,7 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
@@ -25,28 +25,53 @@
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   align-items: end;
-  gap: 24px clamp(32px, 5vw, 80px);
+  gap: 20px clamp(32px, 5vw, 80px);
   padding-top: clamp(8px, 3vh, 40px);
 }
 
-.lead {
-  display: grid;
-  justify-items: start;
-  gap: clamp(16px, 3vh, 28px);
+.title {
+  font-size: clamp(2.25rem, min(4.4vw, 7vh), 4.25rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
   animation: rise 1s var(--ease) both;
 }
 
-.title {
-  max-width: 14ch;
-  font-size: clamp(2.25rem, min(4.6vw, 7.4vh), 4.25rem);
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+.title > span {
+  display: block;
 }
 
-.pillars {
+.titleRest {
+  color: var(--slate);
+}
+
+.aside {
+  display: grid;
+  justify-items: start;
+  gap: clamp(16px, 3vh, 28px);
+  padding-bottom: 6px;
   animation: rise 1s 120ms var(--ease) both;
+}
+
+.subline {
+  max-width: 40ch;
+  font-size: clamp(1rem, min(1.4vw, 2.3vh), 1.1875rem);
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+.subline strong {
+  display: block;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+/* Attributes along the bottom, just above the footer. */
+.strip {
+  padding: clamp(14px, 2.6vh, 28px) var(--inset);
+  border-top: 1px solid rgb(26 50 99 / 0.12);
+  animation: rise 1s 240ms var(--ease) both;
 }
 
 /* The open middle of the screen. Pointer events pass through to the map. */
@@ -131,7 +156,7 @@
   .intro {
     grid-template-columns: 1fr;
     align-items: start;
-    gap: 22px;
+    gap: 18px;
   }
 }
 
@@ -139,6 +164,26 @@
 @media (max-width: 760px) and (max-height: 720px) {
   .title {
     font-size: 2rem;
+  }
+
+  .subline {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Short screens: tighter spacing in the top panel. */
+@media (max-width: 760px) and (max-height: 720px), (max-height: 500px) {
+  .panel {
+    padding-bottom: 14px;
+  }
+
+  .intro {
+    gap: 14px clamp(32px, 5vw, 80px);
+    padding-top: 4px;
+  }
+
+  .aside {
+    gap: 14px;
   }
 }
 
@@ -148,20 +193,29 @@
   }
 }
 
-/* Phones held sideways: a two-line headline and a smaller button leave room for the map. */
+/* Phones held sideways: a smaller, run-in headline, subline and button leave room for the map. */
 @media (max-height: 500px) {
   .title {
-    max-width: 24ch;
+    font-size: 1.875rem;
   }
 
-  .lead :global(.button) {
+  .title > span {
+    display: inline;
+  }
+
+  .subline {
+    font-size: 0.875rem;
+  }
+
+  .aside :global(.button) {
     height: 40px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lead,
-  .pillars,
+  .title,
+  .aside,
+  .strip,
   .map,
   .live::after {
     animation: none;

@@ -1,4 +1,4 @@
-import styles from "./Pillars.module.css";
+import styles from "./Attributes.module.css";
 
 function DepthGlyph() {
   return (
@@ -28,6 +28,18 @@ function ScaleGlyph() {
   );
 }
 
+// A clock face: research that runs around the clock.
+function AlwaysOnGlyph() {
+  return (
+    <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
+      <circle cx="24" cy="24" r="21" />
+      <path d="M24 3 V7 M45 24 H41 M24 45 V41 M3 24 H7" className={styles.faint} />
+      <path d="M24 11 V24 L33 30" />
+      <circle cx="24" cy="24" r="3" className={styles.accent} />
+    </svg>
+  );
+}
+
 // The shared map as stacked layers, with the firm's own layer on top.
 function JudgmentGlyph() {
   return (
@@ -40,35 +52,26 @@ function JudgmentGlyph() {
   );
 }
 
-function CompoundingGlyph() {
-  return (
-    <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
-      <path d="M3 45 L45 45" className={styles.faint} />
-      <path d="M3 44 C 22 43, 34 34, 43 6" />
-      <circle cx="14" cy="42.6" r="1.8" className={styles.dot} />
-      <circle cx="26" cy="38.6" r="1.8" className={styles.dot} />
-      <circle cx="35" cy="28.6" r="1.8" className={styles.dot} />
-      <circle cx="43" cy="6" r="3" className={styles.accent} />
-    </svg>
-  );
-}
-
-const pillars = [
-  { label: "Deeper", line: "Every investor is now a quant.", Glyph: DepthGlyph },
-  { label: "At scale", line: "The whole universe as a watchlist.", Glyph: ScaleGlyph },
+const attributes = [
+  { label: "In depth", line: "Signals once reserved for quant hedge funds.", Glyph: DepthGlyph },
   {
-    label: "On your terms",
+    label: "At scale",
+    line: "Every company in your universe, researched. No more screening.",
+    Glyph: ScaleGlyph,
+  },
+  { label: "All the time", line: "Research agents work your mandate 24/7.", Glyph: AlwaysOnGlyph },
+  {
+    label: "Your judgment",
     line: "Manage your own layers. Run your own judgment.",
     Glyph: JudgmentGlyph,
   },
-  { label: "Compounding", line: "Research that never resets.", Glyph: CompoundingGlyph },
 ];
 
-export function Pillars() {
+export function Attributes() {
   return (
-    <ul className={styles.pillars}>
-      {pillars.map(({ label, line, Glyph }) => (
-        <li key={label} className={styles.pillar}>
+    <ul className={styles.attributes}>
+      {attributes.map(({ label, line, Glyph }) => (
+        <li key={label} className={styles.attribute}>
           <Glyph />
           <span className={styles.label}>{label}</span>
           <span className={styles.line}>{line}</span>

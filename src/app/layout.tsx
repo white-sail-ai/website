@@ -14,10 +14,10 @@ const robotoSlab = Roboto_Slab({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} | ${site.tagline}`,
+  title: `${site.legalName} | ${site.headline.join(" ")}`,
   description: site.description,
   openGraph: {
-    title: `${site.name} | ${site.tagline}`,
+    title: `${site.legalName} | ${site.headline.join(" ")}`,
     description: site.description,
     siteName: site.legalName,
     type: "website",

@@ -21,7 +21,7 @@ export default function Home() {
         <Header />
         <main className={styles.intro}>
           <h1 className={styles.title}>
-            <span>{lead}</span> <span className={styles.titleRest}>{rest}</span>
+            <span className={styles.titleLead}>{lead}</span> <span>{rest}</span>
           </h1>
           <div className={styles.aside}>
             <p className={styles.subline}>
@@ -34,13 +34,16 @@ export default function Home() {
         </main>
       </div>
       <div className={styles.window}>
-        <span className={styles.caption}>
+        <p className={styles.caption}>
           <span className={styles.live} aria-hidden="true" />
-          Live market map
-        </span>
-        <span className={`${styles.caption} ${styles.legend}`}>
-          Companies · Markets · Relationships
-        </span>
+          <span>
+            <strong>Live market maps</strong> power everything we deliver
+            <span className={styles.captionDetail}>
+              : every company, market and relationship, kept live by AI agents
+            </span>
+            .
+          </span>
+        </p>
       </div>
       <div className={`glass ${styles.strip}`}>
         <Attributes />

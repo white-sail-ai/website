@@ -42,7 +42,7 @@
   display: block;
 }
 
-.titleRest {
+.titleLead {
   color: var(--slate);
 }
 
@@ -85,34 +85,29 @@
   position: absolute;
   top: 14px;
   left: var(--inset);
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   gap: 10px;
-  margin-left: -10px;
-  padding: 6px 10px;
-  border-radius: 999px;
+  max-width: min(960px, calc(100% - 2 * var(--inset) + 20px));
+  margin: 0 0 0 -10px;
+  padding: 7px 14px 7px 10px;
+  border-radius: 12px;
   background: rgb(252 247 243 / 0.85);
-  font-family: var(--font-display);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  line-height: 1;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1.45;
   color: var(--slate);
 }
 
-.legend {
-  top: auto;
-  right: var(--inset);
-  bottom: 14px;
-  left: auto;
-  margin: 0 -10px 0 0;
+.caption strong {
+  font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  color: var(--navy);
 }
 
 .live {
   position: relative;
+  flex: none;
+  margin-top: 7px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -187,12 +182,6 @@
   }
 }
 
-@media (max-width: 560px), (max-height: 500px) {
-  .legend {
-    display: none;
-  }
-}
-
 /* Phones held sideways: a smaller, run-in headline, subline and button leave room for the map. */
 @media (max-height: 500px) {
   .title {
@@ -209,6 +198,14 @@
 
   .aside :global(.button) {
     height: 40px;
+  }
+
+  .caption {
+    top: 10px;
+  }
+
+  .captionDetail {
+    display: none;
   }
 }
 

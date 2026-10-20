@@ -8,7 +8,7 @@ Marketing site for Whitesail Labs: a single, non-scrolling screen built with Nex
 npm install
 npm run dev     # http://localhost:3000
 npm run lint
-npm run build   # production build; the page is prerendered as static HTML
+npm run build   # static export: plain HTML, CSS and JS in out/
 ```
 
 ## Structure
@@ -27,48 +27,36 @@ src/
     Attributes        In depth / At scale / All the time / Your judgment, with line glyphs
     MarketMap         canvas "live market map" filling the screen behind the content
   lib/site.ts         site name, headline, subline, description, email links
-Dockerfile            production image for Cloud Run (Next.js standalone server)
-scripts/              deploy-cloud-run.sh
+.github/workflows/    nextjs.yml builds the site and publishes it to GitHub Pages
+public/.nojekyll      tells GitHub Pages to serve the _next/ folder as is
 ```
 
 The page is sized to the viewport (`100dvh`) and `html`/`body` never scroll, so new content has to fit on one screen. The fit has been checked from a 320×568 phone up to a 1440×900 desktop, plus tablets and a phone held sideways. The headline is sized to the screen width on phones, and the map caption shortens or hides itself when the open map area is small.
 
-## Deploy to Google Cloud Run
+## Deploy to GitHub Pages
 
-The site runs as a container on Cloud Run: the `Dockerfile` builds a Next.js standalone server that listens on port 8080 and scales to zero when idle.
+Every push to the branch listed in `.github/workflows/nextjs.yml` (`on.push.branches`, currently `claude/jolly-fermat-4ieu4p`) builds the static export (`out/`) and publishes it to GitHub Pages. Other branches are not published. The site is built for the root of a domain, so it only renders correctly when served from `white-sail.ai`, not from the `github.io/website` address.
 
-**1. Deploy the service.** In [Cloud Shell](https://shell.cloud.google.com), or anywhere gcloud is signed in to your tenant:
+**One-time setup**
 
-```bash
-gh auth login        # the repo is private; skip if you already have the code
-git clone https://github.com/white-sail-ai/website.git && cd website
-PROJECT_ID=your-project-id ./scripts/deploy-cloud-run.sh      # REGION=us-east4 to change region
-```
+1. **Turn on Pages.** Repository → Settings → Pages → *Build and deployment* → Source: **GitHub Actions** (already done).
+2. **Point the domain at GitHub.** At your DNS provider, add these records:
 
-Cloud Build builds the image and the script prints the service's `run.app` URL, which you can open right away to check the site.
+   | Type  | Name  | Value                                                                                          |
+   | ----- | ----- | ---------------------------------------------------------------------------------------------- |
+   | A     | `@`   | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (one record each)    |
+   | AAAA  | `@`   | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`      |
+   | CNAME | `www` | `white-sail-ai.github.io`                                                                       |
 
-**2. Point white-sail.ai at it** (Cloud Run domain mappings):
+   **Don't change the nameservers, and leave the existing MX and TXT records alone**: they carry your email.
+3. **Set the custom domain.** Settings → Pages → Custom domain: `white-sail.ai` → Save. GitHub checks the DNS and issues a certificate (this can take up to an hour). Then tick **Enforce HTTPS**. `www.white-sail.ai` redirects to `white-sail.ai` automatically.
+4. **Recommended:** verify the domain for the organisation (organisation Settings → Pages → Add a domain, then add the TXT record it shows) so nobody else can claim it.
 
-```bash
-# One-time: prove you own the domain. Add the TXT record Search Console asks for, signed in
-# as the same Google account that runs the commands below.
-#   https://search.google.com/search-console  ->  Add property  ->  Domain  ->  white-sail.ai
+**Updating the site.** Push to the branch above and it deploys in about a minute. To redeploy without a change, use Actions → *Deploy Next.js site to Pages* → Run workflow.
 
-gcloud beta run domain-mappings create --service whitesail-website --domain white-sail.ai     --region us-central1
-gcloud beta run domain-mappings create --service whitesail-website --domain www.white-sail.ai --region us-central1
-gcloud beta run domain-mappings describe --domain white-sail.ai --region us-central1   # lists the DNS records to add
-```
-
-Add the records it lists at your DNS provider and wait for the certificate (minutes, sometimes a couple of hours). **Don't change the nameservers, and leave the existing MX and TXT records alone**: they carry your email. `www.white-sail.ai` redirects to `white-sail.ai` (see `next.config.ts`).
-
-Domain mappings are a Preview feature with some added latency. For a CDN, WAF or stricter production guarantees, put a global external Application Load Balancer in front of the service instead.
-
-**Redeploying.** Run the script again, or in the Cloud Run console choose *Set up continuous deployment* so every push to your production branch builds and deploys automatically.
-
-**If something blocks it**
-- *Org policy rejects `--allow-unauthenticated`*: domain restricted sharing forbids public access. Ask for an exception, or turn off the service's invoker IAM check.
-- *Cold starts*: add `--min-instances 1` in the script to keep one instance warm (small monthly cost).
-- To try the image locally: `docker build -t whitesail . && docker run -p 8080:8080 whitesail`.
+**Good to know**
+- If you make `main` the production branch later, change `on.push.branches` in `nextjs.yml` and allow `main` under Settings → Environments → `github-pages` → Deployment branches.
+- The footer year is set when the site is built, so it changes with the next deploy after New Year.
 
 ## Brand
 

@@ -1,8 +1,7 @@
 import { site } from "@/lib/site";
 import styles from "./Footer.module.css";
 
-export async function Footer() {
-  "use cache";
+export function Footer() {
   const year = new Date().getFullYear();
 
   return (

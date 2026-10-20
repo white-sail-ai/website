@@ -84,8 +84,12 @@
   }
 }
 
-/* Short screens: drop the glyphs so the map keeps room. */
-@media (max-width: 760px) and (max-height: 720px), (max-height: 500px) {
+/* Short or very narrow screens: drop the glyphs so the map keeps room. */
+@media (max-width: 760px) and (max-height: 720px), (max-height: 500px), (max-width: 380px) {
+  .attributes {
+    row-gap: 10px;
+  }
+
   .attribute {
     grid-template-columns: 1fr;
     row-gap: 4px;

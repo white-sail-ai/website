@@ -29,7 +29,7 @@ src/
   lib/site.ts         site name, headline, subline, description, email links
 ```
 
-The page is sized to the viewport (`100dvh`) and `html`/`body` never scroll, so new content has to fit on one screen. The fit has been checked from a 375×667 phone up to a 1440×900 desktop, plus a phone held sideways.
+The page is sized to the viewport (`100dvh`) and `html`/`body` never scroll, so new content has to fit on one screen. The fit has been checked from a 320×568 phone up to a 1440×900 desktop, plus tablets and a phone held sideways. The headline is sized to the screen width on phones, and the map caption shortens or hides itself when the open map area is small.
 
 ## Brand
 

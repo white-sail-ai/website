@@ -55,7 +55,7 @@
 }
 
 .subline {
-  max-width: 40ch;
+  max-width: 46ch;
   font-size: clamp(1rem, min(1.4vw, 2.3vh), 1.1875rem);
   line-height: 1.55;
   color: var(--slate);
@@ -79,6 +79,28 @@
   position: relative;
   min-height: 0;
   pointer-events: none;
+  container-type: size;
+}
+
+/* The caption adapts to the open map height: three wrapped lines need about 90px, so
+   below that keep the first clause, then a compact version, then nothing. */
+@container (max-height: 92px) {
+  .captionDetail {
+    display: none;
+  }
+}
+
+@container (max-height: 74px) {
+  .window .caption {
+    top: 8px;
+    padding-block: 4px;
+  }
+}
+
+@container (max-height: 52px) {
+  .window .caption {
+    display: none;
+  }
 }
 
 .caption {
@@ -153,12 +175,17 @@
     align-items: start;
     gap: 18px;
   }
+
+  /* The longest headline line is about 9.5em wide, so size to the screen. */
+  .title {
+    font-size: min(2.25rem, calc((100vw - 2 * var(--gutter)) / 9.6));
+  }
 }
 
 /* Small phones: a slightly smaller headline leaves the map more room. */
 @media (max-width: 760px) and (max-height: 720px) {
   .title {
-    font-size: 2rem;
+    font-size: min(2rem, calc((100vw - 2 * var(--gutter)) / 9.6));
   }
 
   .subline {
@@ -166,8 +193,8 @@
   }
 }
 
-/* Short screens: tighter spacing in the top panel. */
-@media (max-width: 760px) and (max-height: 720px), (max-height: 500px) {
+/* Short screens: tighter spacing in the top panel and strip. */
+@media (max-width: 760px) and (max-height: 800px), (max-height: 500px) {
   .panel {
     padding-bottom: 14px;
   }
@@ -179,6 +206,10 @@
 
   .aside {
     gap: 14px;
+  }
+
+  .strip {
+    padding-block: 10px;
   }
 }
 
@@ -202,10 +233,6 @@
 
   .caption {
     top: 10px;
-  }
-
-  .captionDetail {
-    display: none;
   }
 }
 

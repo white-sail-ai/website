@@ -53,16 +53,16 @@ function JudgmentGlyph() {
 }
 
 const attributes = [
-  { label: "In depth", line: "Signals once reserved for quant hedge funds.", Glyph: DepthGlyph },
+  { label: "In depth", line: "Integrate signals once reserved for quant hedge funds.", Glyph: DepthGlyph },
   {
     label: "At scale",
-    line: "Every company in your universe, researched. No more screening.",
+    line: "Research every company of interest in your universe. No more screening.",
     Glyph: ScaleGlyph,
   },
   { label: "All the time", line: "Research agents work your mandate 24/7.", Glyph: AlwaysOnGlyph },
   {
     label: "Your judgment",
-    line: "Manage your own layers. Run your own judgment.",
+    line: "Manage your own layers. Apply your own judgment.",
     Glyph: JudgmentGlyph,
   },
 ];

@@ -32,5 +32,18 @@
   letter-spacing: 0.2em;
   line-height: 1;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--navy);
+}
+
+/* Very narrow phones: keep the wordmark on one line. */
+@media (max-width: 340px) {
+  .word {
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+  }
+
+  .logo {
+    gap: 8px;
+  }
 }

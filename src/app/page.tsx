@@ -39,7 +39,7 @@ export default function Home() {
           <span>
             <strong>Live market maps</strong> power everything we deliver
             <span className={styles.captionDetail}>
-              : every company, market and relationship, kept live by AI agents
+              : every company, market, and trend you care about, mapped live by our agents
             </span>
             .
           </span>

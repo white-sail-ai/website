@@ -10,7 +10,7 @@ export function ContactButton() {
 
   return (
     <>
-      <button type="button" className="button button-primary" onClick={() => setOpen(true)}>
+      <button type="button" className="button button-ghost" onClick={() => setOpen(true)}>
         Get in touch <span className="arrow">→</span>
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Get in touch" title="Let’s talk.">

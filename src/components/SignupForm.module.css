@@ -1,0 +1,83 @@
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--slate);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgb(26 50 99 / 0.2);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.7);
+  color: var(--navy);
+  font: inherit;
+  font-size: 1rem; /* 16px+ stops iOS zooming on focus */
+  line-height: 1.4;
+  resize: vertical;
+}
+
+.input:focus-visible {
+  border-color: var(--navy);
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.submit {
+  justify-self: start;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.error {
+  color: #9b2c2c;
+  font-size: 0.875rem;
+}
+
+.note {
+  font-size: 0.8125rem;
+  color: var(--slate);
+}
+
+.done {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  border: 1px solid rgb(26 50 99 / 0.12);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 0.55);
+}
+
+.done strong {
+  font-family: var(--font-display);
+}
+
+.done p {
+  color: var(--slate);
+}

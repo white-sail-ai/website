@@ -1,0 +1,10 @@
+name = "whitesail-forms"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+[vars]
+# Origins allowed to call the Worker. Add http://localhost:3000 for local development.
+ALLOWED_ORIGINS = "https://white-sail.ai,https://www.white-sail.ai"
+
+# Secrets are NOT stored here. Set each with `npx wrangler secret put <NAME>`:
+#   NOTION_TOKEN, NOTION_DATABASE_ID, SLACK_WEBHOOK_URL, RESEND_API_KEY, RESEND_AUDIENCE_ID

@@ -27,11 +27,17 @@ src/
     Attributes        In depth / At scale / All the time / Your judgment, with line glyphs
     MarketMap         canvas "live market map" filling the screen behind the content
   lib/site.ts         site name, headline, subline, description, email links
+  lib/forms.ts        posts the early-access and newsletter forms to the Worker
+worker/               Cloudflare Worker that stores signups (Notion, Slack, Resend); see worker/README.md
 .github/workflows/    nextjs.yml builds the site and publishes it to GitHub Pages
 public/.nojekyll      tells GitHub Pages to serve the _next/ folder as is
 ```
 
 The page is sized to the viewport (`100dvh`) and `html`/`body` never scroll, so new content has to fit on one screen. The fit has been checked from a 320×568 phone up to a 1440×900 desktop, plus tablets and a phone held sideways. The headline is sized to the screen width on phones, and the map caption shortens or hides itself when the open map area is small.
+
+## Early access and newsletter
+
+The site is static, so the two forms post to the Worker in `worker/`, which keeps the Notion, Slack and Resend secrets. Setup steps are in `worker/README.md`. The build reads the Worker's address from the `FORMS_URL` repository variable; without it the forms show an error message.
 
 ## Deploy to GitHub Pages
 

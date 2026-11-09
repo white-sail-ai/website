@@ -1,7 +1,9 @@
 import { Attributes } from "@/components/Attributes";
 import { ContactButton } from "@/components/ContactButton";
+import { EarlyAccessButton } from "@/components/EarlyAccessButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { NewsletterButton } from "@/components/NewsletterButton";
 import { MarketMap } from "@/components/MarketMap";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
@@ -28,7 +30,11 @@ export default function Home() {
             <p className={styles.subline}>
               {problem} <strong>{promise}</strong>
             </p>
-            <ContactButton />
+            <div className={styles.actions}>
+              <EarlyAccessButton />
+              <ContactButton />
+              <NewsletterButton className={styles.newsletter} />
+            </div>
           </div>
         </main>
       </div>

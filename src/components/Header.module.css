@@ -21,3 +21,16 @@
 .link:hover {
   color: var(--navy);
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 28px);
+}
+
+/* On phones the header has no room: the newsletter link moves next to the buttons. */
+@media (max-width: 760px) {
+  .newsletter {
+    display: none;
+  }
+}

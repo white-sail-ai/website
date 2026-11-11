@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/lib/site";
 import styles from "./Footer.module.css";
 
@@ -7,16 +8,15 @@ export function Footer() {
   return (
     <footer className={`glass ${styles.footer}`}>
       <span>
-        © {year} {site.legalName}
+        © {year} {site.name}
       </span>
-      {/* Placeholder links: not routed yet. */}
       <nav className={styles.legal} aria-label="Legal">
-        <a className={styles.link} aria-disabled="true">
+        <Link href="/privacy" className={`hit-area ${styles.link}`}>
           Privacy
-        </a>
-        <a className={styles.link} aria-disabled="true">
+        </Link>
+        <Link href="/terms" className={`hit-area ${styles.link}`}>
           Terms
-        </a>
+        </Link>
       </nav>
     </footer>
   );

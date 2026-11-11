@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scaffold reference: steered-2.png</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=B612:wght@400&family=Zen+Kaku+Gothic+Antique:wght@700&display=swap">
+  <link rel="stylesheet" href="layout.css">
+  <style>html,body{margin:0}body{background:#f8f8f5}.region{box-sizing:border-box}.region.text p{white-space:pre-wrap}</style>
+</head>
+<body>
+<!-- Reference only. Every region sits at its measured box inside a comp-aspect frame. Take the boxes (layout.css), keep your own semantic structure. -->
+<main class="comp-frame" style="max-width:1280px">
+  <div class="r-nav-band region chrome" data-region="nav-band"><!-- Deep navy top band holding the logo, navigation links and the early-access button --></div>
+  <div class="r-logo region chrome" data-region="logo"><!-- The site's existing White Sail Labs logo in cream on navy (Logo.tsx: the sail mark with its own speed lines, then the wordmark), replacing the comp's placeholder sail and trailing lines --></div>
+  <div class="r-logo-word region text" data-region="logo-word"><!-- Wordmark White Sail Labs in cream on navy, part of the existing logo --><p style="font-size:var(--r-logo-word-font);font-family:var(--r-logo-word-family),sans-serif;font-weight:var(--r-logo-word-weight);line-height:1.05;margin:0">logo-word</p></div>
+  <div class="r-nav-who region control" data-region="nav-who"><!-- Navigation link Who we are in cream: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-who); a control need not have button chrome --></div>
+  <div class="r-nav-capabilities region control" data-region="nav-capabilities"><!-- Navigation link Capabilities in cream: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-capabilities); a control need not have button chrome --></div>
+  <div class="r-nav-careers region control" data-region="nav-careers"><!-- Navigation link Careers in cream: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-careers); a control need not have button chrome --></div>
+  <div class="r-nav-contact region control" data-region="nav-contact"><!-- Navigation link Contact in cream: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-contact); a control need not have button chrome --></div>
+  <div class="r-nav-cta region control" data-region="nav-cta"><!-- Outlined cream button Request early access on the navy band: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-cta); a control need not have button chrome --></div>
+  <div class="r-chart-field region chrome" data-region="chart-field"><!-- Off-white chart ground with fine navy isobar contours, pressure numbers and scattered front ticks, drawn by canvas from a generated pressure field --></div>
+  <div class="r-tag-illustrative region text" data-region="tag-illustrative"><!-- Small tracked caps label ILLUSTRATIVE in navy --><p style="font-size:var(--r-tag-illustrative-font);line-height:1.05;margin:0">tag-illustrative</p></div>
+  <div class="r-tag-rule region chrome" data-region="tag-rule"><!-- Thin navy rule running right from the Illustrative label --></div>
+  <div class="r-front-1-2 region chrome" data-region="front-1-2"><!-- Thick flow of many fine lines in the brand gold #fab95b (the old site's gold, replacing the comp's ochre) carrying the surprise from SK hynix to NVIDIA, drawn by canvas from the ripple data --></div>
+  <div class="r-fronts-2-3 region chrome" data-region="fronts-2-3"><!-- Thinner flow lines in the brand gold #fab95b from NVIDIA to Microsoft and Meta, drawn by canvas from the ripple data --></div>
+  <div class="r-front-2-4 region chrome" data-region="front-2-4"><!-- Navy front line with triangle arrowheads from NVIDIA down to Samsung, drawn by canvas from the ripple data --></div>
+  <div class="r-step-1 region text" data-region="step-1"><!-- Brand-gold #fab95b ring with step number 1 in navy --><p style="line-height:1.05;margin:0">step-1</p></div>
+  <div class="r-step-2 region text" data-region="step-2"><!-- Brand-gold #fab95b ring with step number 2 in navy --><p style="line-height:1.05;margin:0">step-2</p></div>
+  <div class="r-step-3a region text" data-region="step-3a"><!-- Brand-gold #fab95b ring with step label 3a in navy --><p style="line-height:1.05;margin:0">step-3a</p></div>
+  <div class="r-step-3b region text" data-region="step-3b"><!-- Brand-gold #fab95b ring with step label 3b in navy --><p style="line-height:1.05;margin:0">step-3b</p></div>
+  <div class="r-step-4 region text" data-region="step-4"><!-- Navy outlined circle with step number 4 --><p style="line-height:1.05;margin:0">step-4</p></div>
+  <div class="r-station-1 region chrome" data-region="station-1"><!-- Navy station plot circle with a cream ring and a small weather glyph, SK hynix --></div>
+  <div class="r-station-2 region chrome" data-region="station-2"><!-- Larger navy station plot circle with a cream ring and a weather glyph, NVIDIA --></div>
+  <div class="r-station-3a region chrome" data-region="station-3a"><!-- Navy station plot circle with a cream ring and a weather glyph, Microsoft --></div>
+  <div class="r-station-3b region chrome" data-region="station-3b"><!-- Navy station plot circle with a cream ring and a weather glyph, Meta --></div>
+  <div class="r-station-4 region chrome" data-region="station-4"><!-- Small navy station plot circle with a cream ring and number, Samsung --></div>
+  <div class="r-label-1 region text" data-region="label-1"><!-- Station label SK hynix Supplier, HBM output guidance +20%, model expected +12%, surprise +8 pts in navy --><p style="font-size:var(--r-label-1-font);line-height:1.05;margin:0">label-1</p></div>
+  <div class="r-label-elasticity-1 region text" data-region="label-elasticity-1"><!-- Link label elasticity 0.4 in navy beside the gold flow --><p style="font-size:var(--r-label-elasticity-1-font);line-height:1.05;margin:0">label-elasticity-1</p></div>
+  <div class="r-label-2 region text" data-region="label-2"><!-- Station label NVIDIA, GPU shipments forecast +3.2% in navy --><p style="font-size:var(--r-label-2-font);line-height:1.05;margin:0">label-2</p></div>
+  <div class="r-label-3a region text" data-region="label-3a"><!-- Station label Microsoft, AI capacity forecast +1.1% in navy --><p style="font-size:var(--r-label-3a-font);font-family:var(--r-label-3a-family),sans-serif;font-weight:var(--r-label-3a-weight);line-height:1.05;margin:0">label-3a</p></div>
+  <div class="r-label-3b region text" data-region="label-3b"><!-- Station label Meta, capex forecast +0.9% in navy --><p style="font-size:var(--r-label-3b-font);line-height:1.05;margin:0">label-3b</p></div>
+  <div class="r-label-elasticity-2 region text" data-region="label-elasticity-2"><!-- Navy link label elasticity -0.2 --><p style="font-size:var(--r-label-elasticity-2-font);line-height:1.05;margin:0">label-elasticity-2</p></div>
+  <div class="r-label-4 region text" data-region="label-4"><!-- Station label Samsung, HBM share forecast -0.6 pts in navy --><p style="font-size:var(--r-label-4-font);line-height:1.05;margin:0">label-4</p></div>
+  <div class="r-title-block region chrome" data-region="title-block"><!-- Ruled navy rectangle on the off-white ground, the chart's title block, holding the headline and actions --></div>
+  <div class="r-title-divider region chrome" data-region="title-divider"><!-- Thin vertical navy rule separating the legend icon column from the headline --></div>
+  <div class="r-legend-pressure region chrome" data-region="legend-pressure"><!-- Navy line icon of concentric pressure rings --></div>
+  <div class="r-legend-wind region chrome" data-region="legend-wind"><!-- Navy line icon of three wind streaks --></div>
+  <div class="r-legend-station region chrome" data-region="legend-station"><!-- Navy station plot icon, a ringed dot --></div>
+  <div class="r-headline region text" data-region="headline"><!-- Headline Your decisions. Better informed. on two lines in bold navy grotesk --><p style="font-size:var(--r-headline-font);font-family:var(--r-headline-family),sans-serif;font-weight:var(--r-headline-weight);line-height:1.05;margin:0">headline</p></div>
+  <div class="r-subline region text" data-region="subline"><!-- Line A research lab of people and agents, not an AI tool. in navy --><p style="font-size:var(--r-subline-font);line-height:1.05;margin:0">subline</p></div>
+  <div class="r-title-rule region chrome" data-region="title-rule"><!-- Thin navy rule under the line --></div>
+  <div class="r-cta-primary region control" data-region="cta-primary"><!-- Solid navy button Request early access with cream label: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop cta-primary); a control need not have button chrome --></div>
+  <div class="r-cta-secondary region control" data-region="cta-secondary"><!-- Outlined navy button Get in touch: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop cta-secondary); a control need not have button chrome --></div>
+  <div class="r-foot-rule region chrome" data-region="foot-rule"><!-- Thin navy rule closing the chart above the issue line --></div>
+  <div class="r-issued region text" data-region="issued"><!-- Issue line Issued 11 Nov 09:42 · Next update: continuous in navy --><p style="font-size:var(--r-issued-font);line-height:1.05;margin:0">issued</p></div>
+  <div class="r-scale-label region text" data-region="scale-label"><!-- Scale legend label 1 pt surprise propagation in navy --><p style="font-size:var(--r-scale-label-font);line-height:1.05;margin:0">scale-label</p></div>
+  <div class="r-scale-arrow region chrome" data-region="scale-arrow"><!-- Thin navy scale arrow under the legend label --></div>
+</main>
+</body>
+</html>

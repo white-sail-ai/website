@@ -42,7 +42,7 @@ export function Dialog({ open, onClose, eyebrow, title, children }: DialogProps)
               {title}
             </h2>
           </div>
-          <button type="button" className={styles.close} onClick={onClose} aria-label="Close">
+          <button type="button" className={`hit-area ${styles.close}`} onClick={onClose} aria-label="Close">
             <svg viewBox="0 0 16 16" aria-hidden="true">
               <path d="M3.5 3.5 L12.5 12.5 M12.5 3.5 L3.5 12.5" />
             </svg>

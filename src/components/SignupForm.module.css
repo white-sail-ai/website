@@ -16,16 +16,17 @@
 
 .optional {
   font-weight: 400;
-  color: var(--slate);
+  color: var(--muted);
 }
 
+/* The border is what marks the field, so it keeps 3:1 against the dialog. */
 .input {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid rgb(26 50 99 / 0.2);
-  border-radius: 12px;
-  background: rgb(255 255 255 / 0.7);
-  color: var(--navy);
+  border: 1px solid rgb(26 50 99 / 0.6);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
   font: inherit;
   font-size: 1rem; /* 16px+ stops iOS zooming on focus */
   line-height: 1.4;
@@ -34,7 +35,7 @@
 
 .input:focus-visible {
   border-color: var(--navy);
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--navy);
   outline-offset: 1px;
 }
 
@@ -50,28 +51,50 @@
   justify-self: start;
 }
 
-.submit:disabled {
+/* Phones: a full-width submit is easier to reach with a thumb. */
+@media (max-width: 760px) {
+  .submit {
+    justify-self: stretch;
+    justify-content: center;
+  }
+}
+
+.submit[aria-disabled="true"] {
   opacity: 0.6;
   cursor: progress;
 }
 
 .error {
-  color: #9b2c2c;
+  color: var(--error);
   font-size: 0.875rem;
+}
+
+.error a,
+.noteLink {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.error a {
+  overflow-wrap: anywhere;
 }
 
 .note {
   font-size: 0.8125rem;
-  color: var(--slate);
+  color: var(--muted);
+}
+
+.noteLink:hover {
+  color: var(--navy);
 }
 
 .done {
   display: grid;
   gap: 6px;
   padding: 18px;
-  border: 1px solid rgb(26 50 99 / 0.12);
-  border-radius: 14px;
-  background: rgb(255 255 255 / 0.55);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--amber);
+  background: var(--paper);
 }
 
 .done strong {
@@ -79,5 +102,5 @@
 }
 
 .done p {
-  color: var(--slate);
+  color: var(--muted);
 }

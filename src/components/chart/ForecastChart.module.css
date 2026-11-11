@@ -1,0 +1,250 @@
+/* The first screen is a 16:9 chart frame. Positions are percentages of that frame and sizes are in
+   --u (one percent of its width), so every element keeps its place as the screen scales. */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: calc(var(--u) * 50);
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--navy);
+}
+
+.canvas {
+  position: absolute;
+  inset-inline: 0;
+  top: var(--header-h);
+  width: 100%;
+  height: calc(100% - var(--header-h));
+  font-family: var(--font-display);
+}
+
+.tag {
+  position: absolute;
+  left: 1.72%;
+  top: 11.67%;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 0.9);
+  height: 2.5%;
+  font-size: calc(var(--u) * 1.02);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tag::after {
+  content: "";
+  width: calc(var(--u) * 10.6);
+  border-top: 1px solid rgb(26 50 99 / 0.55);
+}
+
+/* The ripple */
+
+.ripple {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.nodes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marker,
+.station,
+.label,
+.note {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+}
+
+.marker,
+.station {
+  display: grid;
+  place-items: center;
+  translate: -50% -50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.marker {
+  width: calc(var(--u) * 2.85);
+  padding-bottom: 0.12em;
+  border: 2.5px solid var(--amber);
+  background: var(--paper);
+  font-size: calc(var(--u) * 1.55);
+  letter-spacing: -0.02em;
+}
+
+.node[data-tone="counter"] .marker {
+  border-color: var(--navy);
+}
+
+.station {
+  width: calc(var(--u) * var(--d));
+  background: var(--navy);
+  /* A hairline navy edge, then the cream ring, then the disc. */
+  box-shadow:
+    inset 0 0 0 1.5px var(--navy),
+    inset 0 0 0 calc(1.5px + var(--u) * 0.24) var(--cream);
+  color: var(--cream);
+}
+
+/* Each company's mark in the station's cream, as the site's own sail is on the band. */
+.mark {
+  width: var(--mark-w);
+  fill: currentColor;
+}
+
+.label,
+.note,
+.tag {
+  color: var(--ink);
+}
+
+/* The canvas clears its lines from behind these (data-knockout), as a printed chart does. */
+.label,
+.note {
+  margin: 0;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.label {
+  font-size: calc(var(--u) * 1.3);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.label strong {
+  font-weight: 700;
+}
+
+.label strong,
+.label span,
+.note span {
+  display: block;
+}
+
+.note {
+  font-size: calc(var(--u) * 1.35);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marker,
+  .station,
+  .label,
+  .note {
+    animation: arrive 0.7s var(--ease) var(--appear) both;
+  }
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The title block */
+
+.titleBlock {
+  position: absolute;
+  left: 1.56%;
+  top: 62.5%;
+  display: grid;
+  grid-template-columns: calc(var(--u) * 7.19) 1fr;
+  width: calc(var(--u) * 46.25);
+  height: calc(var(--u) * 18.75);
+  border: 1.5px solid var(--navy);
+  background: var(--paper);
+}
+
+.key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-right: 1.5px solid var(--navy);
+}
+
+.key svg {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.keyPressure {
+  width: calc(var(--u) * 4);
+}
+
+.keyWind {
+  width: calc(var(--u) * 4.1);
+}
+
+.keyStation {
+  width: calc(var(--u) * 3.3);
+}
+
+.titleBody {
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--u) * 1.05) calc(var(--u) * 1.6) 0 calc(var(--u) * 2.3);
+}
+
+.headline {
+  font-size: calc(var(--u) * 3.98);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.headline span {
+  display: block;
+}
+
+.subline {
+  margin-top: calc(var(--u) * 0.85);
+  color: var(--ink);
+  font-size: calc(var(--u) * 1.42);
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: calc(var(--u) * 1.9);
+  margin-top: calc(var(--u) * 1.3);
+  padding-top: calc(var(--u) * 0.82);
+  border-top: 1.5px solid rgb(26 50 99 / 0.7);
+}
+
+.actions .primary,
+.actions .secondary {
+  justify-content: center;
+  height: calc(var(--u) * 3.36);
+  padding-inline: 0;
+  font-size: calc(var(--u) * 1.36);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.primary {
+  width: calc(var(--u) * 15.47);
+}
+
+.secondary {
+  width: calc(var(--u) * 12.11);
+}

@@ -1,32 +1,39 @@
-/* Brand tokens, taken from the Whitesail Labs pitch deck. */
+/* Brand colours from the White Sail Labs pitch deck, set as a forecast chart: navy ink and gold
+   fronts on chart paper. */
 :root {
   --navy: #1a3263;
   --cream: #fcf7f3;
-  --sand: #f3eee8;
   --amber: #fab95b;
-  --slate: #4c5a75;
+  --paper: #fbf8f1;
+  /* Printed text on the chart: the navy taken down a step, as ink on paper reads. */
+  --ink: #12224a;
 
-  --font-display: var(--font-montserrat), system-ui, sans-serif;
-  --font-body: var(--font-roboto-slab), Georgia, serif;
+  /* Paper a shade down for bands, and a shade up for dialogs and cards. */
+  --deep: #efefe9;
+  --raised: #fdfdfb;
+  --muted: rgb(26 50 99 / 0.74);
+  --rule: rgb(26 50 99 / 0.16);
+  --error: #8c4a06;
+
+  --font-display: var(--font-zen), system-ui, sans-serif;
+  --font-body: var(--font-zen), system-ui, sans-serif;
+  --font-wordmark: var(--font-montserrat), system-ui, sans-serif;
+
+  /* One percent of the 16:9 chart frame's width: the unit the first screen is laid out in. */
+  --u: max(9px, min(1vw, 1.7778svh));
+  /* The navy band keeps its own, capped unit so it stays a slim strip on large screens. */
+  --hu: min(var(--u), 13.5px);
+  --header-h: max(50px, calc(var(--hu) * 4.3));
+
+  /* Corners for buttons and form controls, soft like the chart's discs and the app-icon tiles. */
+  --radius: 10px;
 
   --max: 1200px;
   --gutter: clamp(20px, 4vw, 48px);
-  --header-h: 72px;
+  --inset: max(var(--gutter), calc((100vw - var(--max)) / 2));
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   color-scheme: light;
-}
-
-@media (max-height: 720px) {
-  :root {
-    --header-h: 60px;
-  }
-}
-
-@media (max-height: 500px) {
-  :root {
-    --header-h: 56px;
-  }
 }
 
 *,
@@ -35,21 +42,24 @@
   box-sizing: border-box;
 }
 
-/* The site is a single screen and never scrolls. */
-html,
-body {
-  height: 100%;
-  overflow: hidden;
+html {
   -webkit-text-size-adjust: 100%;
+  scrollbar-color: rgb(26 50 99 / 0.35) var(--paper);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--paper);
   color: var(--navy);
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -78,19 +88,44 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--navy);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
-/* Translucent cream surface that lets the live map show through. */
-.glass {
-  background: rgb(252 247 243 / 0.62);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+header :focus-visible {
+  outline-color: var(--amber);
 }
 
-/* Buttons */
+/* Dialogs opened from the band are inside it in the DOM, but they sit on paper. */
+dialog :focus-visible {
+  outline-color: var(--navy);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Small text links and icon buttons keep their size but get a 44px touch target. */
+.hit-area {
+  position: relative;
+}
+
+.hit-area::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  inset-inline: -6px;
+  height: max(100%, 44px);
+  translate: 0 -50%;
+}
+
+/* Buttons: ruled boxes with soft corners. */
 
 .button {
   display: inline-flex;
@@ -98,17 +133,28 @@ a {
   gap: 0.6em;
   height: 48px;
   padding-inline: 22px;
-  border: 1px solid transparent;
-  border-radius: 999px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
   font-family: var(--font-display);
   font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: -0.005em;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
     color 0.2s var(--ease);
+}
+
+.arrow {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .button .arrow {
@@ -120,20 +166,22 @@ a {
 }
 
 .button-primary {
+  border-color: var(--navy);
   background: var(--navy);
   color: var(--cream);
 }
 
 .button-primary:hover {
-  background: #223d75;
+  border-color: #233f7a;
+  background: #233f7a;
 }
 
 .button-ghost {
-  border-color: rgb(26 50 99 / 0.24);
+  border-color: var(--navy);
   background: transparent;
   color: var(--navy);
 }
 
 .button-ghost:hover {
-  border-color: var(--navy);
+  background: rgb(26 50 99 / 0.06);
 }

@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 3,
+  "stage": "components",
+  "id": "components",
+  "title": "Plan and asset review · src/app/page.tsx",
+  "comp": {
+    "path": ".impeccable/mocks/decision/steered-2.png",
+    "width": 1280,
+    "height": 720
+  },
+  "specSha256": "f363d5607095aceb5e8e2d61684f30f586e614dc076b8ac0f4209575b1183c76",
+  "components": [
+    {
+      "id": "logo",
+      "name": "Logo",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.0141,
+        "y": 0.0125,
+        "w": 0.2672,
+        "h": 0.0667
+      },
+      "note": "The site's existing White Sail Labs logo in cream on navy (Logo.tsx: the sail mark with its own speed lines, then the wordmark), replacing the comp's placeholder sail and trailing lines",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "chart-field",
+      "name": "Chart field",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0,
+        "y": 0.0903,
+        "w": 1,
+        "h": 0.8194
+      },
+      "note": "Off-white chart ground with fine navy isobar contours, pressure numbers and scattered front ticks, drawn by canvas from a generated pressure field",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "front-1-2",
+      "name": "Front 1 2",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.1453,
+        "y": 0.2389,
+        "w": 0.2516,
+        "h": 0.175
+      },
+      "note": "Thick flow of many fine lines in the brand gold #fab95b (the old site's gold, replacing the comp's ochre) carrying the surprise from SK hynix to NVIDIA, drawn by canvas from the ripple data",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "fronts-2-3",
+      "name": "Fronts 2 3",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.4594,
+        "y": 0.2389,
+        "w": 0.3531,
+        "h": 0.2083
+      },
+      "note": "Thinner flow lines in the brand gold #fab95b from NVIDIA to Microsoft and Meta, drawn by canvas from the ripple data",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "front-2-4",
+      "name": "Front 2 4",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.5,
+        "y": 0.3972,
+        "w": 0.2703,
+        "h": 0.3083
+      },
+      "note": "Navy front line with triangle arrowheads from NVIDIA down to Samsung, drawn by canvas from the ripple data",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "station-1",
+      "name": "Station 1",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.0938,
+        "y": 0.2833,
+        "w": 0.0563,
+        "h": 0.1
+      },
+      "note": "Navy station plot circle with a cream ring and a small weather glyph, SK hynix",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "station-2",
+      "name": "Station 2",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.3891,
+        "y": 0.2833,
+        "w": 0.0703,
+        "h": 0.125
+      },
+      "note": "Larger navy station plot circle with a cream ring and a weather glyph, NVIDIA",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "station-3a",
+      "name": "Station 3a",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.6117,
+        "y": 0.2958,
+        "w": 0.0609,
+        "h": 0.1083
+      },
+      "note": "Navy station plot circle with a cream ring and a weather glyph, Microsoft",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "station-3b",
+      "name": "Station 3b",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.807,
+        "y": 0.2958,
+        "w": 0.0586,
+        "h": 0.1083
+      },
+      "note": "Navy station plot circle with a cream ring and a weather glyph, Meta",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "station-4",
+      "name": "Station 4",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.7648,
+        "y": 0.6792,
+        "w": 0.0359,
+        "h": 0.0667
+      },
+      "note": "Small navy station plot circle with a cream ring and number, Samsung",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "legend-pressure",
+      "name": "Legend pressure",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.0266,
+        "y": 0.5778,
+        "w": 0.0484,
+        "h": 0.0833
+      },
+      "note": "Navy line icon of concentric pressure rings",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "legend-wind",
+      "name": "Legend wind",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.0266,
+        "y": 0.6833,
+        "w": 0.0484,
+        "h": 0.0694
+      },
+      "note": "Navy line icon of three wind streaks",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    },
+    {
+      "id": "legend-station",
+      "name": "Legend station",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.0328,
+        "y": 0.7861,
+        "w": 0.0359,
+        "h": 0.0611
+      },
+      "note": "Navy station plot icon, a ringed dot",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": false,
+      "dependencies": []
+    }
+  ],
+  "codeRegions": [
+    {
+      "id": "nav-band",
+      "name": "Nav band",
+      "kind": "chrome",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.0903
+      },
+      "note": "Deep navy top band holding the logo, navigation links and the early-access button"
+    },
+    {
+      "id": "logo-word",
+      "name": "Logo word",
+      "kind": "text",
+      "box": {
+        "x": 0.0531,
+        "y": 0.0194,
+        "w": 0.1812,
+        "h": 0.0556
+      },
+      "note": "Wordmark White Sail Labs in cream on navy, part of the existing logo"
+    },
+    {
+      "id": "nav-who",
+      "name": "Nav who",
+      "kind": "control",
+      "box": {
+        "x": 0.525,
+        "y": 0.0306,
+        "w": 0.0703,
+        "h": 0.0306
+      },
+      "note": "Navigation link Who we are in cream"
+    },
+    {
+      "id": "nav-capabilities",
+      "name": "Nav capabilities",
+      "kind": "control",
+      "box": {
+        "x": 0.6133,
+        "y": 0.0306,
+        "w": 0.0695,
+        "h": 0.0306
+      },
+      "note": "Navigation link Capabilities in cream"
+    },
+    {
+      "id": "nav-careers",
+      "name": "Nav careers",
+      "kind": "control",
+      "box": {
+        "x": 0.7023,
+        "y": 0.0306,
+        "w": 0.0445,
+        "h": 0.0306
+      },
+      "note": "Navigation link Careers in cream"
+    },
+    {
+      "id": "nav-contact",
+      "name": "Nav contact",
+      "kind": "control",
+      "box": {
+        "x": 0.7688,
+        "y": 0.0306,
+        "w": 0.0477,
+        "h": 0.0306
+      },
+      "note": "Navigation link Contact in cream"
+    },
+    {
+      "id": "nav-cta",
+      "name": "Nav cta",
+      "kind": "control",
+      "box": {
+        "x": 0.8359,
+        "y": 0.0181,
+        "w": 0.1445,
+        "h": 0.0556
+      },
+      "note": "Outlined cream button Request early access on the navy band"
+    },
+    {
+      "id": "tag-illustrative",
+      "name": "Tag illustrative",
+      "kind": "text",
+      "box": {
+        "x": 0.0172,
+        "y": 0.1167,
+        "w": 0.0828,
+        "h": 0.025
+      },
+      "note": "Small tracked caps label ILLUSTRATIVE in navy"
+    },
+    {
+      "id": "tag-rule",
+      "name": "Tag rule",
+      "kind": "chrome",
+      "box": {
+        "x": 0.1,
+        "y": 0.1236,
+        "w": 0.1062,
+        "h": 0.0111
+      },
+      "note": "Thin navy rule running right from the Illustrative label"
+    },
+    {
+      "id": "step-1",
+      "name": "Step 1",
+      "kind": "text",
+      "box": {
+        "x": 0.1078,
+        "y": 0.2194,
+        "w": 0.0281,
+        "h": 0.05
+      },
+      "note": "Brand-gold #fab95b ring with step number 1 in navy"
+    },
+    {
+      "id": "step-2",
+      "name": "Step 2",
+      "kind": "text",
+      "box": {
+        "x": 0.4109,
+        "y": 0.2139,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "note": "Brand-gold #fab95b ring with step number 2 in navy"
+    },
+    {
+      "id": "step-3a",
+      "name": "Step 3a",
+      "kind": "text",
+      "box": {
+        "x": 0.625,
+        "y": 0.225,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "note": "Brand-gold #fab95b ring with step label 3a in navy"
+    },
+    {
+      "id": "step-3b",
+      "name": "Step 3b",
+      "kind": "text",
+      "box": {
+        "x": 0.8203,
+        "y": 0.225,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "note": "Brand-gold #fab95b ring with step label 3b in navy"
+    },
+    {
+      "id": "step-4",
+      "name": "Step 4",
+      "kind": "text",
+      "box": {
+        "x": 0.7688,
+        "y": 0.6139,
+        "w": 0.0281,
+        "h": 0.0528
+      },
+      "note": "Navy outlined circle with step number 4"
+    },
+    {
+      "id": "label-1",
+      "name": "Label 1",
+      "kind": "text",
+      "box": {
+        "x": 0.0563,
+        "y": 0.4222,
+        "w": 0.1422,
+        "h": 0.1194
+      },
+      "note": "Station label SK hynix Supplier, HBM output guidance +20%, model expected +12%, surprise +8 pts in navy"
+    },
+    {
+      "id": "label-elasticity-1",
+      "name": "Label elasticity 1",
+      "kind": "text",
+      "box": {
+        "x": 0.2297,
+        "y": 0.4361,
+        "w": 0.0734,
+        "h": 0.0306
+      },
+      "note": "Link label elasticity 0.4 in navy beside the gold flow"
+    },
+    {
+      "id": "label-2",
+      "name": "Label 2",
+      "kind": "text",
+      "box": {
+        "x": 0.3844,
+        "y": 0.4222,
+        "w": 0.0859,
+        "h": 0.0944
+      },
+      "note": "Station label NVIDIA, GPU shipments forecast +3.2% in navy"
+    },
+    {
+      "id": "label-3a",
+      "name": "Label 3a",
+      "kind": "text",
+      "box": {
+        "x": 0.6766,
+        "y": 0.3083,
+        "w": 0.1062,
+        "h": 0.0972
+      },
+      "note": "Station label Microsoft, AI capacity forecast +1.1% in navy"
+    },
+    {
+      "id": "label-3b",
+      "name": "Label 3b",
+      "kind": "text",
+      "box": {
+        "x": 0.8703,
+        "y": 0.3083,
+        "w": 0.0797,
+        "h": 0.0972
+      },
+      "note": "Station label Meta, capex forecast +0.9% in navy"
+    },
+    {
+      "id": "label-elasticity-2",
+      "name": "Label elasticity 2",
+      "kind": "text",
+      "box": {
+        "x": 0.5687,
+        "y": 0.5528,
+        "w": 0.0578,
+        "h": 0.0583
+      },
+      "note": "Navy link label elasticity -0.2"
+    },
+    {
+      "id": "label-4",
+      "name": "Label 4",
+      "kind": "text",
+      "box": {
+        "x": 0.8219,
+        "y": 0.6833,
+        "w": 0.1031,
+        "h": 0.0917
+      },
+      "note": "Station label Samsung, HBM share forecast -0.6 pts in navy"
+    },
+    {
+      "id": "title-block",
+      "name": "Title block",
+      "kind": "chrome",
+      "box": {
+        "x": 0.0156,
+        "y": 0.5583,
+        "w": 0.4625,
+        "h": 0.3333
+      },
+      "note": "Ruled navy rectangle on the off-white ground, the chart's title block, holding the headline and actions"
+    },
+    {
+      "id": "title-divider",
+      "name": "Title divider",
+      "kind": "chrome",
+      "box": {
+        "x": 0.0875,
+        "y": 0.5611,
+        "w": 0.0047,
+        "h": 0.3278
+      },
+      "note": "Thin vertical navy rule separating the legend icon column from the headline"
+    },
+    {
+      "id": "headline",
+      "name": "Headline",
+      "kind": "text",
+      "box": {
+        "x": 0.1109,
+        "y": 0.5889,
+        "w": 0.2891,
+        "h": 0.1444
+      },
+      "note": "Headline Your decisions. Better informed. on two lines in bold navy grotesk"
+    },
+    {
+      "id": "subline",
+      "name": "Subline",
+      "kind": "text",
+      "box": {
+        "x": 0.1109,
+        "y": 0.7389,
+        "w": 0.3375,
+        "h": 0.0333
+      },
+      "note": "Line A research lab of people and agents, not an AI tool. in navy"
+    },
+    {
+      "id": "title-rule",
+      "name": "Title rule",
+      "kind": "chrome",
+      "box": {
+        "x": 0.1109,
+        "y": 0.7861,
+        "w": 0.3422,
+        "h": 0.0083
+      },
+      "note": "Thin navy rule under the line"
+    },
+    {
+      "id": "cta-primary",
+      "name": "Cta primary",
+      "kind": "control",
+      "box": {
+        "x": 0.1117,
+        "y": 0.8083,
+        "w": 0.1547,
+        "h": 0.0597
+      },
+      "note": "Solid navy button Request early access with cream label"
+    },
+    {
+      "id": "cta-secondary",
+      "name": "Cta secondary",
+      "kind": "control",
+      "box": {
+        "x": 0.2852,
+        "y": 0.8083,
+        "w": 0.1211,
+        "h": 0.0597
+      },
+      "note": "Outlined navy button Get in touch"
+    },
+    {
+      "id": "foot-rule",
+      "name": "Foot rule",
+      "kind": "chrome",
+      "box": {
+        "x": 0,
+        "y": 0.9028,
+        "w": 1,
+        "h": 0.0111
+      },
+      "note": "Thin navy rule closing the chart above the issue line"
+    },
+    {
+      "id": "issued",
+      "name": "Issued",
+      "kind": "text",
+      "box": {
+        "x": 0.0172,
+        "y": 0.9333,
+        "w": 0.2516,
+        "h": 0.0361
+      },
+      "note": "Issue line Issued 11 Nov 09:42 · Next update: continuous in navy"
+    },
+    {
+      "id": "scale-label",
+      "name": "Scale label",
+      "kind": "text",
+      "box": {
+        "x": 0.8094,
+        "y": 0.9278,
+        "w": 0.1344,
+        "h": 0.0306
+      },
+      "note": "Scale legend label 1 pt surprise propagation in navy"
+    },
+    {
+      "id": "scale-arrow",
+      "name": "Scale arrow",
+      "kind": "chrome",
+      "box": {
+        "x": 0.7969,
+        "y": 0.9583,
+        "w": 0.1797,
+        "h": 0.0167
+      },
+      "note": "Thin navy scale arrow under the legend label"
+    }
+  ]
+}

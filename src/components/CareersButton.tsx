@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { jobs } from "@/lib/site";
+import { Arrow } from "./Arrow";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { EmailOptions } from "./EmailOptions";
@@ -18,7 +19,7 @@ export function CareersButton({ className }: { className?: string }) {
   };
 
   const subject = role ? `Application: ${role}` : "Application";
-  const body = `Hi Whitesail team,\n\nI'd like to apply${role ? ` for the ${role} role` : ""}.\n\nLinkedIn / CV:\n`;
+  const body = `Hi White Sail Labs team,\n\nI'd like to apply${role ? ` for the ${role} role` : ""}.\n\nLinkedIn / CV:\n`;
 
   return (
     <>
@@ -67,7 +68,7 @@ export function CareersButton({ className }: { className?: string }) {
             className={`button button-primary ${styles.send}`}
             onClick={() => setSending(true)}
           >
-            Send application <span className="arrow">→</span>
+            Send application <Arrow />
           </button>
         )}
       </Dialog>

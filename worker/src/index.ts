@@ -75,7 +75,7 @@ export default {
           firm: str(data.firm, 160),
           message: str(data.message, 1000),
         };
-        if (!lead.name || !lead.firm) throw new HttpError(400, "Please fill in your name and firm.");
+        if (!lead.name || !lead.firm) throw new HttpError(400, "Please fill in your name and company.");
         await saveLead(env, lead);
         ctx.waitUntil(notifySlack(env, lead)); // best effort: never fail the signup over Slack
       }

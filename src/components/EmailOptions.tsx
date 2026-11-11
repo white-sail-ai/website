@@ -1,7 +1,8 @@
-import { composeLinks } from "@/lib/site";
+import { composeLinks, site } from "@/lib/site";
 import styles from "./EmailOptions.module.css";
 
-// Opens a new email to us in whichever mail the visitor uses.
+// Opens a new email to us in whichever mail the visitor uses, and shows the address for
+// anyone who would rather copy it.
 export function EmailOptions({ subject, body }: { subject: string; body?: string }) {
   return (
     <div className={styles.options}>
@@ -18,6 +19,9 @@ export function EmailOptions({ subject, body }: { subject: string; body?: string
           </a>
         ))}
       </div>
+      <p className={styles.address}>
+        Or copy our address: <span className={styles.email}>{site.email}</span>
+      </p>
     </div>
   );
 }

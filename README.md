@@ -1,6 +1,6 @@
-# Whitesail website
+# White Sail Labs website
 
-Marketing site for Whitesail Labs: a single, non-scrolling screen built with Next.js 16 (App Router) and CSS Modules. It has no UI dependencies.
+Marketing site for White Sail Labs: a dark home page (a full-screen hero, then Who we are and Built for) plus Privacy and Terms pages, built with Next.js 16 (App Router) and CSS Modules. It has no UI dependencies.
 
 ## Develop
 
@@ -17,23 +17,28 @@ npm run build   # static export: plain HTML, CSS and JS in out/
 src/
   app/
     layout.tsx        fonts (Montserrat + Roboto Slab via next/font), metadata
-    globals.css       brand tokens, base type, buttons
-    page.tsx          the single screen: map behind everything, message panel on top,
-                      attributes strip above the footer
-    icon.svg          favicon (sail mark on a navy circle)
+    globals.css       brand and theme tokens, base type, buttons
+    page.tsx          home: header, a hero screen (map behind, headline panel on top,
+                      attributes strip at the bottom), Who we are, Built for, then the footer
+    privacy/, terms/  legal pages (drafts; see Open items)
+    icon.svg          favicon (the sail on a navy tile)
   components/
-    Header, Footer
-    Logo              sail mark + wordmark
+    Header, Footer    the header sits on the navy page, so the logo reads as in the app
+    LegalPage         header, readable column and footer shared by the legal pages
+    Logo              cream sail silhouette + "White Sail Labs" wordmark
+    BuiltFor          Investors / CEOs / Strategists with drawn symbols, plus the calls to action
     Attributes        In depth / At scale / All the time / Your judgment, with line glyphs
-    MarketMap         canvas "live market map" filling the screen behind the content
-  lib/site.ts         site name, headline, subline, description, email links
+    MarketMap         canvas "live market map" filling the hero behind the content
+    WhoWeAre          deep navy band below the hero: the lab, then Applied AI Engineers,
+                      Business Engineers, and the Always-on Agents Fleet
+  lib/site.ts         site name, headline, description, contact address, email links
   lib/forms.ts        posts the early-access and newsletter forms to the Worker
 worker/               Cloudflare Worker that stores signups (Notion, Slack, Resend); see worker/README.md
 .github/workflows/    nextjs.yml builds the site and publishes it to GitHub Pages
 public/.nojekyll      tells GitHub Pages to serve the _next/ folder as is
 ```
 
-The page is sized to the viewport (`100dvh`) and `html`/`body` never scroll, so new content has to fit on one screen. The fit has been checked from a 320×568 phone up to a 1440×900 desktop, plus tablets and a phone held sideways. The headline is sized to the screen width on phones, and the map caption shortens or hides itself when the open map area is small.
+The hero fills the first screen (`100dvh`, header included) and its open middle row, where the map shows through and reacts to the pointer, takes whatever height the headline and attributes leave. On screens too short for the hero the map keeps a 72px strip and the hero grows. Who we are sits below on a deeper navy band, then Built for closes the page with the two calls to action again; the header's "Who we are" link scrolls to it (hidden below 372px, where the header only has room for Careers). On phones the attributes become a row you swipe through and the headline is sized to the screen width.
 
 ## Early access and newsletter
 
@@ -66,18 +71,21 @@ Every push to the branch listed in `.github/workflows/nextjs.yml` (`on.push.bran
 
 ## Brand
 
-Colors and type come from the Whitesail Labs pitch deck:
+Colors and type come from the White Sail Labs pitch deck. The site is dark: the deck's palette flipped, cream type on a navy page.
 
-| Token     | Value     | Use                                        |
-| --------- | --------- | ------------------------------------------ |
-| `--navy`  | `#1A3263` | ink, primary button                        |
-| `--cream` | `#FCF7F3` | page background                            |
-| `--sand`  | `#F3EEE8` | sail fill in the logo                      |
-| `--amber` | `#FAB95B` | accent (live dot, map signals); not for text |
-| `--slate` | `#4C5A75` | secondary text                             |
+| Token      | Value                  | Use                                                   |
+| ---------- | ---------------------- | ----------------------------------------------------- |
+| `--navy`   | `#1A3263`              | page background, text on the primary button, inputs   |
+| `--cream`  | `#FCF7F3`              | text, logo, primary button, focus ring                |
+| `--amber`  | `#FAB95B`              | accent (map signals, the fleet's rule, symbol accents) |
+| `--deep`   | `#12264C`              | the Who we are band                                   |
+| `--raised` | `#223D75`              | dialogs and the Built for symbol tiles                |
+| `--muted`  | cream at 74% opacity   | secondary text                                        |
+| `--rule`   | cream at 14% opacity   | hairlines                                             |
 
-Headlines are set in Montserrat Bold and body text in Roboto Slab, as in the deck. The copy follows the customer half of the deck and speaks to investment firms.
+Headlines are set in Montserrat Bold and body text in Roboto Slab, as in the deck. The copy presents White Sail Labs as an independent market research lab whose agents are built by applied AI engineers (intelligence-agency veterans) and business engineers (domain experts), and is built for investors, CEOs, and strategists rather than investors alone. The forms and contact dialog promise a reply within 1 business day.
 
 ## Open items
 
-- **Privacy / Terms**: the footer links don't go anywhere yet (`components/Footer.tsx`).
+- **Privacy / Terms**: `app/privacy` and `app/terms` are first drafts written from what the site and the Worker actually do. Have them reviewed before relying on them; the Terms have no governing-law clause yet. The privacy policy lists the Worker's service providers, so update it if those change.
+- **Contact address**: `site.email` is a personal mailbox and now appears on the legal pages and in the contact dialog; consider a role address such as hello@ or privacy@.

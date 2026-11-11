@@ -1,0 +1,2821 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-11-11T13:08:10.599Z",
+  "comp": ".impeccable/mocks/decision/steered-2.png",
+  "warnings": [
+    "region nav-band: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region logo: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region logo: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region chart-field: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region chart-field: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)",
+    "region front-1-2: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region fronts-2-3: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region front-2-4: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)",
+    "region title-block: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 1280,
+    "height": 720
+  },
+  "aspect": 1.7778,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#f8f8f5",
+      "coverage": 0.8095
+    },
+    {
+      "hex": "#092750",
+      "coverage": 0.1249
+    },
+    {
+      "hex": "#9096a7",
+      "coverage": 0.023
+    },
+    {
+      "hex": "#c8cfdc",
+      "coverage": 0.0222
+    },
+    {
+      "hex": "#c89d4c",
+      "coverage": 0.0203
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0417,
+      "strength": 0.4844
+    },
+    {
+      "y": 0.0833,
+      "strength": 1
+    },
+    {
+      "y": 0.3194,
+      "strength": 0.3244
+    },
+    {
+      "y": 0.3889,
+      "strength": 0.3537
+    },
+    {
+      "y": 0.5556,
+      "strength": 0.2862
+    },
+    {
+      "y": 0.6111,
+      "strength": 0.3359
+    },
+    {
+      "y": 0.6528,
+      "strength": 0.2602
+    },
+    {
+      "y": 0.6806,
+      "strength": 0.3466
+    },
+    {
+      "y": 0.7222,
+      "strength": 0.2528
+    },
+    {
+      "y": 0.7639,
+      "strength": 0.2993
+    },
+    {
+      "y": 0.8056,
+      "strength": 0.2379
+    },
+    {
+      "y": 0.8611,
+      "strength": 0.2268
+    },
+    {
+      "y": 0.9167,
+      "strength": 0.4644
+    },
+    {
+      "y": 0.9444,
+      "strength": 0.3093
+    }
+  ],
+  "regions": [
+    {
+      "id": "nav-band",
+      "kind": "chrome",
+      "note": "Deep navy top band holding the logo, navigation links and the early-access button",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.0903
+      },
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 65
+      },
+      "aspect": 19.6923,
+      "palette": [
+        {
+          "hex": "#08274f",
+          "coverage": 0.9259
+        },
+        {
+          "hex": "#eaeff5",
+          "coverage": 0.0381
+        },
+        {
+          "hex": "#7786a1",
+          "coverage": 0.0139
+        },
+        {
+          "hex": "#b4bed6",
+          "coverage": 0.0131
+        },
+        {
+          "hex": "#4c5b77",
+          "coverage": 0.009
+        }
+      ],
+      "detail": {
+        "energy": 31.9117
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": true
+      }
+    },
+    {
+      "id": "logo",
+      "kind": "chrome",
+      "note": "The site's existing White Sail Labs logo in cream on navy (Logo.tsx: the sail mark with its own speed lines, then the wordmark), replacing the comp's placeholder sail and trailing lines",
+      "grid": null,
+      "codeDrawn": true,
+      "container": true,
+      "parentId": "nav-band",
+      "box": {
+        "x": 0.0141,
+        "y": 0.0125,
+        "w": 0.2672,
+        "h": 0.0667
+      },
+      "px": {
+        "x": 18,
+        "y": 9,
+        "w": 342,
+        "h": 48
+      },
+      "aspect": 7.125,
+      "palette": [
+        {
+          "hex": "#08264f",
+          "coverage": 0.8066
+        },
+        {
+          "hex": "#f6f8f7",
+          "coverage": 0.0979
+        },
+        {
+          "hex": "#cbd5e7",
+          "coverage": 0.0593
+        },
+        {
+          "hex": "#4e5c78",
+          "coverage": 0.0219
+        },
+        {
+          "hex": "#74829b",
+          "coverage": 0.0144
+        }
+      ],
+      "detail": {
+        "energy": 61.3502
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "logo-word",
+      "kind": "text",
+      "note": "Wordmark White Sail Labs in cream on navy, part of the existing logo",
+      "grid": null,
+      "parentId": "logo",
+      "box": {
+        "x": 0.0531,
+        "y": 0.0194,
+        "w": 0.1812,
+        "h": 0.0556
+      },
+      "px": {
+        "x": 68,
+        "y": 14,
+        "w": 232,
+        "h": 40
+      },
+      "aspect": 5.8,
+      "palette": [
+        {
+          "hex": "#092650",
+          "coverage": 0.7946
+        },
+        {
+          "hex": "#f4f7f8",
+          "coverage": 0.1209
+        },
+        {
+          "hex": "#767f9b",
+          "coverage": 0.0317
+        },
+        {
+          "hex": "#a2aec0",
+          "coverage": 0.0278
+        },
+        {
+          "hex": "#414e6a",
+          "coverage": 0.025
+        }
+      ],
+      "detail": {
+        "energy": 58.4408
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 13,
+          "capHeightPx": 23.8,
+          "inkIsDark": false,
+          "allCaps": false,
+          "advance": 0.6084,
+          "advTall": 0.6504,
+          "advX": 0.5874,
+          "gap": 0.0839,
+          "xRatio": 0.6494,
+          "stemW": 0.1666,
+          "contrast": 1.9716,
+          "serif": 1.4553,
+          "densTall": 0.45,
+          "densX": 0.5359,
+          "weight": 0.45
+        },
+        "widthClass": "normal",
+        "weightClass": "regular",
+        "chosen": {
+          "family": "Inria Serif",
+          "weight": 700,
+          "fontSizePx": 32,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 13,
+            "capHeightPx": 23.9,
+            "inkIsDark": true,
+            "allCaps": false,
+            "advance": 0.6065,
+            "advTall": 0.6274,
+            "advX": 0.6169,
+            "gap": 0.1046,
+            "xRatio": 0.6849,
+            "stemW": 0.1757,
+            "contrast": 1.9715,
+            "serif": 1.7023,
+            "densTall": 0.4763,
+            "densX": 0.5627,
+            "weight": 0.4763
+          },
+          "stamp": "eb08eef02bb8"
+        }
+      }
+    },
+    {
+      "id": "nav-who",
+      "kind": "control",
+      "note": "Navigation link Who we are in cream",
+      "grid": null,
+      "parentId": "nav-band",
+      "reviewGroup": "nav-link",
+      "box": {
+        "x": 0.525,
+        "y": 0.0306,
+        "w": 0.0703,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 672,
+        "y": 22,
+        "w": 90,
+        "h": 22
+      },
+      "aspect": 4.0909,
+      "palette": [
+        {
+          "hex": "#09244d",
+          "coverage": 0.7965
+        },
+        {
+          "hex": "#e6f0f8",
+          "coverage": 0.0885
+        },
+        {
+          "hex": "#7d85a3",
+          "coverage": 0.0442
+        },
+        {
+          "hex": "#c0d0ea",
+          "coverage": 0.0354
+        },
+        {
+          "hex": "#3e4c68",
+          "coverage": 0.0354
+        }
+      ],
+      "detail": {
+        "energy": 32.18
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-capabilities",
+      "kind": "control",
+      "note": "Navigation link Capabilities in cream",
+      "grid": null,
+      "parentId": "nav-band",
+      "reviewGroup": "nav-link",
+      "box": {
+        "x": 0.6133,
+        "y": 0.0306,
+        "w": 0.0695,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 785,
+        "y": 22,
+        "w": 89,
+        "h": 22
+      },
+      "aspect": 4.0455,
+      "palette": [
+        {
+          "hex": "#0a244c",
+          "coverage": 0.7511
+        },
+        {
+          "hex": "#edf4f6",
+          "coverage": 0.1244
+        },
+        {
+          "hex": "#b0bccf",
+          "coverage": 0.0533
+        },
+        {
+          "hex": "#586482",
+          "coverage": 0.0356
+        },
+        {
+          "hex": "#8a98b8",
+          "coverage": 0.0356
+        }
+      ],
+      "detail": {
+        "energy": 38.309
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-careers",
+      "kind": "control",
+      "note": "Navigation link Careers in cream",
+      "grid": null,
+      "parentId": "nav-band",
+      "reviewGroup": "nav-link",
+      "box": {
+        "x": 0.7023,
+        "y": 0.0306,
+        "w": 0.0445,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 899,
+        "y": 22,
+        "w": 57,
+        "h": 22
+      },
+      "aspect": 2.5909,
+      "palette": [
+        {
+          "hex": "#09254d",
+          "coverage": 0.7586
+        },
+        {
+          "hex": "#eef5f8",
+          "coverage": 0.1034
+        },
+        {
+          "hex": "#46536f",
+          "coverage": 0.0483
+        },
+        {
+          "hex": "#b6bfd6",
+          "coverage": 0.0483
+        },
+        {
+          "hex": "#cdd3f3",
+          "coverage": 0.0414
+        }
+      ],
+      "detail": {
+        "energy": 24.2588
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-contact",
+      "kind": "control",
+      "note": "Navigation link Contact in cream",
+      "grid": null,
+      "parentId": "nav-band",
+      "reviewGroup": "nav-link",
+      "box": {
+        "x": 0.7688,
+        "y": 0.0306,
+        "w": 0.0477,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 984,
+        "y": 22,
+        "w": 61,
+        "h": 22
+      },
+      "aspect": 2.7727,
+      "palette": [
+        {
+          "hex": "#09254e",
+          "coverage": 0.7812
+        },
+        {
+          "hex": "#f2f8f8",
+          "coverage": 0.1063
+        },
+        {
+          "hex": "#7586a5",
+          "coverage": 0.0625
+        },
+        {
+          "hex": "#aeb2d8",
+          "coverage": 0.0312
+        },
+        {
+          "hex": "#434d73",
+          "coverage": 0.0187
+        }
+      ],
+      "detail": {
+        "energy": 25.4098
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-cta",
+      "kind": "control",
+      "note": "Outlined cream button Request early access on the navy band",
+      "grid": null,
+      "parentId": "nav-band",
+      "box": {
+        "x": 0.8359,
+        "y": 0.0181,
+        "w": 0.1445,
+        "h": 0.0556
+      },
+      "px": {
+        "x": 1070,
+        "y": 13,
+        "w": 185,
+        "h": 40
+      },
+      "aspect": 4.625,
+      "palette": [
+        {
+          "hex": "#092650",
+          "coverage": 0.7485
+        },
+        {
+          "hex": "#e3ecf7",
+          "coverage": 0.1222
+        },
+        {
+          "hex": "#090934",
+          "coverage": 0.07
+        },
+        {
+          "hex": "#627191",
+          "coverage": 0.0332
+        },
+        {
+          "hex": "#bec9e6",
+          "coverage": 0.0261
+        }
+      ],
+      "detail": {
+        "energy": 49.9782
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "chart-field",
+      "kind": "chrome",
+      "note": "Off-white chart ground with fine navy isobar contours, pressure numbers and scattered front ticks, drawn by canvas from a generated pressure field",
+      "grid": null,
+      "codeDrawn": true,
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0.0903,
+        "w": 1,
+        "h": 0.8194
+      },
+      "px": {
+        "x": 0,
+        "y": 65,
+        "w": 1280,
+        "h": 590
+      },
+      "aspect": 2.1695,
+      "palette": [
+        {
+          "hex": "#f8f8f5",
+          "coverage": 0.8895
+        },
+        {
+          "hex": "#0c2652",
+          "coverage": 0.047
+        },
+        {
+          "hex": "#c89c4b",
+          "coverage": 0.0252
+        },
+        {
+          "hex": "#cdd3df",
+          "coverage": 0.0197
+        },
+        {
+          "hex": "#82899a",
+          "coverage": 0.0187
+        }
+      ],
+      "detail": {
+        "energy": 37.577
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "tag-illustrative",
+      "kind": "text",
+      "note": "Small tracked caps label ILLUSTRATIVE in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.0172,
+        "y": 0.1167,
+        "w": 0.0828,
+        "h": 0.025
+      },
+      "px": {
+        "x": 22,
+        "y": 84,
+        "w": 106,
+        "h": 18
+      },
+      "aspect": 5.8889,
+      "palette": [
+        {
+          "hex": "#f6f7f5",
+          "coverage": 0.7714
+        },
+        {
+          "hex": "#8d8f9e",
+          "coverage": 0.0952
+        },
+        {
+          "hex": "#2f334d",
+          "coverage": 0.0619
+        },
+        {
+          "hex": "#0b0e2a",
+          "coverage": 0.0476
+        },
+        {
+          "hex": "#b8bece",
+          "coverage": 0.0238
+        }
+      ],
+      "detail": {
+        "energy": 48.7275
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 12,
+          "capHeightPx": 11,
+          "inkIsDark": true,
+          "allCaps": true,
+          "advance": 0.5743,
+          "advTall": 0.5743,
+          "advX": null,
+          "gap": 0.272,
+          "xRatio": null,
+          "stemW": 0.19,
+          "contrast": 1.0919,
+          "serif": null,
+          "densTall": 0.5896,
+          "densX": null,
+          "weight": 0.5896
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "tag-rule",
+      "kind": "chrome",
+      "note": "Thin navy rule running right from the Illustrative label",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.1,
+        "y": 0.1236,
+        "w": 0.1062,
+        "h": 0.0111
+      },
+      "px": {
+        "x": 128,
+        "y": 89,
+        "w": 136,
+        "h": 8
+      },
+      "aspect": 17,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.7029
+        },
+        {
+          "hex": "#c5c8da",
+          "coverage": 0.2971
+        }
+      ],
+      "detail": {
+        "energy": 41.7833
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "front-1-2",
+      "kind": "chrome",
+      "note": "Thick flow of many fine lines in the brand gold #fab95b (the old site's gold, replacing the comp's ochre) carrying the surprise from SK hynix to NVIDIA, drawn by canvas from the ripple data",
+      "grid": null,
+      "codeDrawn": true,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.1453,
+        "y": 0.2389,
+        "w": 0.2516,
+        "h": 0.175
+      },
+      "px": {
+        "x": 186,
+        "y": 172,
+        "w": 322,
+        "h": 126
+      },
+      "aspect": 2.5556,
+      "palette": [
+        {
+          "hex": "#f7f7f4",
+          "coverage": 0.4778
+        },
+        {
+          "hex": "#c89c4a",
+          "coverage": 0.4224
+        },
+        {
+          "hex": "#f8f3c9",
+          "coverage": 0.0398
+        },
+        {
+          "hex": "#ebce94",
+          "coverage": 0.038
+        },
+        {
+          "hex": "#bda576",
+          "coverage": 0.0219
+        }
+      ],
+      "detail": {
+        "energy": 34.0278
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "fronts-2-3",
+      "kind": "chrome",
+      "note": "Thinner flow lines in the brand gold #fab95b from NVIDIA to Microsoft and Meta, drawn by canvas from the ripple data",
+      "grid": null,
+      "codeDrawn": true,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.4594,
+        "y": 0.2389,
+        "w": 0.3531,
+        "h": 0.2083
+      },
+      "px": {
+        "x": 588,
+        "y": 172,
+        "w": 452,
+        "h": 150
+      },
+      "aspect": 3.0133,
+      "palette": [
+        {
+          "hex": "#f8f8f4",
+          "coverage": 0.8421
+        },
+        {
+          "hex": "#0b2753",
+          "coverage": 0.0551
+        },
+        {
+          "hex": "#c99d4c",
+          "coverage": 0.0431
+        },
+        {
+          "hex": "#f5efcb",
+          "coverage": 0.035
+        },
+        {
+          "hex": "#d9c39a",
+          "coverage": 0.0247
+        }
+      ],
+      "detail": {
+        "energy": 42.4718
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "front-2-4",
+      "kind": "chrome",
+      "note": "Navy front line with triangle arrowheads from NVIDIA down to Samsung, drawn by canvas from the ripple data",
+      "grid": null,
+      "codeDrawn": true,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.5,
+        "y": 0.3972,
+        "w": 0.2703,
+        "h": 0.3083
+      },
+      "px": {
+        "x": 640,
+        "y": 286,
+        "w": 346,
+        "h": 222
+      },
+      "aspect": 1.5586,
+      "palette": [
+        {
+          "hex": "#f8f8f6",
+          "coverage": 0.9478
+        },
+        {
+          "hex": "#c7ccd5",
+          "coverage": 0.0218
+        },
+        {
+          "hex": "#9096a2",
+          "coverage": 0.0179
+        },
+        {
+          "hex": "#0b2051",
+          "coverage": 0.0094
+        },
+        {
+          "hex": "#f8f5d5",
+          "coverage": 0.0031
+        }
+      ],
+      "detail": {
+        "energy": 24.7358
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "step-1",
+      "kind": "text",
+      "note": "Brand-gold #fab95b ring with step number 1 in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "step-number",
+      "box": {
+        "x": 0.1078,
+        "y": 0.2194,
+        "w": 0.0281,
+        "h": 0.05
+      },
+      "px": {
+        "x": 138,
+        "y": 158,
+        "w": 36,
+        "h": 36
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f8f8f1",
+          "coverage": 0.7183
+        },
+        {
+          "hex": "#936f30",
+          "coverage": 0.0986
+        },
+        {
+          "hex": "#d8c192",
+          "coverage": 0.0986
+        },
+        {
+          "hex": "#b69a63",
+          "coverage": 0.0704
+        },
+        {
+          "hex": "#f8f0c8",
+          "coverage": 0.0141
+        }
+      ],
+      "detail": {
+        "energy": 10.3148
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-11-11T12:22:44.611Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "step-2",
+      "kind": "text",
+      "note": "Brand-gold #fab95b ring with step number 2 in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "step-number",
+      "box": {
+        "x": 0.4109,
+        "y": 0.2139,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "px": {
+        "x": 526,
+        "y": 154,
+        "w": 40,
+        "h": 40
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f8f8f3",
+          "coverage": 0.7409
+        },
+        {
+          "hex": "#9c7937",
+          "coverage": 0.1192
+        },
+        {
+          "hex": "#f7f3cf",
+          "coverage": 0.0674
+        },
+        {
+          "hex": "#c2ac7a",
+          "coverage": 0.0415
+        },
+        {
+          "hex": "#e3d0b0",
+          "coverage": 0.0311
+        }
+      ],
+      "detail": {
+        "energy": 9.637
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-11-11T12:22:44.423Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "step-3a",
+      "kind": "text",
+      "note": "Brand-gold #fab95b ring with step label 3a in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "step-number",
+      "box": {
+        "x": 0.625,
+        "y": 0.225,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "px": {
+        "x": 800,
+        "y": 162,
+        "w": 40,
+        "h": 40
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f8f8f3",
+          "coverage": 0.6503
+        },
+        {
+          "hex": "#9d7b3d",
+          "coverage": 0.1257
+        },
+        {
+          "hex": "#f6edcd",
+          "coverage": 0.1148
+        },
+        {
+          "hex": "#f4dbab",
+          "coverage": 0.0601
+        },
+        {
+          "hex": "#baa16a",
+          "coverage": 0.0492
+        }
+      ],
+      "detail": {
+        "energy": 11.5266
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-11-11T12:22:44.469Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "step-3b",
+      "kind": "text",
+      "note": "Brand-gold #fab95b ring with step label 3b in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "step-number",
+      "box": {
+        "x": 0.8203,
+        "y": 0.225,
+        "w": 0.0313,
+        "h": 0.0556
+      },
+      "px": {
+        "x": 1050,
+        "y": 162,
+        "w": 40,
+        "h": 40
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#f8f8f0",
+          "coverage": 0.7031
+        },
+        {
+          "hex": "#97773d",
+          "coverage": 0.1302
+        },
+        {
+          "hex": "#cdac79",
+          "coverage": 0.0677
+        },
+        {
+          "hex": "#e0cba8",
+          "coverage": 0.0625
+        },
+        {
+          "hex": "#f6efc3",
+          "coverage": 0.0365
+        }
+      ],
+      "detail": {
+        "energy": 12.435
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-11-11T12:22:44.516Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "step-4",
+      "kind": "text",
+      "note": "Navy outlined circle with step number 4",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "step-number",
+      "box": {
+        "x": 0.7688,
+        "y": 0.6139,
+        "w": 0.0281,
+        "h": 0.0528
+      },
+      "px": {
+        "x": 984,
+        "y": 442,
+        "w": 36,
+        "h": 38
+      },
+      "aspect": 0.9474,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.719
+        },
+        {
+          "hex": "#0a0f38",
+          "coverage": 0.1307
+        },
+        {
+          "hex": "#7b809e",
+          "coverage": 0.0654
+        },
+        {
+          "hex": "#2a2a51",
+          "coverage": 0.0458
+        },
+        {
+          "hex": "#cbd5e3",
+          "coverage": 0.0392
+        }
+      ],
+      "detail": {
+        "energy": 15.9907
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": null,
+        "measuredAt": "2026-11-11T12:22:44.565Z",
+        "note": "no separable lettering in the crop; size by the region box"
+      }
+    },
+    {
+      "id": "station-1",
+      "kind": "chrome",
+      "note": "Navy station plot circle with a cream ring and a small weather glyph, SK hynix",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "station",
+      "box": {
+        "x": 0.0938,
+        "y": 0.2833,
+        "w": 0.0563,
+        "h": 0.1
+      },
+      "px": {
+        "x": 120,
+        "y": 204,
+        "w": 72,
+        "h": 72
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#092653",
+          "coverage": 0.5931
+        },
+        {
+          "hex": "#f5f7f7",
+          "coverage": 0.3157
+        },
+        {
+          "hex": "#535d7d",
+          "coverage": 0.0383
+        },
+        {
+          "hex": "#7d899d",
+          "coverage": 0.0274
+        },
+        {
+          "hex": "#0b0b2f",
+          "coverage": 0.0255
+        }
+      ],
+      "detail": {
+        "energy": 24.785
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "station-2",
+      "kind": "chrome",
+      "note": "Larger navy station plot circle with a cream ring and a weather glyph, NVIDIA",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "station",
+      "box": {
+        "x": 0.3891,
+        "y": 0.2833,
+        "w": 0.0703,
+        "h": 0.125
+      },
+      "px": {
+        "x": 498,
+        "y": 204,
+        "w": 90,
+        "h": 90
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#092754",
+          "coverage": 0.6871
+        },
+        {
+          "hex": "#f6f7f7",
+          "coverage": 0.2361
+        },
+        {
+          "hex": "#7d879f",
+          "coverage": 0.0307
+        },
+        {
+          "hex": "#0a0a32",
+          "coverage": 0.0248
+        },
+        {
+          "hex": "#bcc0dd",
+          "coverage": 0.0213
+        }
+      ],
+      "detail": {
+        "energy": 23.9213
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "station-3a",
+      "kind": "chrome",
+      "note": "Navy station plot circle with a cream ring and a weather glyph, Microsoft",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "station",
+      "box": {
+        "x": 0.6117,
+        "y": 0.2958,
+        "w": 0.0609,
+        "h": 0.1083
+      },
+      "px": {
+        "x": 783,
+        "y": 213,
+        "w": 78,
+        "h": 78
+      },
+      "aspect": 1,
+      "palette": [
+        {
+          "hex": "#092653",
+          "coverage": 0.5429
+        },
+        {
+          "hex": "#f6f7f6",
+          "coverage": 0.3417
+        },
+        {
+          "hex": "#bdc4d6",
+          "coverage": 0.0421
+        },
+        {
+          "hex": "#818aa7",
+          "coverage": 0.039
+        },
+        {
+          "hex": "#47546e",
+          "coverage": 0.0343
+        }
+      ],
+      "detail": {
+        "energy": 27.0671
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "station-3b",
+      "kind": "chrome",
+      "note": "Navy station plot circle with a cream ring and a weather glyph, Meta",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "station",
+      "box": {
+        "x": 0.807,
+        "y": 0.2958,
+        "w": 0.0586,
+        "h": 0.1083
+      },
+      "px": {
+        "x": 1033,
+        "y": 213,
+        "w": 75,
+        "h": 78
+      },
+      "aspect": 0.9615,
+      "palette": [
+        {
+          "hex": "#092653",
+          "coverage": 0.5593
+        },
+        {
+          "hex": "#f5f7f6",
+          "coverage": 0.3397
+        },
+        {
+          "hex": "#bac2d5",
+          "coverage": 0.0369
+        },
+        {
+          "hex": "#495272",
+          "coverage": 0.0369
+        },
+        {
+          "hex": "#7c889d",
+          "coverage": 0.0272
+        }
+      ],
+      "detail": {
+        "energy": 26.7722
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "station-4",
+      "kind": "chrome",
+      "note": "Small navy station plot circle with a cream ring and number, Samsung",
+      "grid": null,
+      "parentId": "chart-field",
+      "reviewGroup": "station",
+      "box": {
+        "x": 0.7648,
+        "y": 0.6792,
+        "w": 0.0359,
+        "h": 0.0667
+      },
+      "px": {
+        "x": 979,
+        "y": 489,
+        "w": 46,
+        "h": 48
+      },
+      "aspect": 0.9583,
+      "palette": [
+        {
+          "hex": "#0c2755",
+          "coverage": 0.4917
+        },
+        {
+          "hex": "#f5f7f7",
+          "coverage": 0.3802
+        },
+        {
+          "hex": "#677087",
+          "coverage": 0.0496
+        },
+        {
+          "hex": "#acaecf",
+          "coverage": 0.0455
+        },
+        {
+          "hex": "#344260",
+          "coverage": 0.0331
+        }
+      ],
+      "detail": {
+        "energy": 21.2993
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "label-1",
+      "kind": "text",
+      "note": "Station label SK hynix Supplier, HBM output guidance +20%, model expected +12%, surprise +8 pts in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.0563,
+        "y": 0.4222,
+        "w": 0.1422,
+        "h": 0.1194
+      },
+      "px": {
+        "x": 72,
+        "y": 304,
+        "w": 182,
+        "h": 86
+      },
+      "aspect": 2.1163,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.836
+        },
+        {
+          "hex": "#c6c8d7",
+          "coverage": 0.0675
+        },
+        {
+          "hex": "#808294",
+          "coverage": 0.0355
+        },
+        {
+          "hex": "#0f122a",
+          "coverage": 0.0349
+        },
+        {
+          "hex": "#333749",
+          "coverage": 0.0262
+        }
+      ],
+      "detail": {
+        "energy": 50.56
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 4,
+          "glyphs": 66,
+          "capHeightPx": 12.3,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5529,
+          "advTall": 0.5568,
+          "advX": 0.5543,
+          "gap": 0.0829,
+          "xRatio": 0.7033,
+          "stemW": 0.1694,
+          "contrast": 1.0193,
+          "serif": 0.6538,
+          "densTall": 0.5741,
+          "densX": 0.612,
+          "weight": 0.5741
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "label-elasticity-1",
+      "kind": "text",
+      "note": "Link label elasticity 0.4 in navy beside the gold flow",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.2297,
+        "y": 0.4361,
+        "w": 0.0734,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 294,
+        "y": 314,
+        "w": 94,
+        "h": 22
+      },
+      "aspect": 4.2727,
+      "palette": [
+        {
+          "hex": "#f8f7f1",
+          "coverage": 0.7751
+        },
+        {
+          "hex": "#87653b",
+          "coverage": 0.0924
+        },
+        {
+          "hex": "#e9d3b4",
+          "coverage": 0.0723
+        },
+        {
+          "hex": "#ab916c",
+          "coverage": 0.0482
+        },
+        {
+          "hex": "#b88d53",
+          "coverage": 0.012
+        }
+      ],
+      "detail": {
+        "energy": 28.5422
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 10,
+          "capHeightPx": 13,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5374,
+          "advTall": 0.403,
+          "advX": 0.5374,
+          "gap": 0.0768,
+          "xRatio": 0.7074,
+          "stemW": 0.1619,
+          "contrast": 0.962,
+          "serif": 0.4247,
+          "densTall": 0.6102,
+          "densX": 0.6251,
+          "weight": 0.6102
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "label-2",
+      "kind": "text",
+      "note": "Station label NVIDIA, GPU shipments forecast +3.2% in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.3844,
+        "y": 0.4222,
+        "w": 0.0859,
+        "h": 0.0944
+      },
+      "px": {
+        "x": 492,
+        "y": 304,
+        "w": 110,
+        "h": 68
+      },
+      "aspect": 1.6176,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.8491
+        },
+        {
+          "hex": "#45485d",
+          "coverage": 0.0465
+        },
+        {
+          "hex": "#0c0e22",
+          "coverage": 0.0377
+        },
+        {
+          "hex": "#242741",
+          "coverage": 0.0365
+        },
+        {
+          "hex": "#77798f",
+          "coverage": 0.0302
+        }
+      ],
+      "detail": {
+        "energy": 35.9942
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 3,
+          "glyphs": 27,
+          "capHeightPx": 12.6,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5706,
+          "advTall": 0.5746,
+          "advX": 0.5167,
+          "gap": 0.0984,
+          "xRatio": 0.7097,
+          "stemW": 0.1704,
+          "contrast": 1.0007,
+          "serif": 0.4687,
+          "densTall": 0.5315,
+          "densX": 0.5808,
+          "weight": 0.5315
+        },
+        "widthClass": "condensed",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "label-3a",
+      "kind": "text",
+      "note": "Station label Microsoft, AI capacity forecast +1.1% in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.6766,
+        "y": 0.3083,
+        "w": 0.1062,
+        "h": 0.0972
+      },
+      "px": {
+        "x": 866,
+        "y": 222,
+        "w": 136,
+        "h": 70
+      },
+      "aspect": 1.9429,
+      "palette": [
+        {
+          "hex": "#f8f8f5",
+          "coverage": 0.8473
+        },
+        {
+          "hex": "#18192f",
+          "coverage": 0.0623
+        },
+        {
+          "hex": "#a4a5b5",
+          "coverage": 0.0311
+        },
+        {
+          "hex": "#dbdbea",
+          "coverage": 0.0302
+        },
+        {
+          "hex": "#efe3c3",
+          "coverage": 0.0292
+        }
+      ],
+      "detail": {
+        "energy": 34.2384
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 24,
+          "capHeightPx": 12.8,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.4932,
+          "advTall": 0.5549,
+          "advX": 0.4932,
+          "gap": 0.0822,
+          "xRatio": 0.7069,
+          "stemW": 0.1755,
+          "contrast": 1.0346,
+          "serif": 0.441,
+          "densTall": 0.6119,
+          "densX": 0.6201,
+          "weight": 0.6119
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold",
+        "chosen": {
+          "family": "B612",
+          "weight": 400,
+          "fontSizePx": 15,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 31,
+            "capHeightPx": 12.7,
+            "inkIsDark": true,
+            "allCaps": false,
+            "advance": 0.4918,
+            "advTall": 0.4525,
+            "advX": 0.5115,
+            "gap": 0.118,
+            "xRatio": 0.7009,
+            "stemW": 0.1707,
+            "contrast": 1.0413,
+            "serif": 0.7988,
+            "densTall": 0.5207,
+            "densX": 0.5977,
+            "weight": 0.5207
+          },
+          "stamp": "fb880d2ad0a4"
+        }
+      }
+    },
+    {
+      "id": "label-3b",
+      "kind": "text",
+      "note": "Station label Meta, capex forecast +0.9% in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.8703,
+        "y": 0.3083,
+        "w": 0.0797,
+        "h": 0.0972
+      },
+      "px": {
+        "x": 1114,
+        "y": 222,
+        "w": 102,
+        "h": 70
+      },
+      "aspect": 1.4571,
+      "palette": [
+        {
+          "hex": "#f8f8f6",
+          "coverage": 0.8511
+        },
+        {
+          "hex": "#14162c",
+          "coverage": 0.0636
+        },
+        {
+          "hex": "#9c9cae",
+          "coverage": 0.0344
+        },
+        {
+          "hex": "#d5d7e7",
+          "coverage": 0.0305
+        },
+        {
+          "hex": "#3a3f55",
+          "coverage": 0.0204
+        }
+      ],
+      "detail": {
+        "energy": 26.2163
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 12,
+          "capHeightPx": 12.2,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.7955,
+          "advTall": 0.7472,
+          "advX": 0.9242,
+          "gap": 0.0804,
+          "xRatio": 0.5918,
+          "stemW": 0.1667,
+          "contrast": 0.9905,
+          "serif": 0.6379,
+          "densTall": 0.5189,
+          "densX": 0.5774,
+          "weight": 0.5189
+        },
+        "widthClass": "wide",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "label-elasticity-2",
+      "kind": "text",
+      "note": "Navy link label elasticity -0.2",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.5687,
+        "y": 0.5528,
+        "w": 0.0578,
+        "h": 0.0583
+      },
+      "px": {
+        "x": 728,
+        "y": 398,
+        "w": 74,
+        "h": 42
+      },
+      "aspect": 1.7619,
+      "palette": [
+        {
+          "hex": "#f8f8f6",
+          "coverage": 0.8473
+        },
+        {
+          "hex": "#d2d0de",
+          "coverage": 0.0509
+        },
+        {
+          "hex": "#0d0e2e",
+          "coverage": 0.0479
+        },
+        {
+          "hex": "#84879a",
+          "coverage": 0.0389
+        },
+        {
+          "hex": "#2e3245",
+          "coverage": 0.015
+        }
+      ],
+      "detail": {
+        "energy": 22.3943
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 12,
+          "capHeightPx": 13,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5211,
+          "advTall": 0.4246,
+          "advX": 0.5404,
+          "gap": 0.0772,
+          "xRatio": 0.5936,
+          "stemW": 0.1691,
+          "contrast": 1.0003,
+          "serif": null,
+          "densTall": 0.5255,
+          "densX": 0.6802,
+          "weight": 0.5255
+        },
+        "widthClass": "condensed",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "label-4",
+      "kind": "text",
+      "note": "Station label Samsung, HBM share forecast -0.6 pts in navy",
+      "grid": null,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.8219,
+        "y": 0.6833,
+        "w": 0.1031,
+        "h": 0.0917
+      },
+      "px": {
+        "x": 1052,
+        "y": 492,
+        "w": 132,
+        "h": 66
+      },
+      "aspect": 2,
+      "palette": [
+        {
+          "hex": "#f7f7f6",
+          "coverage": 0.8652
+        },
+        {
+          "hex": "#30344a",
+          "coverage": 0.0442
+        },
+        {
+          "hex": "#cacbdf",
+          "coverage": 0.0324
+        },
+        {
+          "hex": "#101132",
+          "coverage": 0.0313
+        },
+        {
+          "hex": "#838797",
+          "coverage": 0.027
+        }
+      ],
+      "detail": {
+        "energy": 34.7387
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 3,
+          "glyphs": 24,
+          "capHeightPx": 13,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.557,
+          "advTall": 0.6212,
+          "advX": 0.5158,
+          "gap": 0.0796,
+          "xRatio": 0.6839,
+          "stemW": 0.1694,
+          "contrast": 0.9813,
+          "serif": 0.4363,
+          "densTall": 0.5654,
+          "densX": 0.661,
+          "weight": 0.5654
+        },
+        "widthClass": "condensed",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "title-block",
+      "kind": "chrome",
+      "note": "Ruled navy rectangle on the off-white ground, the chart's title block, holding the headline and actions",
+      "grid": null,
+      "container": true,
+      "parentId": "chart-field",
+      "box": {
+        "x": 0.0156,
+        "y": 0.5583,
+        "w": 0.4625,
+        "h": 0.3333
+      },
+      "px": {
+        "x": 20,
+        "y": 402,
+        "w": 592,
+        "h": 240
+      },
+      "aspect": 2.4667,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.8269
+        },
+        {
+          "hex": "#092450",
+          "coverage": 0.1118
+        },
+        {
+          "hex": "#31374e",
+          "coverage": 0.0252
+        },
+        {
+          "hex": "#858c9e",
+          "coverage": 0.0207
+        },
+        {
+          "hex": "#bcc1d5",
+          "coverage": 0.0154
+        }
+      ],
+      "detail": {
+        "energy": 57.9888
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "title-divider",
+      "kind": "chrome",
+      "note": "Thin vertical navy rule separating the legend icon column from the headline",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.0875,
+        "y": 0.5611,
+        "w": 0.0047,
+        "h": 0.3278
+      },
+      "px": {
+        "x": 112,
+        "y": 404,
+        "w": 6,
+        "h": 236
+      },
+      "aspect": 0.0254,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9747
+        },
+        {
+          "hex": "#081838",
+          "coverage": 0.0127
+        },
+        {
+          "hex": "#283858",
+          "coverage": 0.0127
+        }
+      ],
+      "detail": {
+        "energy": 5.0248
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "legend-pressure",
+      "kind": "chrome",
+      "note": "Navy line icon of concentric pressure rings",
+      "grid": null,
+      "parentId": "title-block",
+      "reviewGroup": "legend-icon",
+      "box": {
+        "x": 0.0266,
+        "y": 0.5778,
+        "w": 0.0484,
+        "h": 0.0833
+      },
+      "px": {
+        "x": 34,
+        "y": 416,
+        "w": 62,
+        "h": 60
+      },
+      "aspect": 1.0333,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.8321
+        },
+        {
+          "hex": "#c8cce0",
+          "coverage": 0.0662
+        },
+        {
+          "hex": "#666783",
+          "coverage": 0.0407
+        },
+        {
+          "hex": "#172232",
+          "coverage": 0.0331
+        },
+        {
+          "hex": "#3e4858",
+          "coverage": 0.028
+        }
+      ],
+      "detail": {
+        "energy": 24.7055
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "legend-wind",
+      "kind": "chrome",
+      "note": "Navy line icon of three wind streaks",
+      "grid": null,
+      "parentId": "title-block",
+      "reviewGroup": "legend-icon",
+      "box": {
+        "x": 0.0266,
+        "y": 0.6833,
+        "w": 0.0484,
+        "h": 0.0694
+      },
+      "px": {
+        "x": 34,
+        "y": 492,
+        "w": 62,
+        "h": 50
+      },
+      "aspect": 1.24,
+      "palette": [
+        {
+          "hex": "#f8f8f7",
+          "coverage": 0.84
+        },
+        {
+          "hex": "#474f68",
+          "coverage": 0.0629
+        },
+        {
+          "hex": "#ccd1e6",
+          "coverage": 0.0429
+        },
+        {
+          "hex": "#5e6294",
+          "coverage": 0.0314
+        },
+        {
+          "hex": "#0e1436",
+          "coverage": 0.0229
+        }
+      ],
+      "detail": {
+        "energy": 16.3996
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "legend-station",
+      "kind": "chrome",
+      "note": "Navy station plot icon, a ringed dot",
+      "grid": null,
+      "parentId": "title-block",
+      "reviewGroup": "legend-icon",
+      "box": {
+        "x": 0.0328,
+        "y": 0.7861,
+        "w": 0.0359,
+        "h": 0.0611
+      },
+      "px": {
+        "x": 42,
+        "y": 566,
+        "w": 46,
+        "h": 44
+      },
+      "aspect": 1.0455,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.5315
+        },
+        {
+          "hex": "#0a2656",
+          "coverage": 0.3063
+        },
+        {
+          "hex": "#101336",
+          "coverage": 0.0721
+        },
+        {
+          "hex": "#cfd7e9",
+          "coverage": 0.0495
+        },
+        {
+          "hex": "#4d5471",
+          "coverage": 0.0405
+        }
+      ],
+      "detail": {
+        "energy": 19.3295
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "headline",
+      "kind": "text",
+      "note": "Headline Your decisions. Better informed. on two lines in bold navy grotesk",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.1109,
+        "y": 0.5889,
+        "w": 0.2891,
+        "h": 0.1444
+      },
+      "px": {
+        "x": 142,
+        "y": 424,
+        "w": 370,
+        "h": 104
+      },
+      "aspect": 3.5577,
+      "palette": [
+        {
+          "hex": "#f7f8f7",
+          "coverage": 0.7336
+        },
+        {
+          "hex": "#0a2450",
+          "coverage": 0.1971
+        },
+        {
+          "hex": "#3c4b66",
+          "coverage": 0.0289
+        },
+        {
+          "hex": "#78839a",
+          "coverage": 0.0216
+        },
+        {
+          "hex": "#b3bfd0",
+          "coverage": 0.0188
+        }
+      ],
+      "detail": {
+        "energy": 68.5073
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 27,
+          "capHeightPx": 36.9,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5987,
+          "advTall": 0.4588,
+          "advX": 0.6097,
+          "gap": 0.1089,
+          "xRatio": 0.7127,
+          "stemW": 0.1781,
+          "contrast": 1.0941,
+          "serif": 0.9039,
+          "densTall": 0.5396,
+          "densX": 0.5959,
+          "weight": 0.5396
+        },
+        "widthClass": "normal",
+        "weightClass": "medium",
+        "chosen": {
+          "family": "Zen Kaku Gothic Antique",
+          "weight": 700,
+          "fontSizePx": 51,
+          "source": "index",
+          "fp": {
+            "lines": 1,
+            "glyphs": 27,
+            "capHeightPx": 36.5,
+            "inkIsDark": true,
+            "allCaps": false,
+            "advance": 0.575,
+            "advTall": 0.4928,
+            "advX": 0.575,
+            "gap": 0.1095,
+            "xRatio": 0.7052,
+            "stemW": 0.1782,
+            "contrast": 1.0745,
+            "serif": 0.9787,
+            "densTall": 0.5435,
+            "densX": 0.625,
+            "weight": 0.5435
+          },
+          "stamp": "c177053fddbf"
+        }
+      }
+    },
+    {
+      "id": "subline",
+      "kind": "text",
+      "note": "Line A research lab of people and agents, not an AI tool. in navy",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.1109,
+        "y": 0.7389,
+        "w": 0.3375,
+        "h": 0.0333
+      },
+      "px": {
+        "x": 142,
+        "y": 532,
+        "w": 432,
+        "h": 24
+      },
+      "aspect": 18,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8123
+        },
+        {
+          "hex": "#c6c7d6",
+          "coverage": 0.0569
+        },
+        {
+          "hex": "#10102a",
+          "coverage": 0.0542
+        },
+        {
+          "hex": "#828497",
+          "coverage": 0.0451
+        },
+        {
+          "hex": "#36374d",
+          "coverage": 0.0316
+        }
+      ],
+      "detail": {
+        "energy": 86.1062
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 40,
+          "capHeightPx": 14.4,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5195,
+          "advTall": 0.4502,
+          "advX": 0.5368,
+          "gap": 0.1039,
+          "xRatio": 0.7062,
+          "stemW": 0.1523,
+          "contrast": 1.0217,
+          "serif": 0.323,
+          "densTall": 0.4978,
+          "densX": 0.5911,
+          "weight": 0.4978
+        },
+        "widthClass": "condensed",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "title-rule",
+      "kind": "chrome",
+      "note": "Thin navy rule under the line",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.1109,
+        "y": 0.7861,
+        "w": 0.3422,
+        "h": 0.0083
+      },
+      "px": {
+        "x": 142,
+        "y": 566,
+        "w": 438,
+        "h": 6
+      },
+      "aspect": 73,
+      "palette": [
+        {
+          "hex": "#efeff0",
+          "coverage": 1
+        }
+      ],
+      "detail": {
+        "energy": 34.3387
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "cta-primary",
+      "kind": "control",
+      "note": "Solid navy button Request early access with cream label",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.1117,
+        "y": 0.8083,
+        "w": 0.1547,
+        "h": 0.0597
+      },
+      "px": {
+        "x": 143,
+        "y": 582,
+        "w": 198,
+        "h": 43
+      },
+      "aspect": 4.6047,
+      "palette": [
+        {
+          "hex": "#092553",
+          "coverage": 0.7422
+        },
+        {
+          "hex": "#f6f7f8",
+          "coverage": 0.1915
+        },
+        {
+          "hex": "#bcc6dc",
+          "coverage": 0.0228
+        },
+        {
+          "hex": "#5b6682",
+          "coverage": 0.0228
+        },
+        {
+          "hex": "#223248",
+          "coverage": 0.0207
+        }
+      ],
+      "detail": {
+        "energy": 47.4949
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "cta-secondary",
+      "kind": "control",
+      "note": "Outlined navy button Get in touch",
+      "grid": null,
+      "parentId": "title-block",
+      "box": {
+        "x": 0.2852,
+        "y": 0.8083,
+        "w": 0.1211,
+        "h": 0.0597
+      },
+      "px": {
+        "x": 365,
+        "y": 582,
+        "w": 155,
+        "h": 43
+      },
+      "aspect": 3.6047,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8575
+        },
+        {
+          "hex": "#172636",
+          "coverage": 0.0601
+        },
+        {
+          "hex": "#15183d",
+          "coverage": 0.0484
+        },
+        {
+          "hex": "#b3b6ca",
+          "coverage": 0.0209
+        },
+        {
+          "hex": "#76768d",
+          "coverage": 0.0131
+        }
+      ],
+      "detail": {
+        "energy": 42.0251
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "foot-rule",
+      "kind": "chrome",
+      "note": "Thin navy rule closing the chart above the issue line",
+      "grid": null,
+      "box": {
+        "x": 0,
+        "y": 0.9028,
+        "w": 1,
+        "h": 0.0111
+      },
+      "px": {
+        "x": 0,
+        "y": 650,
+        "w": 1280,
+        "h": 8
+      },
+      "aspect": 160,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.6868
+        },
+        {
+          "hex": "#4e5b7b",
+          "coverage": 0.1248
+        },
+        {
+          "hex": "#c2c7e5",
+          "coverage": 0.0827
+        },
+        {
+          "hex": "#9196b8",
+          "coverage": 0.0636
+        },
+        {
+          "hex": "#515383",
+          "coverage": 0.0421
+        }
+      ],
+      "detail": {
+        "energy": 41.2882
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    },
+    {
+      "id": "issued",
+      "kind": "text",
+      "note": "Issue line Issued 11 Nov 09:42 · Next update: continuous in navy",
+      "grid": null,
+      "box": {
+        "x": 0.0172,
+        "y": 0.9333,
+        "w": 0.2516,
+        "h": 0.0361
+      },
+      "px": {
+        "x": 22,
+        "y": 672,
+        "w": 322,
+        "h": 26
+      },
+      "aspect": 12.3846,
+      "palette": [
+        {
+          "hex": "#f7f8f6",
+          "coverage": 0.8298
+        },
+        {
+          "hex": "#323449",
+          "coverage": 0.0543
+        },
+        {
+          "hex": "#c7cadb",
+          "coverage": 0.0543
+        },
+        {
+          "hex": "#989bab",
+          "coverage": 0.033
+        },
+        {
+          "hex": "#65697b",
+          "coverage": 0.0287
+        }
+      ],
+      "detail": {
+        "energy": 78.9606
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 38,
+          "capHeightPx": 12.4,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5395,
+          "advTall": 0.5934,
+          "advX": 0.5395,
+          "gap": 0.0809,
+          "xRatio": 0.6895,
+          "stemW": 0.1636,
+          "contrast": 0.9959,
+          "serif": 0.3068,
+          "densTall": 0.5264,
+          "densX": 0.6014,
+          "weight": 0.5264
+        },
+        "widthClass": "condensed",
+        "weightClass": "medium"
+      }
+    },
+    {
+      "id": "scale-label",
+      "kind": "text",
+      "note": "Scale legend label 1 pt surprise propagation in navy",
+      "grid": null,
+      "box": {
+        "x": 0.8094,
+        "y": 0.9278,
+        "w": 0.1344,
+        "h": 0.0306
+      },
+      "px": {
+        "x": 1036,
+        "y": 668,
+        "w": 172,
+        "h": 22
+      },
+      "aspect": 7.8182,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.767
+        },
+        {
+          "hex": "#15172c",
+          "coverage": 0.0967
+        },
+        {
+          "hex": "#88899a",
+          "coverage": 0.0462
+        },
+        {
+          "hex": "#b7bac6",
+          "coverage": 0.0462
+        },
+        {
+          "hex": "#555766",
+          "coverage": 0.044
+        }
+      ],
+      "detail": {
+        "energy": 60.2951
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 21,
+          "capHeightPx": 12.1,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.4689,
+          "advTall": 0.1931,
+          "advX": 0.5241,
+          "gap": 0.0828,
+          "xRatio": 0.706,
+          "stemW": 0.1679,
+          "contrast": 1.0661,
+          "serif": 0.3866,
+          "densTall": 0.7144,
+          "densX": 0.6128,
+          "weight": 0.7144
+        },
+        "widthClass": "condensed",
+        "weightClass": "black"
+      }
+    },
+    {
+      "id": "scale-arrow",
+      "kind": "chrome",
+      "note": "Thin navy scale arrow under the legend label",
+      "grid": null,
+      "box": {
+        "x": 0.7969,
+        "y": 0.9583,
+        "w": 0.1797,
+        "h": 0.0167
+      },
+      "px": {
+        "x": 1020,
+        "y": 690,
+        "w": 230,
+        "h": 12
+      },
+      "aspect": 19.1667,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.9642
+        },
+        {
+          "hex": "#d0d3eb",
+          "coverage": 0.0195
+        },
+        {
+          "hex": "#9da3a3",
+          "coverage": 0.0098
+        },
+        {
+          "hex": "#080828",
+          "coverage": 0.0033
+        },
+        {
+          "hex": "#081848",
+          "coverage": 0.0033
+        }
+      ],
+      "detail": {
+        "energy": 51.0994
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": true
+      }
+    }
+  ],
+  "compSha256": "b1ed972e6398a86e777df26c7b74f61d7c1edf9611c363fe46e30d0eb0a7f677",
+  "regionsSource": {
+    "path": ".impeccable/build/regions.json",
+    "sha256": "055b70d67d41b05673296ab5454025f6565fec2a7bd4c8bf60abb2034f48d934"
+  }
+}

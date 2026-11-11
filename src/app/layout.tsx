@@ -1,36 +1,44 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Roboto_Slab } from "next/font/google";
+import { Montserrat, Zen_Kaku_Gothic_Antique } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+// The chart's one family, for headings, labels, and running text alike.
+const zenKaku = Zen_Kaku_Gothic_Antique({
+  variable: "--font-zen",
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
-const robotoSlab = Roboto_Slab({
-  variable: "--font-roboto-slab",
+// Only the logo's wordmark is set in Montserrat.
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  weight: ["600"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: `${site.legalName} | ${site.headline.join(" ")}`,
+  title: `${site.name} | ${site.headline.join(" ")}`,
   description: site.description,
   openGraph: {
-    title: `${site.legalName} | ${site.headline.join(" ")}`,
+    title: `${site.name} | ${site.headline.join(" ")}`,
     description: site.description,
-    siteName: site.legalName,
+    siteName: site.name,
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fcf7f3",
+  themeColor: "#1a3263",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${robotoSlab.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${zenKaku.variable} ${montserrat.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

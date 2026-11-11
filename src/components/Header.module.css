@@ -1,36 +1,63 @@
+/* The chart's top band: navy, with the logo and nav in cream. */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   height: var(--header-h);
+  padding-inline: calc(var(--u) * 1.4) calc(var(--u) * 1.95);
+  font-size: calc(var(--hu) * 1.15);
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.home {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--hu) * 2.1);
 }
 
 .link {
   padding: 0;
   border: 0;
   background: none;
+  color: inherit;
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--slate);
-  transition: color 0.2s var(--ease);
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 0.35em;
+  transition: text-decoration-color 0.2s var(--ease);
 }
 
 .link:hover {
+  text-decoration-color: var(--amber);
+}
+
+/* The band's one solid control, so early access outweighs the links beside it. */
+.cta {
+  justify-content: center;
+  width: calc(var(--hu) * 13.2);
+  height: calc(var(--hu) * 2.6);
+  padding-inline: 0;
+  border-color: var(--cream);
+  background: var(--cream);
   color: var(--navy);
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 3vw, 28px);
-}
-
-/* On phones the header has no room: the newsletter link moves next to the buttons. */
-@media (max-width: 760px) {
-  .newsletter {
-    display: none;
-  }
+.cta:hover {
+  border-color: var(--amber);
+  background: var(--amber);
 }

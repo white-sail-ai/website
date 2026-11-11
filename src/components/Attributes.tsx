@@ -40,7 +40,7 @@ function AlwaysOnGlyph() {
   );
 }
 
-// The shared map as stacked layers, with the firm's own layer on top.
+// The shared map as stacked layers, with the client's own layer on top.
 function JudgmentGlyph() {
   return (
     <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
@@ -56,10 +56,10 @@ const attributes = [
   { label: "In depth", line: "Integrate signals once reserved for quant hedge funds.", Glyph: DepthGlyph },
   {
     label: "At scale",
-    line: "Research every company of interest in your universe. No more screening.",
+    line: "Research every company and market you care about. No more shortlists.",
     Glyph: ScaleGlyph,
   },
-  { label: "All the time", line: "Research agents work your mandate 24/7.", Glyph: AlwaysOnGlyph },
+  { label: "All the time", line: "Research agents work your questions 24/7.", Glyph: AlwaysOnGlyph },
   {
     label: "Your judgment",
     line: "Manage your own layers. Apply your own judgment.",
@@ -67,16 +67,25 @@ const attributes = [
   },
 ];
 
+/**
+ * What the lab delivers: four capabilities in a side-heading section, linked from the header as
+ * Capabilities.
+ */
 export function Attributes() {
   return (
-    <ul className={styles.attributes}>
-      {attributes.map(({ label, line, Glyph }) => (
-        <li key={label} className={styles.attribute}>
-          <Glyph />
-          <span className={styles.label}>{label}</span>
-          <span className={styles.line}>{line}</span>
-        </li>
-      ))}
-    </ul>
+    <section id="capabilities" aria-labelledby="capabilities-title" className={styles.section}>
+      <h2 id="capabilities-title" className={styles.title}>
+        Capabilities
+      </h2>
+      <ul className={styles.attributes}>
+        {attributes.map(({ label, line, Glyph }) => (
+          <li key={label} className={styles.attribute}>
+            <Glyph />
+            <span className={styles.label}>{label}</span>
+            <span className={styles.line}>{line}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

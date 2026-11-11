@@ -1,0 +1,73 @@
+/* A deeper navy band, so the change from the map to who we are is unmistakable. The heading
+   sits beside the statement on its first baseline. */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+  align-items: baseline;
+  gap: 28px clamp(32px, 5vw, 80px);
+  padding: clamp(72px, 11vw, 144px) var(--inset);
+  background: var(--deep);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.body {
+  display: grid;
+  gap: clamp(40px, 5vw, 64px);
+}
+
+.statement {
+  max-width: 25em;
+  font-size: clamp(1.625rem, 3vw, 2.625rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.statement strong {
+  font-weight: 600;
+}
+
+/* Three columns where they fit, one on phones. */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 36px clamp(28px, 4vw, 48px);
+}
+
+.column {
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+.built {
+  border-top-color: var(--amber);
+}
+
+.heading {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  max-width: 34ch;
+  font-size: clamp(1.0625rem, 1.3vw, 1.1875rem);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

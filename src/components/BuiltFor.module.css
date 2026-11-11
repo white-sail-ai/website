@@ -1,0 +1,110 @@
+/* The same side heading as Who we are, beside the three audiences, on a raised band below Capabilities. */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+  align-items: start;
+  gap: 28px clamp(32px, 5vw, 80px);
+  padding: clamp(72px, 10vw, 128px) var(--inset);
+  background: var(--raised);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* The three audiences side by side, each symbol above its word. */
+.audience {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 24px clamp(32px, 5.5vw, 88px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  justify-items: start;
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+/* Navy and rounded like the app icon and the favicon, its symbol in cream like the chart's stations. */
+.tile {
+  display: grid;
+  place-items: center;
+  width: clamp(56px, 5.6vw, 76px);
+  aspect-ratio: 1;
+  border-radius: 22%;
+  background: var(--navy);
+}
+
+.glyph {
+  width: 64%;
+  height: 64%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.faint {
+  opacity: 0.4;
+}
+
+.handles {
+  stroke-width: 3.4;
+}
+
+.dashed {
+  stroke-dasharray: 3 3.5;
+}
+
+.dot {
+  fill: var(--cream);
+  stroke: none;
+}
+
+.accent {
+  fill: var(--amber);
+  stroke: none;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+@media (max-width: 960px) {
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Too narrow for a row: back to a list, each symbol beside its word. */
+@media (max-width: 600px) {
+  .audience {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .item {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+}

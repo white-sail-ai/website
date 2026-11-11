@@ -3,14 +3,15 @@
 // NEXT_PUBLIC_FORMS_URL is inlined at build time, e.g. https://forms.white-sail.ai
 const base = (process.env.NEXT_PUBLIC_FORMS_URL ?? "").replace(/\/+$/, "");
 
-export type FormResult = { ok: true } | { ok: false; message: string };
+// `message` is the Worker's own explanation of a problem the visitor can fix (such as an
+// invalid email). Without one, the request failed on our side.
+export type FormResult = { ok: true } | { ok: false; message?: string };
 
 export async function submitForm(
   path: "/early-access" | "/newsletter",
   data: Record<string, string>,
 ): Promise<FormResult> {
-  const fallback = "Something went wrong. Please try again, or email us directly.";
-  if (!base) return { ok: false, message: fallback };
+  if (!base) return { ok: false };
   try {
     const res = await fetch(`${base}${path}`, {
       method: "POST",
@@ -19,8 +20,8 @@ export async function submitForm(
     });
     if (res.ok) return { ok: true };
     const body = (await res.json().catch(() => null)) as { error?: string } | null;
-    return { ok: false, message: res.status < 500 && body?.error ? body.error : fallback };
+    return { ok: false, message: res.status < 500 ? body?.error : undefined };
   } catch {
-    return { ok: false, message: fallback };
+    return { ok: false };
   }
 }

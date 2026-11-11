@@ -46,7 +46,7 @@ The site is static, so the two forms post to the Worker in `worker/`, which keep
 
 ## Deploy to GitHub Pages
 
-Every push to the branch listed in `.github/workflows/nextjs.yml` (`on.push.branches`, currently `claude/jolly-fermat-4ieu4p`) builds the static export (`out/`) and publishes it to GitHub Pages. Other branches are not published. The site is built for the root of a domain, so it only renders correctly when served from `white-sail.ai`, not from the `github.io/website` address.
+Every push to the branch listed in `.github/workflows/nextjs.yml` (`on.push.branches`, currently `main`) builds the static export (`out/`) and publishes it to GitHub Pages. Other branches are not published. The site is built for the root of a domain, so it only renders correctly when served from `white-sail.ai`, not from the `github.io/website` address.
 
 **One-time setup**
 

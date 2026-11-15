@@ -56,7 +56,7 @@ export function ForecastChart() {
               <span key={line}>{line}</span>
             ))}
           </h1>
-          <p className={styles.subline}>By our AI-driven market research lab.</p>
+          <p className={styles.subline}>{site.subline}</p>
           <div className={styles.actions}>
             <EarlyAccessButton className={`button button-primary ${styles.primary}`} />
             <ContactButton className={`button button-ghost ${styles.secondary}`} label="Get in touch" />

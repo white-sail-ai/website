@@ -6,6 +6,7 @@
   padding: clamp(96px, 12vw, 168px) var(--inset) clamp(88px, 11vw, 144px);
   background: var(--navy);
   color: var(--cream);
+  scroll-margin-top: var(--header-h);
 }
 
 .paper {

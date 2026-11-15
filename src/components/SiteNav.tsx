@@ -2,19 +2,30 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { attributes } from "./Attributes";
 import { CareersButton } from "./CareersButton";
 import { ContactButton } from "./ContactButton";
 import { EarlyAccessButton } from "./EarlyAccessButton";
-import { CompassGlyph, EngineersGlyph, FleetGlyph } from "./section/glyphs";
-import { team } from "./WhoWeAre";
 import styles from "./SiteNav.module.css";
 
-type MenuId = "who" | "capabilities";
+type MenuId = "explore";
 
-const MENUS: { id: MenuId; label: string; href: string }[] = [
-  { id: "who", label: "Who we are", href: "/#who-we-are" },
-  { id: "capabilities", label: "Capabilities", href: "/#capabilities" },
+const MENUS: { id: MenuId; label: string }[] = [{ id: "explore", label: "Explore" }];
+
+// The page's three sections, each numbered as its own head is.
+const SECTIONS = [
+  {
+    step: "1",
+    title: "Who we are",
+    line: "Applied AI and business engineers, and the agents they build.",
+    href: "/#who-we-are",
+  },
+  {
+    step: "2",
+    title: "Capabilities",
+    line: "In depth, at scale, all the time, and always your judgment.",
+    href: "/#capabilities",
+  },
+  { step: "3", title: "Built for", line: "Investors, CEOs, and strategists.", href: "/#built-for" },
 ];
 
 /** How long the pointer may stray off the menu before it closes, so a diagonal move does not drop it. */
@@ -22,8 +33,8 @@ const CLOSE_DELAY = 140;
 
 /**
  * The band's navigation. On wide screens a pill glides under whichever item the pointer is on, and
- * the two section menus open in one shared panel that resizes and slides between them. On narrow
- * screens it folds into a sheet behind a menu button.
+ * Explore opens a panel of the page's sections (a panel that would resize and slide between menus,
+ * were there more than one). On narrow screens it folds into a sheet behind a menu button.
  */
 export function SiteNav() {
   const navRef = useRef<HTMLElement>(null);
@@ -161,7 +172,7 @@ export function SiteNav() {
 
         <ul className={styles.list}>
           {MENUS.map((menu, index) => (
-            <li key={menu.id} className={styles.item} style={{ "--i": index } as CSSProperties}>
+            <li key={menu.id} className={`${styles.item} ${styles.menuItem}`} style={{ "--i": index } as CSSProperties}>
               <button
                 type="button"
                 ref={(element) => {
@@ -178,47 +189,39 @@ export function SiteNav() {
                   <path d="m4 6 4 4 4-4" />
                 </svg>
               </button>
-              <Link href={menu.href} className={`${styles.link} ${styles.sheetLink}`} onClick={closeAll}>
-                {menu.label}
+            </li>
+          ))}
+          {SECTIONS.map((section) => (
+            <li key={section.href} className={`${styles.item} ${styles.sheetItem}`} style={{ "--i": section.step } as CSSProperties}>
+              <Link href={section.href} className={styles.link} onClick={closeAll}>
+                <span className={styles.sheetStep} aria-hidden="true">
+                  {section.step}
+                </span>
+                {section.title}
               </Link>
             </li>
           ))}
-          <li className={styles.item} style={{ "--i": 2 } as CSSProperties}>
+          <li className={styles.item} style={{ "--i": 4 } as CSSProperties}>
             <span className={styles.plain} onPointerEnter={(event) => hoverPlain(event.currentTarget)}>
               <CareersButton className={styles.link} />
             </span>
           </li>
-          <li className={styles.item} style={{ "--i": 3 } as CSSProperties}>
+          <li className={styles.item} style={{ "--i": 5 } as CSSProperties}>
             <span className={styles.plain} onPointerEnter={(event) => hoverPlain(event.currentTarget)}>
               <ContactButton className={styles.link} label="Contact" />
             </span>
           </li>
-          <li className={`${styles.item} ${styles.ctaItem}`} style={{ "--i": 4 } as CSSProperties}>
+          <li className={`${styles.item} ${styles.ctaItem}`} style={{ "--i": 6 } as CSSProperties}>
             <EarlyAccessButton className={`button ${styles.cta}`} />
           </li>
         </ul>
 
         <div ref={viewportRef} className={styles.viewport} data-open={open ? "" : undefined}>
-          <Panel id="who" state={panelState("who")} panels={panelRefs}>
-            {team.map(({ title, brief, built }, index) => (
-              <Option key={title} href="/#who-we-are" onPick={closeAll} title={title} line={brief}>
-                <span className={styles.tile} data-accent={built ? "" : undefined} aria-hidden="true">
-                  {built ? (
-                    <FleetGlyph accentClass={styles.accent} />
-                  ) : index === 0 ? (
-                    <EngineersGlyph accentClass={styles.accent} />
-                  ) : (
-                    <CompassGlyph accentClass={styles.accent} />
-                  )}
-                </span>
-              </Option>
-            ))}
-          </Panel>
-          <Panel id="capabilities" state={panelState("capabilities")} panels={panelRefs} wide>
-            {attributes.map(({ label, line, Glyph }) => (
-              <Option key={label} href="/#capabilities" onPick={closeAll} title={label} line={line}>
-                <span className={styles.tile} aria-hidden="true">
-                  <Glyph />
+          <Panel id="explore" state={panelState("explore")} panels={panelRefs}>
+            {SECTIONS.map((section) => (
+              <Option key={section.href} href={section.href} onPick={closeAll} title={section.title} line={section.line}>
+                <span className={styles.step} aria-hidden="true">
+                  {section.step}
                 </span>
               </Option>
             ))}
@@ -240,12 +243,11 @@ type PanelProps = {
   id: MenuId;
   state: "active" | "left" | "right";
   panels: React.RefObject<Map<MenuId, HTMLDivElement>>;
-  wide?: boolean;
   children: ReactNode;
 };
 
 /** One menu's options, with a highlight that glides from option to option under the pointer. */
-function Panel({ id, state, panels, wide, children }: PanelProps) {
+function Panel({ id, state, panels, children }: PanelProps) {
   const highlight = useRef<HTMLSpanElement>(null);
 
   const follow = (target: HTMLElement | null) => {
@@ -269,7 +271,7 @@ function Panel({ id, state, panels, wide, children }: PanelProps) {
       ref={(element) => {
         if (element) panels.current.set(id, element);
       }}
-      className={`${styles.panel} ${wide ? styles.wide : ""}`}
+      className={styles.panel}
       data-state={state}
       inert={state !== "active"}
       onPointerOver={(event) => follow((event.target as HTMLElement).closest("a"))}

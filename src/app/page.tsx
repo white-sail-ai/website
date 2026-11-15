@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <ForecastChart />
         {/* The chart's paper carries on under the next two sections, still and faint. */}
-        <div className={styles.continued}>
+        <div className={styles.continued} data-header="light">
           <ChartPaper ink="26 50 99" paper="251 248 241" moment={140} className={styles.paper} />
           <WhoWeAre />
           <Attributes />

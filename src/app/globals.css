@@ -93,7 +93,10 @@ a {
   border-radius: 1px;
 }
 
-header :focus-visible,
+header :focus-visible {
+  outline-color: var(--band-focus, var(--amber));
+}
+
 footer :focus-visible,
 [data-band="navy"] :focus-visible {
   outline-color: var(--amber);

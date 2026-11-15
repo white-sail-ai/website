@@ -60,7 +60,7 @@ function JudgmentGlyph() {
   );
 }
 
-export const attributes = [
+const attributes = [
   { label: "In depth", line: "Integrate signals once reserved for quant hedge funds.", Glyph: DepthGlyph },
   {
     label: "At scale",

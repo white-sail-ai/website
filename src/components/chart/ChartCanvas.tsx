@@ -6,8 +6,8 @@ import { drawFront, drawPulse, layoutFronts, type Front, type Inks, type Station
 import { drawField, fieldWarp, type Grid } from "./isobars";
 import { Wind } from "./wind";
 
-/** The leader line from a step marker down to its station, and when it appears. */
-type Stem = { x: number; top: number; bottom: number; ink: string; at: number };
+/** The leader line from a step marker to its station, edge to edge, and when it appears. */
+type Stem = { x1: number; y1: number; x2: number; y2: number; ink: string; at: number };
 
 /** A padded box around a line of chart text, cleared at the text's current opacity. */
 type Knockout = { x: number; y: number; w: number; h: number; alpha: number };
@@ -127,11 +127,21 @@ class Chart {
       const station = stations.get(id);
       if (!station) return [];
       const counter = marker.closest<HTMLElement>("[data-tone]")?.dataset.tone === "counter";
+      // The marker sits above its station on the wide chart and beside it on a phone; either way
+      // the stem runs between their edges along the line joining their centres.
+      const rect = marker.getBoundingClientRect();
+      const mx = rect.left + rect.width / 2 - box.left;
+      const my = rect.top + rect.height / 2 - box.top;
+      const length = Math.hypot(station.x - mx, station.y - my) || 1;
+      const ux = (station.x - mx) / length;
+      const uy = (station.y - my) / length;
+      const lead = rect.width / 2;
       return [
         {
-          x: station.x,
-          top: marker.getBoundingClientRect().bottom - box.top,
-          bottom: station.y - station.r,
+          x1: mx + ux * lead,
+          y1: my + uy * lead,
+          x2: station.x - ux * station.r,
+          y2: station.y - uy * station.r,
           ink: counter ? INKS.navy : INKS.gold,
           at: arrivalTime(this.links, id),
         },
@@ -145,8 +155,8 @@ class Chart {
       if (!this.still && elapsed < stem.at) continue;
       ctx.strokeStyle = `rgb(${stem.ink})`;
       ctx.beginPath();
-      ctx.moveTo(stem.x, stem.top);
-      ctx.lineTo(stem.x, stem.bottom);
+      ctx.moveTo(stem.x1, stem.y1);
+      ctx.lineTo(stem.x2, stem.y2);
       ctx.stroke();
     }
   }

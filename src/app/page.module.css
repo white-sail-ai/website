@@ -4,12 +4,13 @@
   overflow-x: clip;
 }
 
-/* The navy band is the top of the chart frame, so it lies over the first screen. */
+/* The navy band is the top of the chart frame, so it lies over the first screen, and stays at
+   the top of the window as the page scrolls. */
 .band {
-  position: absolute;
+  position: fixed;
   inset-inline: 0;
   top: 0;
-  z-index: 2;
+  z-index: 40;
 }
 
 .continued {

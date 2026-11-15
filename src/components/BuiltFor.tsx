@@ -55,7 +55,7 @@ const audience = [
 // research is for, each symbol on a cream tile, then the two calls to action again.
 export function BuiltFor() {
   return (
-    <section aria-labelledby="built-for-title" className={styles.section} data-band="navy">
+    <section id="built-for" aria-labelledby="built-for-title" className={styles.section} data-band="navy">
       <ChartPaper ink="252 247 243" paper="26 50 99" moment={260} className={styles.paper} />
       <SectionHead step="3" tag="Built for" id="built-for-title" tone="navy">
         For decision-makers who act on research.

@@ -306,3 +306,95 @@
 .secondary {
   width: calc(var(--u) * 12.11);
 }
+
+/* Phones held upright: the 16:9 frame is far too squat to hold the ripple's labels, so the title
+   block comes first, in the flow, and the ripple runs down the screen below it in a tall box of
+   its own, each element at its mobile position (--mx, --my). */
+@media (max-width: 760px) and (orientation: portrait) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    padding: var(--header-h) 0 40px;
+  }
+
+  .titleBlock {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 1;
+    /* First on screen, which also makes it paint first, so it needs lifting over the canvas. */
+    order: -1;
+    grid-template-columns: 58px minmax(0, 1fr);
+    width: auto;
+    height: auto;
+    margin: 24px 16px 0;
+  }
+
+  .keyPressure,
+  .keyWind {
+    width: 34px;
+  }
+
+  .keyStation {
+    width: 28px;
+  }
+
+  .titleBody {
+    padding: 18px 16px 18px 18px;
+  }
+
+  .headline {
+    font-size: clamp(2rem, 9.6vw, 2.75rem);
+  }
+
+  .subline {
+    margin-top: 10px;
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .actions .primary,
+  .actions .secondary {
+    width: auto;
+    height: 44px;
+    padding-inline: 16px;
+    font-size: 0.9375rem;
+  }
+
+  .tag {
+    position: relative;
+    left: auto;
+    top: auto;
+    height: auto;
+    margin: 32px 16px 0;
+    font-size: 0.75rem;
+  }
+
+  .tag::after {
+    width: 96px;
+  }
+
+  .ripple {
+    position: relative;
+    inset: auto;
+    height: 640px;
+    margin-top: 20px;
+  }
+
+  .marker,
+  .station,
+  .label,
+  .note {
+    left: var(--mx);
+    top: var(--my);
+  }
+}

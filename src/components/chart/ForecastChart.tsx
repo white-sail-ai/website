@@ -71,26 +71,26 @@ function Node({ node, inbound }: { node: RippleNode; inbound?: RippleLink }) {
   const appear = { "--appear": `${arrivalTime(heroLinks, node.id)}s` } as CSSProperties;
   return (
     <li className={styles.node} data-tone={node.tone} style={appear}>
-      <span className={styles.marker} data-marker={node.id} style={place(node.marker)}>
+      <span className={styles.marker} data-marker={node.id} style={place(node.marker, node.mobile.marker)}>
         <span className="sr-only">Step </span>
         {node.step}
       </span>
       <span
         className={styles.station}
         data-station={node.id}
-        style={{ ...place(node.station), "--d": node.station.d } as CSSProperties}
+        style={{ ...place(node.station, node.mobile.station), "--d": node.station.d } as CSSProperties}
         aria-hidden="true"
       >
         <CompanyMark company={node.id} className={styles.mark} />
       </span>
-      <p className={styles.label} style={place(node.label)} data-knockout>
+      <p className={styles.label} style={place(node.label, node.mobile.label)} data-knockout>
         <strong>{node.name}</strong>
         {node.details.map((line) => (
           <span key={line}>{line}</span>
         ))}
       </p>
       {inbound?.note && (
-        <p className={styles.note} style={place(inbound.note)} data-knockout>
+        <p className={styles.note} style={place(inbound.note, inbound.note.mobile)} data-knockout>
           {inbound.note.lines.map((line) => (
             <span key={line}>{line}</span>
           ))}
@@ -100,6 +100,7 @@ function Node({ node, inbound }: { node: RippleNode; inbound?: RippleLink }) {
   );
 }
 
-function place({ x, y }: { x: number; y: number }) {
-  return { "--x": `${x}%`, "--y": `${y}%` } as CSSProperties;
+/** Place an element on the chart frame, and on the phone layout's ripple box. */
+function place({ x, y }: { x: number; y: number }, mobile: { x: number; y: number }) {
+  return { "--x": `${x}%`, "--y": `${y}%`, "--mx": `${mobile.x}%`, "--my": `${mobile.y}%` } as CSSProperties;
 }

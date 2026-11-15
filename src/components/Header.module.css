@@ -1,5 +1,14 @@
-/* The chart's top band: navy, with the logo and nav in cream. */
+/* The chart's top band: navy, with the logo and nav in cream. Everything inside reads its colours
+   from the --band variables, so the whole band can change in one transition as the page scrolls. */
 .header {
+  --band-bg: var(--navy);
+  --band-solid: var(--navy);
+  --band-fg: var(--cream);
+  --band-pill: rgb(252 247 243 / 0.12);
+  --band-rule: rgb(252 247 243 / 0.14);
+  --band-cta-bg: var(--cream);
+  --band-cta-fg: var(--navy);
+  --band-focus: var(--amber);
   position: relative;
   display: flex;
   align-items: center;
@@ -8,12 +17,74 @@
   height: var(--header-h);
   padding-inline: calc(var(--u) * 1.4) calc(var(--u) * 1.95);
   font-size: calc(var(--hu) * 1.15);
-  background: var(--navy);
-  color: var(--cream);
+  background: var(--band-bg);
+  color: var(--band-fg);
+  box-shadow: 0 1px 0 transparent;
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  transition:
+    background-color 0.5s var(--ease),
+    color 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+
+/* Off the top of the page, the navy turns a touch translucent so the chart shows through. */
+.header[data-scrolled] {
+  --band-bg: rgb(26 50 99 / 0.9);
+  box-shadow: 0 10px 30px -18px rgb(18 34 74 / 0.55);
+}
+
+/* Over the paper sections: frosted chart paper with navy ink and a hairline edge. */
+.header[data-theme="light"] {
+  --band-bg: rgb(251 248 241 / 0.84);
+  --band-solid: var(--paper);
+  --band-fg: var(--navy);
+  --band-pill: rgb(26 50 99 / 0.07);
+  --band-rule: rgb(26 50 99 / 0.12);
+  --band-cta-bg: var(--navy);
+  --band-cta-fg: var(--cream);
+  --band-focus: var(--navy);
+  box-shadow:
+    0 1px 0 rgb(26 50 99 / 0.14),
+    0 10px 30px -20px rgb(18 34 74 / 0.35);
 }
 
 .home {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+}
+
+/* An amber hairline along the band's foot that fills as the page is read. */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--amber);
+  transform-origin: left;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .progress {
+      animation: read linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes read {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
 }

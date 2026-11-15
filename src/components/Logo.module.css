@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: calc(var(--hu) * 1.05);
-  color: var(--cream);
+  color: inherit;
 }
 
 .mark {

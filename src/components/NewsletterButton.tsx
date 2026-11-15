@@ -6,16 +6,16 @@ import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { SignupForm } from "./SignupForm";
 
-export function NewsletterButton({ className }: { className?: string }) {
+export function NewsletterButton({ className, label = "Join our newsletter" }: { className?: string; label?: string }) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <button type="button" className={className} onClick={() => {
           setOpen(true);
-          track("dialog_opened", { dialog: "newsletter" });
+          track("dialog_opened", { dialog: "newsletter", label });
         }}>
-        Newsletter
+        {label}
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Newsletter" title="Join our newsletter.">
         <p className={dialogStyles.lede}>

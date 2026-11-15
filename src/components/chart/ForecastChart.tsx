@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
 import { arrivalTime, heroLinks, heroNodes, type RippleLink, type RippleNode } from "@/lib/ripple";
 import { site } from "@/lib/site";
-import { ContactButton } from "../ContactButton";
 import { EarlyAccessButton } from "../EarlyAccessButton";
+import { NewsletterButton } from "../NewsletterButton";
 import { ChartCanvas } from "./ChartCanvas";
 import styles from "./ForecastChart.module.css";
 import { CompanyMark, PressureKey, StationKey, WindKey } from "./glyphs";
@@ -59,7 +59,7 @@ export function ForecastChart() {
           <p className={styles.subline}>{site.subline}</p>
           <div className={styles.actions}>
             <EarlyAccessButton className={`button button-primary ${styles.primary}`} />
-            <ContactButton className={`button button-ghost ${styles.secondary}`} label="Get in touch" />
+            <NewsletterButton className={`button button-ghost ${styles.secondary}`} />
           </div>
         </div>
       </div>

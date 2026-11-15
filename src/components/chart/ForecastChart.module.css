@@ -292,12 +292,10 @@
   letter-spacing: -0.01em;
 }
 
-.primary {
-  width: calc(var(--u) * 15.47);
-}
-
+/* Both labels run about the same length, so the two buttons share a width. */
+.primary,
 .secondary {
-  width: calc(var(--u) * 12.11);
+  width: calc(var(--u) * 15.47);
 }
 
 /* Phones held upright: the 16:9 frame is far too squat to hold the ripple's labels, so the title

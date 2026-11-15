@@ -30,7 +30,7 @@ src/
     Attributes        In depth / At scale / All the time / Your judgment, with line glyphs
     MarketMap         canvas "live market map" filling the hero behind the content
     WhoWeAre          deep navy band below the hero: the lab, then Applied AI Engineers,
-                      Business Engineers, and the Always-on Agents Fleet
+                      Market Analysts, and the Always-on Agents Fleet
   lib/site.ts         site name, headline, description, contact address, email links
   lib/forms.ts        posts the early-access and newsletter forms to the Worker
   lib/analytics.ts    track(): custom PostHog events for the calls to action
@@ -105,7 +105,7 @@ Colors and type come from the White Sail Labs pitch deck. The site is dark: the 
 | `--muted`  | cream at 74% opacity   | secondary text                                        |
 | `--rule`   | cream at 14% opacity   | hairlines                                             |
 
-Headlines are set in Montserrat Bold and body text in Roboto Slab, as in the deck. The copy presents White Sail Labs as an independent market research lab whose agents are built by applied AI engineers (intelligence-agency veterans) and business engineers (domain experts), and is built for investors, CEOs, and strategists rather than investors alone. The forms and contact dialog promise a reply within 1 business day.
+Headlines are set in Montserrat Bold and body text in Roboto Slab, as in the deck. The copy presents White Sail Labs as an independent market research lab whose agents are built by applied AI engineers (intelligence-agency veterans) and market analysts (domain experts), and is built for investors, CEOs, and strategists rather than investors alone. The forms and contact dialog promise a reply within 1 business day.
 
 ## Open items
 

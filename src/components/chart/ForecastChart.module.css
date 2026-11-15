@@ -290,12 +290,37 @@
   font-size: calc(var(--u) * 1.36);
   font-weight: 700;
   letter-spacing: -0.01em;
+  transition:
+    background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
 }
 
-/* Both labels run about the same length, so the two buttons share a width. */
+/* On hover the buttons lift a touch off the card, casting a soft navy shadow. */
+.actions .primary:is(:hover, :focus-visible),
+.actions .secondary:is(:hover, :focus-visible) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -10px rgb(26 50 99 / 0.55);
+}
+
+.actions .primary:active,
+.actions .secondary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actions .primary:is(:hover, :focus-visible),
+  .actions .secondary:is(:hover, :focus-visible) {
+    transform: none;
+  }
+}
+
+/* The two buttons share the rule above them equally: their labels run about the same length. */
 .primary,
 .secondary {
-  width: calc(var(--u) * 15.47);
+  flex: 1 1 0;
 }
 
 /* Phones held upright: the 16:9 frame is far too squat to hold the ripple's labels, so the title
@@ -355,6 +380,7 @@
 
   .actions .primary,
   .actions .secondary {
+    flex: none;
     width: auto;
     height: 44px;
     padding-inline: 16px;

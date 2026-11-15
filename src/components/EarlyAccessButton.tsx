@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { SailSymbol } from "./ButtonSymbols";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { SignupForm } from "./SignupForm";
 
 /** Opens the early-access dialog and its sign-up form. */
-export function EarlyAccessButton({ className }: { className?: string }) {
+export function EarlyAccessButton({ className, symbol = false }: { className?: string; symbol?: boolean }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,6 +17,7 @@ export function EarlyAccessButton({ className }: { className?: string }) {
           setOpen(true);
           track("dialog_opened", { dialog: "early_access" });
         }}>
+        {symbol && <SailSymbol />}
         Request early access
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Early access" title="Be among the first.">

@@ -2,11 +2,20 @@
 
 import { useState } from "react";
 import { track } from "@/lib/analytics";
+import { EnvelopeSymbol } from "./ButtonSymbols";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { SignupForm } from "./SignupForm";
 
-export function NewsletterButton({ className, label = "Join our newsletter" }: { className?: string; label?: string }) {
+export function NewsletterButton({
+  className,
+  label = "Join our newsletter",
+  symbol = false,
+}: {
+  className?: string;
+  label?: string;
+  symbol?: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -15,6 +24,7 @@ export function NewsletterButton({ className, label = "Join our newsletter" }: {
           setOpen(true);
           track("dialog_opened", { dialog: "newsletter", label });
         }}>
+        {symbol && <EnvelopeSymbol />}
         {label}
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Newsletter" title="Join our newsletter.">

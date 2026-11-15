@@ -1,0 +1,106 @@
+/* Symbols sit before the label at about the height of its capitals, and play their animation
+   while their button is hovered or focused from the keyboard. */
+
+.symbol {
+  flex: none;
+  width: auto;
+  height: 1.15em;
+  overflow: visible;
+}
+
+/* The sail: a cream silhouette with three wind lines, as in the logo. */
+
+.sail .canvas {
+  fill: currentColor;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.45s var(--ease);
+}
+
+.sail .gust {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 26;
+  stroke-linecap: round;
+  transition:
+    stroke 0.25s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+button:is(:hover, :focus-visible) > .sail .canvas {
+  transform: rotate(7deg) translateX(14px);
+}
+
+button:is(:hover, :focus-visible) > .sail .gust {
+  stroke: var(--amber);
+  animation: gust 0.9s var(--ease) both;
+}
+
+button:is(:hover, :focus-visible) > .sail .gust:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+button:is(:hover, :focus-visible) > .sail .gust:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+/* Each line blows in from the left, overshoots towards the sail, and settles. */
+@keyframes gust {
+  0% {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* The envelope: a ruled outline whose flap opens on a little amber letter. */
+
+.envelope {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.envelope .flap {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transition: transform 0.3s var(--ease);
+}
+
+.envelope .letter {
+  fill: var(--amber);
+  stroke-width: 1.2;
+  transform: translateY(5px);
+  transition: transform 0.35s var(--ease) 0s;
+}
+
+button:is(:hover, :focus-visible) > .envelope .flap {
+  transform: scaleY(-1);
+}
+
+button:is(:hover, :focus-visible) > .envelope .letter {
+  transform: translateY(-5.5px);
+  transition-delay: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sail .canvas,
+  .sail .gust,
+  .envelope .flap,
+  .envelope .letter {
+    transition: none;
+  }
+
+  button:is(:hover, :focus-visible) > .sail .gust {
+    animation: none;
+  }
+}

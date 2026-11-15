@@ -58,8 +58,8 @@ export function ForecastChart() {
           </h1>
           <p className={styles.subline}>{site.subline}</p>
           <div className={styles.actions}>
-            <EarlyAccessButton className={`button button-primary ${styles.primary}`} />
-            <NewsletterButton className={`button button-ghost ${styles.secondary}`} />
+            <EarlyAccessButton className={`button button-primary ${styles.primary}`} symbol />
+            <NewsletterButton className={`button button-ghost ${styles.secondary}`} symbol />
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@
 
   --font-display: var(--font-zen), system-ui, sans-serif;
   --font-body: var(--font-zen), system-ui, sans-serif;
-  --font-wordmark: var(--font-montserrat), system-ui, sans-serif;
+  --font-wordmark: var(--font-cormorant), Georgia, serif;
 
   /* One percent of the 16:9 chart frame's width: the unit the first screen is laid out in. */
   --u: max(9px, min(1vw, 1.7778svh));

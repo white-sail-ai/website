@@ -19,10 +19,12 @@
   mask-image: linear-gradient(to right, transparent, black 55%);
 }
 
-/* The three audiences side by side, each symbol above its word. */
+/* The three audiences side by side, each symbol above its word, in equal columns as wide as the
+   longest word so the symbols fall at even intervals. */
 .audience {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(3, 1fr);
+  width: fit-content;
   gap: 24px clamp(40px, 7vw, 120px);
   margin: 0;
   padding: 0;

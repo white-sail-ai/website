@@ -7,13 +7,14 @@ export const metadata: Metadata = {
   description: `What personal information ${site.name} collects through this website, and what you can ask us to do with it.`,
 };
 
-// Describes what the site and the forms Worker (worker/src/index.ts) actually do with data.
+// Describes what the site, PostHog (src/instrumentation-client.ts) and the forms Worker
+// (worker/src/index.ts) actually do with data.
 // Update it whenever a form field or a service provider changes.
 export default function Privacy() {
   const mail = <a href={`mailto:${site.email}`}>{site.email}</a>;
 
   return (
-    <LegalPage title="Privacy policy" updated="November 11, 2026">
+    <LegalPage title="Privacy policy" updated="November 15, 2026">
       <p>
         This policy explains what personal information {site.name} (“we”) collects through this
         website, why we collect it, and what you can ask us to do with it.
@@ -33,7 +34,17 @@ export default function Privacy() {
           you choose to include, such as a CV or a LinkedIn profile.
         </li>
       </ul>
-      <p>This website doesn’t use cookies, analytics, or advertising trackers.</p>
+      <p>
+        <strong>Visit statistics:</strong> which pages you view, which buttons you click, and
+        technical details such as your browser, device type, approximate location (country and
+        city, derived from your IP address), and the page that referred you. We use this only in
+        aggregate, to understand how the website is used. It isn’t linked to your name or email,
+        even if you fill in a form.
+      </p>
+      <p>
+        This website doesn’t use cookies or store anything on your device, and it doesn’t use
+        advertising trackers.
+      </p>
 
       <h2>How we use it</h2>
       <ul>
@@ -57,6 +68,9 @@ export default function Privacy() {
         </li>
         <li>
           <strong>Resend</strong> keeps our newsletter mailing list and sends the newsletter.
+        </li>
+        <li>
+          <strong>PostHog</strong> collects and stores the visit statistics.
         </li>
         <li>
           <strong>GitHub</strong> hosts this website and, like any web host, may log technical

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { track } from "@/lib/analytics";
 import { submitForm } from "@/lib/forms";
 import { site } from "@/lib/site";
 import { Arrow } from "./Arrow";
@@ -47,6 +48,7 @@ export function SignupForm({ endpoint, fields, submitLabel, successTitle, succes
     setStatus("sending");
     setError(null);
     const result = await submitForm(endpoint, data);
+    track("form_submitted", { form: endpoint === "/early-access" ? "early_access" : "newsletter", ok: result.ok });
     if (result.ok) {
       setStatus("done");
     } else {

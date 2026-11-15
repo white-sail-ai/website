@@ -75,6 +75,10 @@ jobs:
         env:
           # URL of the forms Worker (repo variable, not a secret). See worker/README.md.
           NEXT_PUBLIC_FORMS_URL: ${{ vars.FORMS_URL }}
+          # PostHog visit tracking (repo variables; the project key is public by design).
+          # Leave POSTHOG_KEY unset to build without analytics. See README.md.
+          NEXT_PUBLIC_POSTHOG_KEY: ${{ vars.POSTHOG_KEY }}
+          NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.POSTHOG_HOST }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

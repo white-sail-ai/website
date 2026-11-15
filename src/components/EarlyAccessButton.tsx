@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { SignupForm } from "./SignupForm";
@@ -11,7 +12,10 @@ export function EarlyAccessButton({ className }: { className?: string }) {
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
+      <button type="button" className={className} onClick={() => {
+          setOpen(true);
+          track("dialog_opened", { dialog: "early_access" });
+        }}>
         Request early access
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Early access" title="Be among the first.">

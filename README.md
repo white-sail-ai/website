@@ -33,6 +33,8 @@ src/
                       Business Engineers, and the Always-on Agents Fleet
   lib/site.ts         site name, headline, description, contact address, email links
   lib/forms.ts        posts the early-access and newsletter forms to the Worker
+  lib/analytics.ts    track(): custom PostHog events for the calls to action
+  instrumentation-client.ts  starts PostHog in the browser (cookieless)
 worker/               Cloudflare Worker that stores signups (Notion, Slack, Resend); see worker/README.md
 .github/workflows/    nextjs.yml builds the site and publishes it to GitHub Pages
 public/.nojekyll      tells GitHub Pages to serve the _next/ folder as is
@@ -43,6 +45,26 @@ The hero fills the first screen (`100dvh`, header included) and its open middle 
 ## Early access and newsletter
 
 The site is static, so the two forms post to the Worker in `worker/`, which keeps the Notion, Slack and Resend secrets. Setup steps are in `worker/README.md`. The build reads the Worker's address from the `FORMS_URL` repository variable; without it the forms show an error message.
+
+## Visit tracking (PostHog)
+
+`src/instrumentation-client.ts` starts PostHog in **cookieless mode**: no cookies or browser storage, so no cookie banner, and unique visitors are counted with a hash on PostHog's servers. Session recording and surveys are off and visitors are never identified. Besides pageviews and autocaptured clicks, `track()` in `src/lib/analytics.ts` sends:
+
+| Event | Properties | When |
+| --- | --- | --- |
+| `dialog_opened` | `dialog` (`early_access`, `newsletter`, `contact`, `careers`), `label` for contact | a call-to-action button opens its dialog |
+| `form_submitted` | `form` (`early_access`, `newsletter`), `ok` | the Worker accepts or rejects a form |
+| `application_started` | `role` | Careers → Send application |
+
+Never send what a visitor typed as an event property. If you change what's collected, update the Privacy page too.
+
+**Setup**
+
+1. In PostHog, open the project for the website (a separate project from the app keeps app metrics clean; the same project works if you want one funnel), then Settings → Project → **Cookieless server hash mode** → on. Without this, PostHog drops every event from the site.
+2. In GitHub: Settings → Secrets and variables → Actions → **Variables** → add
+   - `POSTHOG_KEY` = the project API key (`phc_…`, Settings → Project → Project API key). It's public by design, so a variable is fine.
+   - `POSTHOG_HOST` = `https://us.i.posthog.com` or `https://eu.i.posthog.com`, matching your PostHog region. If unset, the US host is used.
+3. Re-run the deploy workflow. Without `POSTHOG_KEY` the site builds with no analytics, which is also what happens locally unless you set `NEXT_PUBLIC_POSTHOG_KEY` (and optionally `NEXT_PUBLIC_POSTHOG_HOST`) in `.env.local`.
 
 ## Deploy to GitHub Pages
 

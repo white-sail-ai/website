@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { EmailOptions } from "./EmailOptions";
@@ -11,7 +12,10 @@ export function ContactButton({ className, label }: { className?: string; label:
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
+      <button type="button" className={className} onClick={() => {
+          setOpen(true);
+          track("dialog_opened", { dialog: "contact", label });
+        }}>
         {label}
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Get in touch" title="Let’s talk.">

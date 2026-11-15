@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import { arrivalTime, type RippleLink } from "@/lib/ripple";
 import { drawFront, drawPulse, layoutFronts, type Front, type Inks, type Station } from "./fronts";
-import { drawField, fieldWarp } from "./isobars";
+import { drawField, fieldWarp, type Grid } from "./isobars";
+import { Wind } from "./wind";
 
-/** The leader line from a step marker down to its station, and when it appears. */
-type Stem = { x: number; top: number; bottom: number; ink: string; at: number };
+/** The leader line from a step marker to its station, edge to edge, and when it appears. */
+type Stem = { x1: number; y1: number; x2: number; y2: number; ink: string; at: number };
 
 /** A padded box around a line of chart text, cleared at the text's current opacity. */
 type Knockout = { x: number; y: number; w: number; h: number; alpha: number };
@@ -15,14 +16,15 @@ const NAVY = "26 50 99";
 const PAPER = "251 248 241";
 // Brand gold and navy mixed 30% towards the paper, so the fronts sit back behind the title block.
 const INKS: Inks = { gold: "250 204 136", navy: "94 109 142", paper: PAPER };
-const PULSE_EVERY = 9;
+const PULSE_EVERY = 7;
 const FIELD_REFRESH = 0.2;
 
 type Props = { links: RippleLink[]; className?: string };
 
 /**
- * The chart's moving layer: isobars that drift, and the ripple's fronts drawn between the stations
- * rendered as HTML around it (any element in the same parent with a data-station id).
+ * The chart's moving layer: isobars that drift with a few streaks of wind along them, and the
+ * ripple's fronts drawn between the stations rendered as HTML around it (any element in the same
+ * parent with a data-station id), with one pulse running down the chain now and then.
  */
 export function ChartCanvas({ links, className }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -48,6 +50,9 @@ class Chart {
   private knockouts: Knockout[] = [];
   private warp = new Float32Array(0);
   private fieldDrawnAt = -Infinity;
+  private grid?: Grid;
+  private wind = new Wind();
+  private lastFrame = 0;
   private born = performance.now();
   private settle: number;
 
@@ -99,6 +104,7 @@ class Chart {
       target.width = Math.round(box.width * this.dpr);
       target.height = Math.round(box.height * this.dpr);
     }
+    this.wind.resize(box.width, box.height, this.dpr);
     const stations = new Map<string, Station>();
     this.canvas.parentElement?.querySelectorAll<HTMLElement>("[data-station]").forEach((element) => {
       const rect = element.getBoundingClientRect();
@@ -121,11 +127,21 @@ class Chart {
       const station = stations.get(id);
       if (!station) return [];
       const counter = marker.closest<HTMLElement>("[data-tone]")?.dataset.tone === "counter";
+      // The marker sits above its station on the wide chart and beside it on a phone; either way
+      // the stem runs between their edges along the line joining their centres.
+      const rect = marker.getBoundingClientRect();
+      const mx = rect.left + rect.width / 2 - box.left;
+      const my = rect.top + rect.height / 2 - box.top;
+      const length = Math.hypot(station.x - mx, station.y - my) || 1;
+      const ux = (station.x - mx) / length;
+      const uy = (station.y - my) / length;
+      const lead = rect.width / 2;
       return [
         {
-          x: station.x,
-          top: marker.getBoundingClientRect().bottom - box.top,
-          bottom: station.y - station.r,
+          x1: mx + ux * lead,
+          y1: my + uy * lead,
+          x2: station.x - ux * station.r,
+          y2: station.y - uy * station.r,
           ink: counter ? INKS.navy : INKS.gold,
           at: arrivalTime(this.links, id),
         },
@@ -139,8 +155,8 @@ class Chart {
       if (!this.still && elapsed < stem.at) continue;
       ctx.strokeStyle = `rgb(${stem.ink})`;
       ctx.beginPath();
-      ctx.moveTo(stem.x, stem.top);
-      ctx.lineTo(stem.x, stem.bottom);
+      ctx.moveTo(stem.x1, stem.y1);
+      ctx.lineTo(stem.x2, stem.y2);
       ctx.stroke();
     }
   }
@@ -153,6 +169,13 @@ class Chart {
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     ctx.drawImage(this.field, 0, 0);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    const dt = Math.max(0, elapsed - this.lastFrame);
+    this.lastFrame = elapsed;
+    if (!this.still && this.grid) {
+      const bands = this.fronts.flatMap((front) => front.bands);
+      this.wind.draw(ctx, this.grid, dt, NAVY, this.unit, bands);
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    }
     this.drawStems(ctx, elapsed);
     for (const front of this.fronts) {
       const { start, duration } = front.link;
@@ -191,7 +214,7 @@ class Chart {
     this.fieldDrawnAt = elapsed;
     this.knockouts = measureText(this.canvas, this.unit);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    drawField(ctx, this.width, this.height, {
+    this.grid = drawField(ctx, this.width, this.height, {
       time: this.still ? 0 : elapsed,
       ink: NAVY,
       paper: PAPER,

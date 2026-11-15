@@ -19,24 +19,17 @@
   font-family: var(--font-display);
 }
 
+/* Fine print in the chart's bottom-right corner, where a printed chart keeps its source note:
+   small, regular weight, and muted, so it qualifies the figures without competing with them. */
 .tag {
   position: absolute;
-  left: 1.72%;
-  top: 11.67%;
-  display: flex;
-  align-items: center;
-  gap: calc(var(--u) * 0.9);
-  height: 2.5%;
-  font-size: calc(var(--u) * 1.02);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  right: 1.95%;
+  bottom: 2.4%;
+  margin: 0;
+  font-size: max(10px, calc(var(--u) * 0.78));
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.tag::after {
-  content: "";
-  width: calc(var(--u) * 10.6);
-  border-top: 1px solid rgb(26 50 99 / 0.55);
 }
 
 /* The ripple */
@@ -106,7 +99,7 @@
 .label,
 .note,
 .tag {
-  color: var(--ink);
+  color: var(--muted);
 }
 
 /* The canvas clears its lines from behind these (data-knockout), as a printed chart does. */
@@ -169,6 +162,64 @@
   height: calc(var(--u) * 18.75);
   border: 1.5px solid var(--navy);
   background: var(--paper);
+}
+
+/* Centred on the frame's 1.5px border, so the light runs exactly along the rule. */
+.trace {
+  position: absolute;
+  inset: -0.75px;
+  width: calc(100% + 1.5px);
+  height: calc(100% + 1.5px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.trace rect {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: calc(var(--len) * 1px) calc((100 - var(--len)) * 1px);
+  /* Every layer's dash ends at the same point, so the short bright head leads the longer, fainter tails. */
+  stroke-dashoffset: calc(var(--len) * 1px);
+  opacity: calc(1.15 - var(--len) / 20);
+}
+
+/* One lap, then a long rest, so the light catches the eye now and then rather than all the time. */
+.trace {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .trace {
+    animation: trace-show 18s linear 4s infinite;
+  }
+
+  .trace rect {
+    animation: trace 18s linear 4s infinite;
+  }
+}
+
+@keyframes trace {
+  from {
+    stroke-dashoffset: calc(var(--len) * 1px);
+  }
+  45%,
+  to {
+    stroke-dashoffset: calc(var(--len) * 1px - 100px);
+  }
+}
+
+@keyframes trace-show {
+  from,
+  45%,
+  to {
+    opacity: 0;
+  }
+  3%,
+  40% {
+    opacity: 0.85;
+  }
 }
 
 .key {
@@ -247,4 +298,94 @@
 
 .secondary {
   width: calc(var(--u) * 12.11);
+}
+
+/* Phones held upright: the 16:9 frame is far too squat to hold the ripple's labels, so the title
+   block comes first, in the flow, and the ripple runs down the screen below it in a tall box of
+   its own, each element at its mobile position (--mx, --my). */
+@media (max-width: 760px) and (orientation: portrait) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    padding: var(--header-h) 0 40px;
+  }
+
+  .titleBlock {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 1;
+    /* First on screen, which also makes it paint first, so it needs lifting over the canvas. */
+    order: -1;
+    grid-template-columns: 58px minmax(0, 1fr);
+    width: auto;
+    height: auto;
+    margin: 24px 16px 0;
+  }
+
+  .keyPressure,
+  .keyWind {
+    width: 34px;
+  }
+
+  .keyStation {
+    width: 28px;
+  }
+
+  .titleBody {
+    padding: 18px 16px 18px 18px;
+  }
+
+  .headline {
+    font-size: clamp(2rem, 9.6vw, 2.75rem);
+  }
+
+  .subline {
+    margin-top: 10px;
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .actions .primary,
+  .actions .secondary {
+    width: auto;
+    height: 44px;
+    padding-inline: 16px;
+    font-size: 0.9375rem;
+  }
+
+  /* Under the ripple chain, at its right edge. */
+  .tag {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    order: 1;
+    align-self: flex-end;
+    margin: 4px 16px 0;
+    font-size: 0.6875rem;
+  }
+
+  .ripple {
+    position: relative;
+    inset: auto;
+    height: 640px;
+    margin-top: 36px;
+  }
+
+  .marker,
+  .station,
+  .label,
+  .note {
+    left: var(--mx);
+    top: var(--my);
+  }
 }

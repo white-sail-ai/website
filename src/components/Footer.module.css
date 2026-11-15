@@ -5,10 +5,11 @@
   gap: 24px;
   padding-block: clamp(14px, 2.6vh, 24px);
   padding-inline: var(--inset);
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid rgb(252 247 243 / 0.14);
+  background: var(--navy);
   font-family: var(--font-display);
   font-size: 0.8125rem;
-  color: var(--muted);
+  color: rgb(252 247 243 / 0.72);
 }
 
 @media (max-width: 760px) and (max-height: 800px), (max-height: 500px) {
@@ -31,6 +32,6 @@
 }
 
 .link:hover {
-  color: var(--navy);
+  color: var(--cream);
   text-decoration-color: currentColor;
 }

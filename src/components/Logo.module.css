@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: calc(var(--hu) * 1.05);
-  color: var(--cream);
+  color: inherit;
 }
 
 .mark {
@@ -20,11 +20,15 @@
   stroke-linecap: round;
 }
 
+/* Spaced Garamond capitals, set a little smaller than the old mixed-case name so the line keeps
+   its length beside the sail. The trailing tracking is trimmed so the name ends on its last letter. */
 .word {
+  margin-right: -0.12em;
   font-family: var(--font-wordmark);
-  font-size: calc(var(--hu) * 1.85);
+  font-size: calc(var(--hu) * 1.55);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.12em;
   line-height: 1;
+  text-transform: uppercase;
   white-space: nowrap;
 }

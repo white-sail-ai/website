@@ -3,7 +3,8 @@
 export const site = {
   name: "White Sail Labs",
   email: "abotzer@white-sail.ai",
-  headline: ["Your decisions.", "Better informed."],
+  headline: ["Human decisions.", "Better informed."],
+  subline: "By limitless agentic market research.",
   description:
     "White Sail Labs is an independent market research lab. Our applied AI engineers and domain experts build research agents that follow every company, market, and trend you care about, around the clock.",
 };

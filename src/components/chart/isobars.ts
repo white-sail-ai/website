@@ -133,7 +133,11 @@ function closest({ axis, half }: Body, x: number, y: number) {
   return best;
 }
 
-/** Draw the whole field (isobars, readings, wind arrows) into a context sized width by height. */
+/**
+ * Draw the whole field (isobars, readings, wind arrows) into a context sized width by height.
+ *
+ * @returns The sampled pressure grid, which the wind layer reads its direction from.
+ */
 export function drawField(ctx: CanvasRenderingContext2D, width: number, height: number, options: FieldOptions) {
   const aspect = width / height;
   const at = (x: number, y: number) => pressure(x / width, y / height, options.time, aspect);
@@ -149,6 +153,20 @@ export function drawField(ctx: CanvasRenderingContext2D, width: number, height: 
 
   drawReadings(ctx, width, height, grid, options);
   if (options.clear?.length) clearInside(ctx, options.clear);
+  return grid;
+}
+
+/**
+ * Which way the wind blows at a point: along the isobars, as on a real chart, with low pressure
+ * on the left. Stronger where the isobars crowd together.
+ *
+ * @returns The wind's direction and strength as a vector, about 1 where isobars sit one cell apart.
+ */
+export function windAt(grid: Grid, x: number, y: number) {
+  const index = cornerNear(grid, x, y);
+  const gx = grid.values[index + 1] - grid.values[index - 1];
+  const gy = grid.values[index + grid.cols] - grid.values[index - grid.cols];
+  return { x: -gy, y: gx };
 }
 
 // Readings sit on a clear patch of paper, labelled every 2 hPa in the narrow 1008-1012 band a
@@ -182,7 +200,7 @@ function clearInside(ctx: CanvasRenderingContext2D, outlines: Point[][]) {
   ctx.restore();
 }
 
-type Grid = { values: Float32Array; cols: number; rows: number };
+export type Grid = { values: Float32Array; cols: number; rows: number };
 
 /** The isobar grid's columns and rows for a field of this size. */
 function gridSize(width: number, height: number) {

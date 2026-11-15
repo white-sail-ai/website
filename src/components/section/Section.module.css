@@ -1,0 +1,63 @@
+/* Shared marks for the sections below the hero, taken from the chart: the step marker, the
+   uppercase tag with its rule, and a statement set large like the headline. */
+
+.head {
+  display: grid;
+  gap: clamp(18px, 2.2vw, 28px);
+  margin-bottom: clamp(44px, 6vw, 80px);
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.marker {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  aspect-ratio: 1;
+  padding-bottom: 0.1em;
+  border: 2.5px solid var(--amber);
+  border-radius: 50%;
+  background: var(--paper);
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+}
+
+.rule {
+  flex: 1;
+  max-width: 220px;
+  border-top: 1px solid rgb(26 50 99 / 0.55);
+  transform-origin: left;
+}
+
+.statement {
+  max-width: 19em;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.head[data-tone="navy"] .tag {
+  color: var(--cream);
+}
+
+.head[data-tone="navy"] .marker {
+  background: var(--navy);
+}
+
+.head[data-tone="navy"] .rule {
+  border-top-color: rgb(252 247 243 / 0.5);
+}

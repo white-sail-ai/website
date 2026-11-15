@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Zen_Kaku_Gothic_Antique } from "next/font/google";
+import { Cormorant_Garamond, Zen_Kaku_Gothic_Antique } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -10,9 +10,9 @@ const zenKaku = Zen_Kaku_Gothic_Antique({
   subsets: ["latin"],
 });
 
-// Only the logo's wordmark is set in Montserrat.
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+// Only the logo's wordmark is set in Cormorant Garamond, in spaced capitals.
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   weight: ["600"],
   subsets: ["latin"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${zenKaku.variable} ${montserrat.variable}`}
+      className={`${zenKaku.variable} ${cormorant.variable}`}
     >
       <body>{children}</body>
     </html>

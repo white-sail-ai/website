@@ -17,7 +17,7 @@
 
   --font-display: var(--font-zen), system-ui, sans-serif;
   --font-body: var(--font-zen), system-ui, sans-serif;
-  --font-wordmark: var(--font-montserrat), system-ui, sans-serif;
+  --font-wordmark: var(--font-cormorant), Georgia, serif;
 
   /* One percent of the 16:9 chart frame's width: the unit the first screen is laid out in. */
   --u: max(9px, min(1vw, 1.7778svh));
@@ -94,11 +94,17 @@ a {
 }
 
 header :focus-visible {
+  outline-color: var(--band-focus, var(--amber));
+}
+
+footer :focus-visible,
+[data-band="navy"] :focus-visible {
   outline-color: var(--amber);
 }
 
 /* Dialogs opened from the band are inside it in the DOM, but they sit on paper. */
-dialog :focus-visible {
+dialog :focus-visible,
+[data-band="navy"] dialog :focus-visible {
   outline-color: var(--navy);
 }
 
@@ -184,4 +190,39 @@ dialog :focus-visible {
 
 .button-ghost:hover {
   background: rgb(26 50 99 / 0.06);
+}
+
+/* Scroll reveals. Elements marked data-reveal start hidden only once the reveal observer has
+   marked the root, and each plays once, with an optional --d delay to stagger a group. */
+
+[data-reveal] {
+  transition:
+    opacity 0.9s var(--ease) var(--d, 0s),
+    transform 0.9s var(--ease) var(--d, 0s),
+    clip-path 1.1s var(--ease) var(--d, 0s);
+}
+
+:root[data-reveal] [data-reveal]:not([data-shown]) {
+  opacity: 0;
+}
+
+:root[data-reveal] [data-reveal="rise"]:not([data-shown]) {
+  transform: translateY(28px);
+}
+
+/* A rule draws out from its left end. */
+:root[data-reveal] [data-reveal="rule"]:not([data-shown]) {
+  opacity: 1;
+  transform: scaleX(0);
+}
+
+/* A framed block is wiped open from the top, as a chart is unrolled. */
+:root[data-reveal] [data-reveal="unroll"]:not([data-shown]) {
+  opacity: 1;
+  clip-path: inset(-40px -40px 100% -40px);
+}
+
+/* Room around the block, so markers that sit across its frame are never cut off. */
+[data-reveal="unroll"] {
+  clip-path: inset(-40px);
 }

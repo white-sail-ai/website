@@ -39,7 +39,7 @@ Success on the website: a visitor understands that this is a research lab of peo
 - Name: White Sail Labs.
 - Logo: the sail mark (a sail silhouette with three speed lines) is fixed. Colours and typefaces are open for the website; the pitch deck's navy, cream, and amber and its Montserrat and Roboto Slab are not binding.
 - Meaning of the name: a universal symbol of adventure, limitless exploration, and freedom.
-- Line in use: "Your decisions. Better informed."
+- Line in use: "Human decisions. Better informed.", with "By limitless agentic market research." beneath it.
 
 ## Evidence on Hand
 

@@ -1,5 +1,8 @@
+import type { CSSProperties } from "react";
 import { ContactButton } from "./ContactButton";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { ChartPaper } from "./section/ChartPaper";
+import { SectionHead } from "./section/SectionHead";
 import styles from "./BuiltFor.module.css";
 
 // A rising price line over volume bars, the latest point lit.
@@ -30,7 +33,7 @@ function HelmGlyph() {
 }
 
 // A course plotted from a starting point, through a waypoint, to the destination.
-function CourseGlyph() {
+export function CourseGlyph() {
   return (
     <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
       <path d="M9 38C17 38 15 25 24 25S31 12 38 11" className={styles.dashed} />
@@ -48,29 +51,34 @@ const audience = [
   { label: "Strategists", Glyph: CourseGlyph },
 ];
 
-// The closing section: who the research is for, each with its symbol on a navy tile like the
-// app icon, then the two calls to action again.
+// The closing section, on navy like the header band so the page is bookended by it: who the
+// research is for, each symbol on a cream tile, then the two calls to action again.
 export function BuiltFor() {
   return (
-    <section aria-labelledby="built-for-title" className={styles.section}>
-      <h2 id="built-for-title" className={styles.title}>
-        Built for
-      </h2>
-      <div>
-        <ul className={styles.audience}>
-          {audience.map(({ label, Glyph }) => (
-            <li key={label} className={styles.item}>
-              <span className={styles.tile}>
-                <Glyph />
-              </span>
-              <span className={styles.label}>{label}</span>
-            </li>
-          ))}
-        </ul>
-        <div className={styles.actions}>
-          <EarlyAccessButton className="button button-primary" />
-          <ContactButton className="button button-ghost" label="Get in touch" />
-        </div>
+    <section id="built-for" aria-labelledby="built-for-title" className={styles.section} data-band="navy">
+      <ChartPaper ink="252 247 243" paper="26 50 99" moment={260} className={styles.paper} />
+      <SectionHead step="3" tag="Built for" id="built-for-title" tone="navy">
+        For decision-makers who act on research.
+      </SectionHead>
+      <ul className={styles.audience}>
+        {audience.map(({ label, Glyph }, index) => (
+          <li
+            key={label}
+            className={styles.item}
+            data-reveal="rise"
+            style={{ "--d": `${0.15 + index * 0.12}s` } as CSSProperties}
+          >
+            <span className={styles.tile}>
+              <Glyph />
+            </span>
+            <span className={styles.label}>{label}</span>
+          </li>
+        ))}
+      </ul>
+      <div className={styles.actions} data-reveal="rise" style={{ "--d": "0.5s" } as CSSProperties}>
+        <EarlyAccessButton className={`button ${styles.primary}`} />
+        <ContactButton className={`button ${styles.secondary}`} label="Get in touch" />
+        <p className={styles.reply}>We reply within 1 business day.</p>
       </div>
     </section>
   );

@@ -20,7 +20,14 @@ export type RippleNode = {
   marker: { x: number; y: number };
   /** Label's top-left corner in % of the frame. */
   label: { x: number; y: number };
+  /**
+   * The same three positions on a phone, in % of the ripple's own tall box under the title block,
+   * where the chain runs down the screen with the labels beside it.
+   */
+  mobile: { station: Point; marker: Point; label: Point };
 };
+
+type Point = { x: number; y: number };
 
 export type RippleLink = {
   from: string;
@@ -40,7 +47,8 @@ export type RippleLink = {
   /** When the front starts drawing on and how long it takes, in seconds after load. */
   start: number;
   duration: number;
-  note?: { lines: string[]; x: number; y: number };
+  /** Where the link's note sits, and where it sits on a phone. */
+  note?: { lines: string[]; x: number; y: number; mobile: Point };
 };
 
 export const heroNodes: RippleNode[] = [
@@ -53,6 +61,7 @@ export const heroNodes: RippleNode[] = [
     station: { x: 12.19, y: 33.33, d: 6.2 },
     marker: { x: 12.19, y: 23.42 },
     label: { x: 5.63, y: 42.22 },
+    mobile: { station: { x: 20.5, y: 9.4 }, marker: { x: 6.7, y: 9.4 }, label: { x: 32.1, y: 4.7 } },
   },
   {
     id: "nvidia",
@@ -63,6 +72,7 @@ export const heroNodes: RippleNode[] = [
     station: { x: 42.43, y: 34.58, d: 6.8 },
     marker: { x: 42.66, y: 24.17 },
     label: { x: 38.44, y: 42.22 },
+    mobile: { station: { x: 20.5, y: 39.1 }, marker: { x: 6.7, y: 39.1 }, label: { x: 32.1, y: 30.5 } },
   },
   {
     id: "microsoft",
@@ -73,6 +83,7 @@ export const heroNodes: RippleNode[] = [
     station: { x: 64.21, y: 35.0, d: 5.85 },
     marker: { x: 64.06, y: 25.28 },
     label: { x: 67.6, y: 20.2 },
+    mobile: { station: { x: 20.5, y: 67.2 }, marker: { x: 6.7, y: 67.2 }, label: { x: 32.1, y: 63.3 } },
   },
   {
     id: "meta",
@@ -83,6 +94,7 @@ export const heroNodes: RippleNode[] = [
     station: { x: 83.63, y: 35.0, d: 5.55 },
     marker: { x: 83.6, y: 25.28 },
     label: { x: 87.03, y: 30.83 },
+    mobile: { station: { x: 20.5, y: 92.2 }, marker: { x: 6.7, y: 92.2 }, label: { x: 32.1, y: 88.8 } },
   },
   {
     id: "samsung",
@@ -93,6 +105,7 @@ export const heroNodes: RippleNode[] = [
     station: { x: 78.28, y: 71.25, d: 4.3 },
     marker: { x: 78.29, y: 62.98 },
     label: { x: 82.19, y: 68.33 },
+    mobile: { station: { x: 79.5, y: 56.3 }, marker: { x: 92.8, y: 56.3 }, label: { x: 66.2, y: 61.3 } },
   },
 ];
 
@@ -106,7 +119,7 @@ export const heroLinks: RippleLink[] = [
     mass: true,
     start: 0.5,
     duration: 1.1,
-    note: { lines: ["elasticity 0.4"], x: 22.97, y: 43.61 },
+    note: { lines: ["elasticity 0.4"], x: 22.97, y: 43.61, mobile: { x: 38.5, y: 21.9 } },
   },
   { from: "nvidia", to: "microsoft", tone: "surprise", strands: 26, spread: 2.1, start: 1.6, duration: 0.8 },
   {
@@ -127,7 +140,7 @@ export const heroLinks: RippleLink[] = [
     spread: 0,
     start: 2.0,
     duration: 1.0,
-    note: { lines: ["elasticity", "−0.2"], x: 56.87, y: 55.28 },
+    note: { lines: ["elasticity", "−0.2"], x: 56.87, y: 55.28, mobile: { x: 62, y: 36 } },
   },
 ];
 

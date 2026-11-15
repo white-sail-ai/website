@@ -7,6 +7,7 @@ import { ContactButton } from "./ContactButton";
 import { DepthGlyph } from "./Attributes";
 import { CourseGlyph } from "./BuiltFor";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { NewsletterButton } from "./NewsletterButton";
 import { FleetGlyph } from "./section/glyphs";
 import styles from "./SiteNav.module.css";
 
@@ -209,15 +210,20 @@ export function SiteNav() {
           ))}
           <li className={styles.item} style={{ "--i": 4 } as CSSProperties}>
             <span className={styles.plain} onPointerEnter={(event) => hoverPlain(event.currentTarget)}>
-              <CareersButton className={styles.link} />
+              <NewsletterButton className={styles.link} />
             </span>
           </li>
           <li className={styles.item} style={{ "--i": 5 } as CSSProperties}>
             <span className={styles.plain} onPointerEnter={(event) => hoverPlain(event.currentTarget)}>
+              <CareersButton className={styles.link} />
+            </span>
+          </li>
+          <li className={styles.item} style={{ "--i": 6 } as CSSProperties}>
+            <span className={styles.plain} onPointerEnter={(event) => hoverPlain(event.currentTarget)}>
               <ContactButton className={styles.link} label="Contact" />
             </span>
           </li>
-          <li className={`${styles.item} ${styles.ctaItem}`} style={{ "--i": 6 } as CSSProperties}>
+          <li className={`${styles.item} ${styles.ctaItem}`} style={{ "--i": 7 } as CSSProperties}>
             <EarlyAccessButton className={`button ${styles.cta}`} />
           </li>
         </ul>

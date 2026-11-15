@@ -33,7 +33,7 @@ function HelmGlyph() {
 }
 
 // A course plotted from a starting point, through a waypoint, to the destination.
-function CourseGlyph() {
+export function CourseGlyph() {
   return (
     <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
       <path d="M9 38C17 38 15 25 24 25S31 12 38 11" className={styles.dashed} />

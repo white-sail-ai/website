@@ -5,7 +5,7 @@ import styles from "./Attributes.module.css";
 // Each glyph plays a small motion once as its cell scrolls in: the rings open out, the grid's dots
 // light up in turn, the clock's hand sweeps round, the layers settle onto the stack.
 
-function DepthGlyph() {
+export function DepthGlyph() {
   return (
     <svg viewBox="0 0 48 48" className={styles.glyph} aria-hidden="true">
       {[21, 14, 7].map((r, k) => (

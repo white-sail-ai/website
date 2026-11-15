@@ -4,28 +4,34 @@ import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { CareersButton } from "./CareersButton";
 import { ContactButton } from "./ContactButton";
+import { DepthGlyph } from "./Attributes";
+import { CourseGlyph } from "./BuiltFor";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { FleetGlyph } from "./section/glyphs";
 import styles from "./SiteNav.module.css";
 
 type MenuId = "explore";
 
 const MENUS: { id: MenuId; label: string }[] = [{ id: "explore", label: "Explore" }];
 
-// The page's three sections, each numbered as its own head is.
+// The page's three sections, each with a symbol from the section itself: the fleet from Who we
+// are, the In depth rings from Capabilities, the plotted course from Built for.
 const SECTIONS = [
   {
     step: "1",
+    Glyph: () => <FleetGlyph accentClass={styles.accent} />,
     title: "Who we are",
     line: "Applied AI and business engineers, and the agents they build.",
     href: "/#who-we-are",
   },
   {
     step: "2",
+    Glyph: DepthGlyph,
     title: "Capabilities",
     line: "In depth, at scale, all the time, and always your judgment.",
     href: "/#capabilities",
   },
-  { step: "3", title: "Built for", line: "Investors, CEOs, and strategists.", href: "/#built-for" },
+  { step: "3", Glyph: CourseGlyph, title: "Built for", line: "Investors, CEOs, and strategists.", href: "/#built-for" },
 ];
 
 /** How long the pointer may stray off the menu before it closes, so a diagonal move does not drop it. */
@@ -194,8 +200,8 @@ export function SiteNav() {
           {SECTIONS.map((section) => (
             <li key={section.href} className={`${styles.item} ${styles.sheetItem}`} style={{ "--i": section.step } as CSSProperties}>
               <Link href={section.href} className={styles.link} onClick={closeAll}>
-                <span className={styles.sheetStep} aria-hidden="true">
-                  {section.step}
+                <span className={styles.sheetTile} aria-hidden="true">
+                  <section.Glyph />
                 </span>
                 {section.title}
               </Link>
@@ -220,8 +226,8 @@ export function SiteNav() {
           <Panel id="explore" state={panelState("explore")} panels={panelRefs}>
             {SECTIONS.map((section) => (
               <Option key={section.href} href={section.href} onPick={closeAll} title={section.title} line={section.line}>
-                <span className={styles.step} aria-hidden="true">
-                  {section.step}
+                <span className={styles.tile} aria-hidden="true">
+                  <section.Glyph />
                 </span>
               </Option>
             ))}

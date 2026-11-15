@@ -255,26 +255,61 @@
   line-height: 1.45;
 }
 
-/* Each section's step marker, as its own head shows it, filling with amber when hovered. */
-.step {
+/* Each section's symbol on a small chart-paper tile that warms to amber when the option is hovered.
+   The symbols come from the sections, so their own sizes, margins and inks are reset here. */
+.tile,
+.sheetTile {
   flex: none;
   display: grid;
   place-items: center;
-  width: 34px;
-  aspect-ratio: 1;
-  padding-bottom: 0.1em;
-  border: 2px solid var(--amber);
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
   background: var(--paper);
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  transition: background-color 0.2s var(--glide);
+  color: var(--navy);
+  transition:
+    border-color 0.2s var(--glide),
+    background-color 0.2s var(--glide);
 }
 
-.option:hover .step,
-.option:focus-visible .step {
-  background: var(--amber);
+.tile svg,
+.sheetTile svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  overflow: visible;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tile svg [class*="dot"],
+.sheetTile svg [class*="dot"] {
+  fill: var(--navy);
+  stroke: none;
+}
+
+.tile svg [class*="faint"],
+.sheetTile svg [class*="faint"] {
+  opacity: 0.4;
+}
+
+.accent,
+.tile svg [class*="accent"],
+.sheetTile svg [class*="accent"] {
+  fill: var(--amber);
+  stroke: none;
+  opacity: 1;
+}
+
+.option:hover .tile,
+.option:focus-visible .tile {
+  border-color: rgb(250 185 91 / 0.9);
+  background: rgb(250 185 91 / 0.16);
 }
 
 .burger {
@@ -396,16 +431,15 @@
     display: flex;
   }
 
-  .sheetStep {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    aspect-ratio: 1;
+  .sheetTile {
+    width: 32px;
+    height: 32px;
     margin-right: 14px;
-    padding-bottom: 0.1em;
-    border: 2px solid var(--amber);
-    border-radius: 50%;
-    font-size: 0.875rem;
+  }
+
+  .sheetTile svg {
+    width: 19px;
+    height: 19px;
   }
 
   .plain,

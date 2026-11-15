@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import { arrivalTime, type RippleLink } from "@/lib/ripple";
 import { drawFront, drawPulse, layoutFronts, type Front, type Inks, type Station } from "./fronts";
-import { drawField, fieldWarp } from "./isobars";
+import { drawField, fieldWarp, type Grid } from "./isobars";
+import { drawFlow, Wind } from "./wind";
 
 /** The leader line from a step marker down to its station, and when it appears. */
 type Stem = { x: number; top: number; bottom: number; ink: string; at: number };
@@ -21,8 +22,9 @@ const FIELD_REFRESH = 0.2;
 type Props = { links: RippleLink[]; className?: string };
 
 /**
- * The chart's moving layer: isobars that drift, and the ripple's fronts drawn between the stations
- * rendered as HTML around it (any element in the same parent with a data-station id).
+ * The chart's moving layer: isobars that drift with wind streaming along them, and the ripple's
+ * fronts drawn between the stations rendered as HTML around it (any element in the same parent
+ * with a data-station id), with gold that keeps flowing along them.
  */
 export function ChartCanvas({ links, className }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -48,6 +50,9 @@ class Chart {
   private knockouts: Knockout[] = [];
   private warp = new Float32Array(0);
   private fieldDrawnAt = -Infinity;
+  private grid?: Grid;
+  private wind = new Wind();
+  private lastFrame = 0;
   private born = performance.now();
   private settle: number;
 
@@ -99,6 +104,7 @@ class Chart {
       target.width = Math.round(box.width * this.dpr);
       target.height = Math.round(box.height * this.dpr);
     }
+    this.wind.resize(box.width, box.height, this.dpr);
     const stations = new Map<string, Station>();
     this.canvas.parentElement?.querySelectorAll<HTMLElement>("[data-station]").forEach((element) => {
       const rect = element.getBoundingClientRect();
@@ -153,11 +159,19 @@ class Chart {
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     ctx.drawImage(this.field, 0, 0);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    const dt = Math.max(0, elapsed - this.lastFrame);
+    this.lastFrame = elapsed;
+    if (!this.still && this.grid) {
+      const bands = this.fronts.flatMap((front) => front.bands);
+      this.wind.draw(ctx, this.grid, dt, NAVY, this.unit, bands);
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    }
     this.drawStems(ctx, elapsed);
     for (const front of this.fronts) {
       const { start, duration } = front.link;
       const progress = this.still ? 1 : easeInOut(clamp((elapsed - start) / duration));
       drawFront(ctx, front, progress, INKS, this.unit);
+      if (!this.still && progress >= 1) drawFlow(ctx, front, elapsed - start - duration, INKS);
     }
     if (!this.still && elapsed >= this.settle) this.drawPulses(ctx, elapsed);
     this.clearUnderText(ctx);
@@ -191,7 +205,7 @@ class Chart {
     this.fieldDrawnAt = elapsed;
     this.knockouts = measureText(this.canvas, this.unit);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    drawField(ctx, this.width, this.height, {
+    this.grid = drawField(ctx, this.width, this.height, {
       time: this.still ? 0 : elapsed,
       ink: NAVY,
       paper: PAPER,

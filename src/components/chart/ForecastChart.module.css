@@ -171,6 +171,44 @@
   background: var(--paper);
 }
 
+/* Centred on the frame's 1.5px border, so the light runs exactly along the rule. */
+.trace {
+  position: absolute;
+  inset: -0.75px;
+  width: calc(100% + 1.5px);
+  height: calc(100% + 1.5px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.trace rect {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: calc(var(--len) * 1px) calc((100 - var(--len)) * 1px);
+  /* Every layer's dash ends at the same point, so the short bright head leads the longer, fainter tails. */
+  stroke-dashoffset: calc(var(--len) * 1px);
+  opacity: calc(1.15 - var(--len) / 20);
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .trace rect {
+    visibility: visible;
+    animation: trace 11s linear 3s infinite backwards;
+  }
+}
+
+@keyframes trace {
+  from {
+    stroke-dashoffset: calc(var(--len) * 1px);
+  }
+  to {
+    stroke-dashoffset: calc(var(--len) * 1px - 100px);
+  }
+}
+
 .key {
   display: flex;
   flex-direction: column;

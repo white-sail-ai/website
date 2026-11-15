@@ -2,18 +2,21 @@ import { site } from "@/lib/site";
 import styles from "./WhoWeAre.module.css";
 
 // The two teams, then the fleet they build together; the fleet's rule is amber, the colour of
-// the agents' signals on the map.
-const team = [
+// the agents' signals on the map. Each brief is the one-line version for the header's menu.
+export const team = [
   {
     title: "Applied AI Engineers",
+    brief: "Intelligence-agency veterans applying AI to critical problems.",
     text: "Our engineers are intelligence-agency veterans with expertise in applying AI to critical real-world problems, effectively and responsibly.",
   },
   {
     title: "Business Engineers",
+    brief: "Domain experts who frame the problem and steer the agents.",
     text: "Domain experts who frame the problem, define the solution you need, and steer the agents to make it happen.",
   },
   {
     title: "Always-on Agents Fleet",
+    brief: "Built by both teams, working your questions around the clock.",
     text: "Built by both teams, the agents bring AI engineering and domain expertise to your questions, around the clock.",
     built: true,
   },

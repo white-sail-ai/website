@@ -33,6 +33,18 @@ export function ForecastChart() {
       </figure>
 
       <div className={styles.titleBlock}>
+        {/* A light that keeps running around the block's ruled frame, its tail fading behind it. */}
+        <svg className={styles.trace} aria-hidden="true">
+          {[18, 10, 4].map((length) => (
+            <rect
+              key={length}
+              width="100%"
+              height="100%"
+              pathLength="100"
+              style={{ "--len": length } as CSSProperties}
+            />
+          ))}
+        </svg>
         <div className={styles.key} aria-hidden="true">
           <PressureKey className={styles.keyPressure} />
           <WindKey className={styles.keyWind} />

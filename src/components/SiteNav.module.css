@@ -1,0 +1,452 @@
+/* The band's navigation. Motion follows one curve and two speeds: 0.3s for anything that travels
+   or resizes (the pill, the shared panel), 0.18s for the highlight inside a panel, which has to keep
+   up with the pointer. */
+
+.root {
+  --glide: cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--hu) * 0.5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+}
+
+.plain {
+  display: flex;
+}
+
+.link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  height: calc(var(--hu) * 3.2);
+  min-height: 40px;
+  padding: 0 calc(var(--hu) * 0.95);
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.link:focus-visible {
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+.chevron {
+  width: 0.9em;
+  height: 0.9em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+  transition: transform 0.3s var(--glide);
+}
+
+.trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.sheetLink {
+  display: none;
+}
+
+/* One pill for the whole band, sliding to whichever item is under the pointer. */
+.pill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: calc(var(--hu) * 3.2);
+  min-height: 40px;
+  translate: 0 -50%;
+  border-radius: 8px;
+  background: rgb(252 247 243 / 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.3s var(--glide),
+    width 0.3s var(--glide),
+    opacity 0.2s;
+}
+
+.pill[data-on] {
+  opacity: 1;
+}
+
+.ctaItem {
+  margin-left: calc(var(--hu) * 1.2);
+}
+
+/* The band's one solid control, so early access outweighs the links beside it. */
+.cta {
+  justify-content: center;
+  width: calc(var(--hu) * 13.2);
+  height: calc(var(--hu) * 2.6);
+  padding-inline: 0;
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--navy);
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cta:hover {
+  border-color: var(--amber);
+  background: var(--amber);
+}
+
+/* The shared panel: one surface that resizes and slides between menus rather than closing and
+   reopening, while each menu's options slide in from the side they sit on. */
+.viewport {
+  --x: 0px;
+  --y: -8px;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--raised);
+  color: var(--navy);
+  box-shadow:
+    0 0 0 1px rgb(26 50 99 / 0.14),
+    0 1px 2px rgb(18 34 74 / 0.08),
+    0 18px 40px -12px rgb(18 34 74 / 0.32);
+  transform: translate(var(--x), var(--y));
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.3s var(--glide),
+    width 0.3s var(--glide),
+    height 0.3s var(--glide),
+    opacity 0.2s,
+    visibility 0s linear 0.3s;
+}
+
+.viewport[data-open] {
+  --y: 0px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  width: 400px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.3s var(--glide),
+    opacity 0.2s,
+    visibility 0s linear 0.3s;
+}
+
+.wide {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 600px;
+}
+
+.panel[data-state="left"] {
+  transform: translateX(-40px);
+}
+
+.panel[data-state="right"] {
+  transform: translateX(40px);
+}
+
+.panel[data-state="active"] {
+  opacity: 1;
+  visibility: inherit;
+  transition-delay: 0s;
+}
+
+.highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 8px;
+  background: rgb(26 50 99 / 0.06);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.18s var(--glide),
+    width 0.18s var(--glide),
+    height 0.18s var(--glide),
+    opacity 0.12s;
+}
+
+.highlight[data-on] {
+  opacity: 1;
+}
+
+.pill[data-snap],
+.highlight[data-snap],
+.viewport[data-snap],
+.viewport[data-snap] .panel {
+  transition: none !important;
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.option:focus-visible {
+  outline-offset: -2px;
+}
+
+.optionText {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.optionTitle {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.optionLine {
+  color: var(--muted);
+  font-size: 0.8438rem;
+  line-height: 1.45;
+}
+
+/* Each option's glyph on a small chart-paper tile that warms to amber when the option is hovered. */
+.tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--paper);
+  transition:
+    border-color 0.2s var(--glide),
+    background-color 0.2s var(--glide);
+}
+
+.tile svg {
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+
+.tile .accent,
+.tile [class*="accent"] {
+  fill: var(--amber);
+  stroke: none;
+}
+
+.option:hover .tile,
+.option:focus-visible .tile {
+  border-color: rgb(250 185 91 / 0.9);
+  background: rgb(250 185 91 / 0.16);
+}
+
+.burger {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill,
+  .viewport,
+  .panel,
+  .highlight,
+  .chevron {
+    transition: none !important;
+  }
+}
+
+/* Narrow screens: the band keeps the logo and a menu button; the list drops down as a sheet. */
+@media (max-width: 920px) {
+  .burger {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-right: -8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .burgerLines {
+    position: relative;
+    width: 22px;
+    height: 12px;
+  }
+
+  .burgerLines span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      transform 0.3s var(--glide),
+      top 0.3s var(--glide);
+  }
+
+  .burgerLines span:first-child {
+    top: 0;
+  }
+
+  .burgerLines span:last-child {
+    top: 10px;
+  }
+
+  .burgerLines[data-open] span:first-child {
+    top: 5px;
+    transform: rotate(45deg);
+  }
+
+  .burgerLines[data-open] span:last-child {
+    top: 5px;
+    transform: rotate(-45deg);
+  }
+
+  .nav {
+    position: fixed;
+    inset-inline: 0;
+    top: var(--header-h);
+    z-index: 30;
+    display: block;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    padding: 8px var(--gutter) 28px;
+    background: var(--navy);
+    box-shadow: 0 24px 40px -24px rgb(18 34 74 / 0.6);
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition:
+      clip-path 0.4s var(--glide),
+      visibility 0s linear 0.4s;
+  }
+
+  .nav[data-sheet] {
+    clip-path: inset(0 0 -60px 0);
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .pill,
+  .viewport {
+    display: none;
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .item {
+    border-bottom: 1px solid rgb(252 247 243 / 0.14);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.3s var(--glide),
+      transform 0.3s var(--glide);
+  }
+
+  .nav[data-sheet] .item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(0.04s * var(--i) + 0.06s);
+  }
+
+  .plain,
+  .sheetLink,
+  .item > .link {
+    display: flex;
+    flex: 1;
+  }
+
+  .plain .link {
+    flex: 1;
+  }
+
+  .item > .trigger {
+    display: none;
+  }
+
+  .link {
+    height: 56px;
+    padding: 0;
+    font-size: 1.125rem;
+  }
+
+  .ctaItem {
+    margin: 20px 0 0;
+    border-bottom: 0;
+  }
+
+  .cta {
+    width: 100%;
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 920px) and (prefers-reduced-motion: reduce) {
+  .nav,
+  .item,
+  .burgerLines span {
+    transition: none !important;
+  }
+}

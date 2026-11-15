@@ -21,7 +21,7 @@ const SECTIONS = [
     step: "1",
     Glyph: () => <FleetGlyph accentClass={styles.accent} />,
     title: "Who we are",
-    line: "Applied AI and business engineers, and the agents they build.",
+    line: "Applied AI engineers, market analysts, and the agents they build.",
     href: "/#who-we-are",
   },
   {

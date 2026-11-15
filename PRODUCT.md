@@ -20,7 +20,7 @@ Success on the website: a visitor understands that this is a research lab of peo
 ## Positioning
 
 - Research as a service and a platform at once: framed and delivered by people, kept running by agents, extendable by the client.
-- Built by two kinds of people. Applied AI Engineers are intelligence-agency veterans with expertise in applying AI to critical real-world problems, effectively and responsibly. Business Engineers are domain experts who frame the problem, define the solution the client needs, and steer the agents to make it happen. Together they build the Always-on Agents Fleet.
+- Built by two kinds of people. Applied AI Engineers are intelligence-agency veterans with expertise in applying AI to critical real-world problems, effectively and responsibly. Market Analysts are domain experts who frame the problem, define the solution the client needs, and steer the agents to make it happen. Together they build the Always-on Agents Fleet.
 - The platform's world model keeps what it knows about every covered company current one fact at a time; each new fact is compared with what the model believed, and only the surprise propagates through the company's statements and along the value chain to its suppliers and customers. Signals are logged and their effect measured, and forecasts keep a track record against analysts' consensus. Approved for the site, with figures invented and labelled as illustrative.
 
 ## Operating Context

@@ -10,7 +10,7 @@ const team = [
     text: "Our engineers are intelligence-agency veterans with expertise in applying AI to critical real-world problems, effectively and responsibly.",
   },
   {
-    title: "Business Engineers",
+    title: "Market Analysts",
     text: "Domain experts who frame the problem, define the solution you need, and steer the agents to make it happen.",
   },
   {

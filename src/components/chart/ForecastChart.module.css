@@ -19,24 +19,17 @@
   font-family: var(--font-display);
 }
 
+/* Fine print in the chart's bottom-right corner, where a printed chart keeps its source note:
+   small, regular weight, and muted, so it qualifies the figures without competing with them. */
 .tag {
   position: absolute;
-  left: 1.72%;
-  top: 11.67%;
-  display: flex;
-  align-items: center;
-  gap: calc(var(--u) * 0.9);
-  height: 2.5%;
-  font-size: calc(var(--u) * 1.02);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  right: 1.95%;
+  bottom: 2.4%;
+  margin: 0;
+  font-size: max(10px, calc(var(--u) * 0.78));
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.tag::after {
-  content: "";
-  width: calc(var(--u) * 10.6);
-  border-top: 1px solid rgb(26 50 99 / 0.55);
 }
 
 /* The ripple */
@@ -106,7 +99,7 @@
 .label,
 .note,
 .tag {
-  color: var(--ink);
+  color: var(--muted);
 }
 
 /* The canvas clears its lines from behind these (data-knockout), as a printed chart does. */
@@ -370,24 +363,22 @@
     font-size: 0.9375rem;
   }
 
+  /* Under the ripple chain, at its right edge. */
   .tag {
     position: relative;
-    left: auto;
-    top: auto;
-    height: auto;
-    margin: 32px 16px 0;
-    font-size: 0.75rem;
-  }
-
-  .tag::after {
-    width: 96px;
+    right: auto;
+    bottom: auto;
+    order: 1;
+    align-self: flex-end;
+    margin: 4px 16px 0;
+    font-size: 0.6875rem;
   }
 
   .ripple {
     position: relative;
     inset: auto;
     height: 640px;
-    margin-top: 20px;
+    margin-top: 36px;
   }
 
   .marker,

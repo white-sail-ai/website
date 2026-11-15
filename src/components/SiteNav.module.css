@@ -273,9 +273,13 @@
     background-color 0.2s var(--glide);
 }
 
+/* The capability glyphs are shared with their section, which spaces them with a margin; in a
+   tile they sit dead centre. */
 .tile svg {
+  display: block;
   width: 22px;
   height: 22px;
+  margin: 0;
   overflow: visible;
   fill: none;
   stroke: var(--navy);

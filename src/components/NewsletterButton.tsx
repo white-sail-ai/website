@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { SignupForm } from "./SignupForm";
@@ -10,7 +11,10 @@ export function NewsletterButton({ className }: { className?: string }) {
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
+      <button type="button" className={className} onClick={() => {
+          setOpen(true);
+          track("dialog_opened", { dialog: "newsletter" });
+        }}>
         Newsletter
       </button>
       <Dialog open={open} onClose={() => setOpen(false)} eyebrow="Newsletter" title="Join our newsletter.">

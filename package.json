@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "next": "16.4.2",
+    "posthog-js": "^1.450.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },

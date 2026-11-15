@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { jobs } from "@/lib/site";
 import { Arrow } from "./Arrow";
+import { track } from "@/lib/analytics";
 import { Dialog } from "./Dialog";
 import dialogStyles from "./Dialog.module.css";
 import { EmailOptions } from "./EmailOptions";
@@ -23,7 +24,10 @@ export function CareersButton({ className }: { className?: string }) {
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
+      <button type="button" className={className} onClick={() => {
+          setOpen(true);
+          track("dialog_opened", { dialog: "careers" });
+        }}>
         Careers
       </button>
       <Dialog open={open} onClose={close} eyebrow="Careers" title="Build the live map with us.">
@@ -66,7 +70,10 @@ export function CareersButton({ className }: { className?: string }) {
           <button
             type="button"
             className={`button button-primary ${styles.send}`}
-            onClick={() => setSending(true)}
+            onClick={() => {
+              setSending(true);
+              track("application_started", { role });
+            }}
           >
             Send application <Arrow />
           </button>

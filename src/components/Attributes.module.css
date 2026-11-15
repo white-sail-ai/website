@@ -21,7 +21,18 @@
   align-content: start;
   gap: 12px;
   padding: clamp(24px, 2.6vw, 36px) clamp(20px, 2.2vw, 32px) clamp(28px, 3vw, 40px);
-  transition: background-color 0.3s var(--ease);
+  transition:
+    background-color 0.3s var(--ease),
+    opacity 0.7s var(--ease) var(--d, 0s),
+    transform 0.7s var(--ease) var(--d, 0s);
+}
+
+/* The cells rise in one after another as the frame unrolls. They follow the frame's own reveal
+   rather than watching for themselves: while the frame is still rolled up its clip hides them, so
+   the browser would not count them as on screen until the unroll had finished. */
+:root[data-reveal] .attributes:not([data-shown]) .attribute {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .attribute + .attribute {
@@ -73,7 +84,7 @@
   text-wrap: pretty;
 }
 
-/* Glyph motions, played once when the cell is shown. */
+/* Glyph motions, played once as each cell rises in (--d is the cell's own delay). */
 
 .ring,
 .cellDot,
@@ -83,42 +94,42 @@
   transform-origin: 24px 24px;
 }
 
-:root[data-reveal] .attribute:not([data-shown]) .ring {
+:root[data-reveal] .attributes:not([data-shown]) .ring {
   transform: scale(0.2);
   opacity: 0;
 }
 
 .ring {
   transition:
-    transform 0.9s cubic-bezier(0.3, 1.4, 0.4, 1) calc(0.45s + var(--k) * 0.12s),
-    opacity 0.4s var(--ease) calc(0.45s + var(--k) * 0.12s);
+    transform 0.9s cubic-bezier(0.3, 1.4, 0.4, 1) calc(var(--d) + 0.2s + var(--k) * 0.1s),
+    opacity 0.4s var(--ease) calc(var(--d) + 0.2s + var(--k) * 0.1s);
 }
 
-:root[data-reveal] .attribute:not([data-shown]) .cellDot {
+:root[data-reveal] .attributes:not([data-shown]) .cellDot {
   opacity: 0;
 }
 
 .cellDot {
-  transition: opacity 0.35s var(--ease) calc(0.45s + var(--k) * 0.07s);
+  transition: opacity 0.35s var(--ease) calc(var(--d) + 0.2s + var(--k) * 0.05s);
 }
 
-:root[data-reveal] .attribute:not([data-shown]) .hand {
+:root[data-reveal] .attributes:not([data-shown]) .hand {
   transform: rotate(-300deg);
 }
 
 .hand {
-  transition: transform 1.4s cubic-bezier(0.5, 0, 0.2, 1) 0.5s;
+  transition: transform 1.2s cubic-bezier(0.5, 0, 0.2, 1) calc(var(--d) + 0.2s);
 }
 
-:root[data-reveal] .attribute:not([data-shown]) .layer {
+:root[data-reveal] .attributes:not([data-shown]) .layer {
   transform: translateY(-14px);
   opacity: 0;
 }
 
 .layer {
   transition:
-    transform 0.7s var(--ease) calc(0.5s + var(--k) * 0.16s),
-    opacity 0.5s var(--ease) calc(0.5s + var(--k) * 0.16s);
+    transform 0.7s var(--ease) calc(var(--d) + 0.2s + var(--k) * 0.12s),
+    opacity 0.5s var(--ease) calc(var(--d) + 0.2s + var(--k) * 0.12s);
 }
 
 /* Tablets: two by two. */

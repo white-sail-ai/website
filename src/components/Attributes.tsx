@@ -90,8 +90,7 @@ export function Attributes() {
           <li
             key={label}
             className={styles.attribute}
-            data-reveal="rise"
-            style={{ "--d": `${0.25 + index * 0.12}s` } as CSSProperties}
+            style={{ "--d": `${0.1 + index * 0.08}s` } as CSSProperties}
           >
             <Glyph />
             <span className={styles.label}>{label}</span>

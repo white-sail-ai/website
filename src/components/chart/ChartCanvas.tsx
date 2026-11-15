@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { arrivalTime, type RippleLink } from "@/lib/ripple";
 import { drawFront, drawPulse, layoutFronts, type Front, type Inks, type Station } from "./fronts";
 import { drawField, fieldWarp, type Grid } from "./isobars";
-import { drawFlow, Wind } from "./wind";
+import { Wind } from "./wind";
 
 /** The leader line from a step marker down to its station, and when it appears. */
 type Stem = { x: number; top: number; bottom: number; ink: string; at: number };
@@ -16,15 +16,15 @@ const NAVY = "26 50 99";
 const PAPER = "251 248 241";
 // Brand gold and navy mixed 30% towards the paper, so the fronts sit back behind the title block.
 const INKS: Inks = { gold: "250 204 136", navy: "94 109 142", paper: PAPER };
-const PULSE_EVERY = 9;
+const PULSE_EVERY = 7;
 const FIELD_REFRESH = 0.2;
 
 type Props = { links: RippleLink[]; className?: string };
 
 /**
- * The chart's moving layer: isobars that drift with wind streaming along them, and the ripple's
- * fronts drawn between the stations rendered as HTML around it (any element in the same parent
- * with a data-station id), with gold that keeps flowing along them.
+ * The chart's moving layer: isobars that drift with a few streaks of wind along them, and the
+ * ripple's fronts drawn between the stations rendered as HTML around it (any element in the same
+ * parent with a data-station id), with one pulse running down the chain now and then.
  */
 export function ChartCanvas({ links, className }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -171,7 +171,6 @@ class Chart {
       const { start, duration } = front.link;
       const progress = this.still ? 1 : easeInOut(clamp((elapsed - start) / duration));
       drawFront(ctx, front, progress, INKS, this.unit);
-      if (!this.still && progress >= 1) drawFlow(ctx, front, elapsed - start - duration, INKS);
     }
     if (!this.still && elapsed >= this.settle) this.drawPulses(ctx, elapsed);
     this.clearUnderText(ctx);

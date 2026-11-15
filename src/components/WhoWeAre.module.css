@@ -1,73 +1,136 @@
-/* A deeper navy band, so the change from the map to who we are is unmistakable. The heading
-   sits beside the statement on its first baseline. */
+/* Who we are, on the chart paper that carries on below the hero: two framed teams whose gold
+   fronts converge on the fleet. */
 .section {
+  position: relative;
+  padding: clamp(96px, 13vw, 176px) var(--inset) clamp(56px, 7vw, 96px);
+  scroll-margin-top: var(--header-h);
+}
+
+.diagram {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
-  align-items: baseline;
-  gap: 28px clamp(32px, 5vw, 80px);
-  padding: clamp(72px, 11vw, 144px) var(--inset);
-  background: var(--deep);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto 140px auto;
+  column-gap: clamp(28px, 5vw, 72px);
 }
 
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.375rem, 2vw, 1.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+/* Framed like the hero's title block, with the team's station sitting across the top rule. */
+.card {
+  position: relative;
+  padding: calc(clamp(26px, 2.6vw, 34px) + 24px) clamp(22px, 2.6vw, 36px) clamp(24px, 2.6vw, 34px);
+  border: 1.5px solid var(--navy);
+  background: var(--paper);
 }
 
-.body {
+.fleet {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, 620px);
+  border: 2.5px solid var(--amber);
+  box-shadow: 0 24px 60px -36px rgb(160 110 30 / 0.55);
+}
+
+.station {
+  position: absolute;
+  top: 0;
+  left: clamp(22px, 2.6vw, 36px);
   display: grid;
-  gap: clamp(40px, 5vw, 64px);
+  place-items: center;
+  width: 56px;
+  aspect-ratio: 1;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: var(--navy);
+  box-shadow:
+    inset 0 0 0 1.5px var(--navy),
+    inset 0 0 0 4px var(--cream);
+  color: var(--cream);
 }
 
-.statement {
-  max-width: 25em;
-  font-size: clamp(1.625rem, 3vw, 2.625rem);
-  line-height: 1.3;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
+.fleet .station {
+  left: 50%;
+  translate: -50% -50%;
 }
 
-.statement strong {
-  font-weight: 600;
+.fleet .heading,
+.fleet .text {
+  text-align: center;
+  margin-inline: auto;
 }
 
-/* Three columns where they fit, one on phones. */
-.columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: 36px clamp(28px, 4vw, 48px);
+.glyph {
+  width: 52%;
+  height: 52%;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
-.column {
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
-}
-
-.built {
-  border-top-color: var(--amber);
+.accent {
+  fill: var(--amber);
+  stroke: none;
 }
 
 .heading {
   margin: 0 0 10px;
   font-family: var(--font-display);
-  font-size: 1.0625rem;
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .text {
-  max-width: 34ch;
-  font-size: clamp(1.0625rem, 1.3vw, 1.1875rem);
+  max-width: 38ch;
+  font-size: clamp(1.0625rem, 1.25vw, 1.1875rem);
   line-height: 1.55;
   color: var(--muted);
 }
 
-@media (max-width: 960px) {
-  .section {
+/* The fronts run from the middle of each team's card to the fleet's station. */
+.fronts {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.fronts path {
+  fill: none;
+  stroke: rgb(250 185 91 / calc(1 - var(--k) * 0.12));
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Drawn on once the diagram scrolls in, each strand a beat after the last. */
+:root[data-reveal] .fronts:not([data-shown]) path {
+  stroke-dashoffset: 1;
+}
+
+.fronts[data-shown] path {
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.6, 0, 0.2, 1) calc(0.35s + var(--k) * 0.07s + var(--side) * 0.12s);
+}
+
+:root[data-reveal] .fronts:not([data-shown]) {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .diagram {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 52px;
+  }
+
+  .fronts {
+    display: none;
+  }
+
+  /* No fronts to wait for on a phone. */
+  .fleet[data-reveal] {
+    --d: 0.2s !important;
   }
 }

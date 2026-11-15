@@ -6,6 +6,7 @@ import { attributes } from "./Attributes";
 import { CareersButton } from "./CareersButton";
 import { ContactButton } from "./ContactButton";
 import { EarlyAccessButton } from "./EarlyAccessButton";
+import { CompassGlyph, EngineersGlyph, FleetGlyph } from "./section/glyphs";
 import { team } from "./WhoWeAre";
 import styles from "./SiteNav.module.css";
 
@@ -199,10 +200,16 @@ export function SiteNav() {
 
         <div ref={viewportRef} className={styles.viewport} data-open={open ? "" : undefined}>
           <Panel id="who" state={panelState("who")} panels={panelRefs}>
-            {team.map(({ title, brief, built }) => (
+            {team.map(({ title, brief, built }, index) => (
               <Option key={title} href="/#who-we-are" onPick={closeAll} title={title} line={brief}>
                 <span className={styles.tile} data-accent={built ? "" : undefined} aria-hidden="true">
-                  {built ? <FleetGlyph /> : <PersonGlyph />}
+                  {built ? (
+                    <FleetGlyph accentClass={styles.accent} />
+                  ) : index === 0 ? (
+                    <EngineersGlyph accentClass={styles.accent} />
+                  ) : (
+                    <CompassGlyph accentClass={styles.accent} />
+                  )}
                 </span>
               </Option>
             ))}
@@ -286,27 +293,5 @@ function Option({ href, title, line, onPick, children }: OptionProps) {
         <span className={styles.optionLine}>{line}</span>
       </span>
     </Link>
-  );
-}
-
-// A person at a desk, for the two teams of people.
-function PersonGlyph() {
-  return (
-    <svg viewBox="0 0 48 48">
-      <circle cx="24" cy="17" r="8" />
-      <path d="M9 41 C9 31 16 27 24 27 C32 27 39 31 39 41" />
-    </svg>
-  );
-}
-
-// Three sails in formation, for the fleet the two teams build.
-function FleetGlyph() {
-  return (
-    <svg viewBox="0 0 48 48">
-      <path d="M8 36 L20 12 L20 36 Z" />
-      <path d="M24 36 L34 16 L34 36 Z" />
-      <circle cx="40" cy="12" r="3" className={styles.accent} />
-      <path d="M4 41 H44" />
-    </svg>
   );
 }

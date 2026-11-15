@@ -1,27 +1,28 @@
-/* The same side heading as Who we are, beside the three audiences, on a raised band below Capabilities. */
+/* The closing band: navy like the header, with the chart's isobars faint in cream behind it. */
 .section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
-  align-items: start;
-  gap: 28px clamp(32px, 5vw, 80px);
-  padding: clamp(72px, 10vw, 128px) var(--inset);
-  background: var(--raised);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(96px, 12vw, 168px) var(--inset) clamp(88px, 11vw, 144px);
+  background: var(--navy);
+  color: var(--cream);
 }
 
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.375rem, 2vw, 1.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+.paper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.32;
+  mask-image: linear-gradient(to right, transparent, black 55%);
 }
 
 /* The three audiences side by side, each symbol above its word. */
 .audience {
   display: grid;
   grid-template-columns: repeat(3, max-content);
-  gap: 24px clamp(32px, 5.5vw, 88px);
+  gap: 24px clamp(40px, 7vw, 120px);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -33,14 +34,19 @@
   gap: clamp(14px, 1.6vw, 20px);
 }
 
-/* Navy and rounded like the app icon and the favicon, its symbol in cream like the chart's stations. */
+/* Cream and rounded like the app icon, its symbol in navy like the chart's ink. */
 .tile {
   display: grid;
   place-items: center;
   width: clamp(56px, 5.6vw, 76px);
   aspect-ratio: 1;
   border-radius: 22%;
-  background: var(--navy);
+  background: var(--cream);
+  transition: transform 0.4s var(--ease);
+}
+
+.item:hover .tile {
+  transform: translateY(-4px) rotate(-3deg);
 }
 
 .glyph {
@@ -48,7 +54,7 @@
   height: 64%;
   overflow: visible;
   fill: none;
-  stroke: var(--cream);
+  stroke: var(--navy);
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -67,7 +73,7 @@
 }
 
 .dot {
-  fill: var(--cream);
+  fill: var(--navy);
   stroke: none;
 }
 
@@ -78,7 +84,7 @@
 
 .label {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -87,18 +93,44 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
-  margin-top: clamp(40px, 5vw, 64px);
+  margin-top: clamp(56px, 7vw, 96px);
+  padding-top: clamp(24px, 3vw, 32px);
+  border-top: 1.5px solid rgb(252 247 243 / 0.35);
 }
 
-@media (max-width: 960px) {
-  .section {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.primary {
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.primary:hover {
+  border-color: var(--amber);
+  background: var(--amber);
+}
+
+.secondary {
+  border-color: rgb(252 247 243 / 0.7);
+  background: transparent;
+  color: var(--cream);
+  font-weight: 700;
+}
+
+.secondary:hover {
+  background: rgb(252 247 243 / 0.1);
+}
+
+.reply {
+  margin-left: auto;
+  font-size: 0.9375rem;
+  color: rgb(252 247 243 / 0.72);
 }
 
 /* Too narrow for a row: back to a list, each symbol beside its word. */
-@media (max-width: 600px) {
+@media (max-width: 680px) {
   .audience {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -106,5 +138,10 @@
   .item {
     grid-template-columns: auto 1fr;
     align-items: center;
+  }
+
+  .reply {
+    width: 100%;
+    margin-left: 0;
   }
 }

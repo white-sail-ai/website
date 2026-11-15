@@ -190,13 +190,20 @@
   /* Every layer's dash ends at the same point, so the short bright head leads the longer, fainter tails. */
   stroke-dashoffset: calc(var(--len) * 1px);
   opacity: calc(1.15 - var(--len) / 20);
-  visibility: hidden;
+}
+
+/* One lap, then a long rest, so the light catches the eye now and then rather than all the time. */
+.trace {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .trace {
+    animation: trace-show 18s linear 4s infinite;
+  }
+
   .trace rect {
-    visibility: visible;
-    animation: trace 11s linear 3s infinite backwards;
+    animation: trace 18s linear 4s infinite;
   }
 }
 
@@ -204,8 +211,21 @@
   from {
     stroke-dashoffset: calc(var(--len) * 1px);
   }
+  45%,
   to {
     stroke-dashoffset: calc(var(--len) * 1px - 100px);
+  }
+}
+
+@keyframes trace-show {
+  from,
+  45%,
+  to {
+    opacity: 0;
+  }
+  3%,
+  40% {
+    opacity: 0.85;
   }
 }
 

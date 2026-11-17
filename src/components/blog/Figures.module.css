@@ -1,0 +1,167 @@
+/* The essay's smaller figures: one ruled frame each, sized to the text column. */
+.figure {
+  container-type: inline-size;
+  margin: clamp(32px, 4.5vw, 48px) 0;
+}
+
+.frame {
+  padding: clamp(20px, 3vw, 32px);
+  border: 1.5px solid var(--navy);
+  background: var(--raised);
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.line {
+  font-size: 14px;
+  fill: var(--muted);
+}
+
+.centre {
+  font-size: 15px;
+  font-style: italic;
+  fill: var(--muted);
+}
+
+/* Small multiples: side by side, or stacked with the drawing beside its text when narrow. */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.panels[data-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.panel {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.mini {
+  width: 100%;
+  max-width: 170px;
+  overflow: visible;
+}
+
+.panelText {
+  display: grid;
+  gap: 2px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.panelText strong {
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+
+.panel[data-accent] .panelText strong {
+  text-decoration: underline 2.5px var(--amber);
+  text-underline-offset: 5px;
+}
+
+@container (max-width: 520px) {
+  .panels,
+  .panels[data-count="2"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel {
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: center;
+    justify-items: start;
+    gap: 18px;
+    text-align: left;
+  }
+}
+
+/* The funnel: each stage a narrower navy-ruled bar, the last one amber. */
+.funnel {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.body .funnel > li,
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: var(--w);
+  min-width: min(100%, 250px);
+  margin: 0 !important;
+  padding: 10px 14px !important;
+  border-left: 4px solid var(--navy);
+  background: rgb(26 50 99 / 0.07);
+}
+
+.step::before {
+  content: none !important;
+}
+
+.step:last-child {
+  border-left-color: var(--amber);
+  background: rgb(250 185 91 / 0.2);
+}
+
+.value {
+  flex: none;
+  min-width: 4.6em;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.stepLabel {
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.funnelNote {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 20px !important;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.big {
+  flex: none;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Article, Cite, Lines } from "@/components/blog/Article";
+import { CapacityFunnel, MoneyLoop, PartialViews, ResearchChain } from "@/components/blog/Figures";
 import { FollowAlong } from "@/components/blog/FollowAlong";
 import { Questions, type Question } from "@/components/blog/Questions";
 import { ResearchWorkflow } from "@/components/blog/ResearchWorkflow";
@@ -52,7 +53,7 @@ const QUESTIONS: Question[] = [
     ),
   },
   {
-    q: "Why the name White Sail?",
+    q: "Why White Sail?",
     a: (
       <p>
         Very few symbols carry the same meaning across cultures, religions, and continents. A white sail is one of
@@ -70,12 +71,13 @@ const QUESTIONS: Question[] = [
 export default function WhiteSailPhilosophy() {
   return (
     <Article post={post}>
-      <h2 id="following-the-dollars">Following the Dollars</h2>
+      <h2 id="follow-the-money">Follow the Money</h2>
       <p>
         Every dollar earned comes from somewhere, and every dollar spent goes somewhere. Companies, investors, and
         governments try to perceive and predict how those dollars flow, then decide based on what they see: corporate
         strategies, investments, policies. Those decisions reshape the flow. And the loop goes on.
       </p>
+      <MoneyLoop />
       <p>
         We call that effort financial markets research: understanding how money moves so you can decide what to do
         about it. Investors do it to allocate capital, companies to set strategy, and governments to shape policy.
@@ -116,6 +118,7 @@ export default function WhiteSailPhilosophy() {
         </li>
       </ul>
       <p>Each sees a piece. Neither sees the whole.</p>
+      <PartialViews />
       <p>
         We want to build the whole: a live, connected map of how money moves between every company, market, and
         policy. In AI terms, a world model of the global economy. That is the vision behind White Sail Labs, and the
@@ -151,6 +154,7 @@ export default function WhiteSailPhilosophy() {
         For each thesis, they research only a few companies out of a massive universe. Again: capacity, not
         conviction.
       </p>
+      <CapacityFunnel />
       <p>
         Analysts model those companies using a fraction of the available data. They’re short on time, and they often
         don’t know how to query anything that isn’t in the 10-Q.
@@ -178,38 +182,6 @@ export default function WhiteSailPhilosophy() {
         valuable. But better?
       </p>
 
-      <h2 id="why-now">Why Now</h2>
-      <p>
-        For the first time, research labor is becoming effectively unlimited. The cost of AI agents is collapsing, and
-        work that took an analyst a week can run in the background for the price of compute.
-      </p>
-      <ul>
-        <li>
-          <strong>Reading is nearly free.</strong> Models can read filings, transcripts, and alternative data at
-          near-zero marginal cost.
-        </li>
-        <li>
-          <strong>Agents can work for hours.</strong> They run long, multi-step research on their own: pull the data,
-          cross-check it, follow a lead, write it up.
-        </li>
-        <li>
-          <strong>Reasoning models can analyze, not just summarize.</strong> They can build an argument, test it
-          against the evidence, and flag what doesn’t fit.
-        </li>
-        <li>
-          <strong>Data has exploded.</strong> Alternative data keeps growing, and almost none of it fits into a human
-          analyst’s day.
-        </li>
-        <li>
-          <strong>Compute keeps getting cheaper,</strong> so all of the above keeps getting cheaper too.
-        </li>
-        <li>
-          <strong>The incentives point one way.</strong> The first firms with no capacity limits will see what
-          everyone else can’t, and everyone else will have to follow.
-        </li>
-      </ul>
-      <p>It’s obvious this is coming. We want to be the ones building it.</p>
-
       <h2 id="how-we-think-about-it">How We Think About It at White Sail Labs</h2>
       <p>If labor were infinite, how would we redefine financial markets research?</p>
       <ol>
@@ -220,15 +192,13 @@ export default function WhiteSailPhilosophy() {
         </li>
         <li>
           <strong>Going deeper.</strong> Every investor, company, and public body can research the way a quant hedge
-          fund does, pulling alternative signals at scale and combining them with its own proprietary judgment.
+          fund does, pulling alternative signals at scale and combining them with its own proprietary judgment. That
+          means following every company’s customers, suppliers, and shareholders, and the decisions that shaped them.
+          These are the connections no human analyst has time to trace, and they are the edges of the live map.
+          <ResearchChain />
         </li>
         <li>
-          <strong>Across the chain.</strong> Follow every company’s customers, suppliers, and shareholders, and the
-          decisions that shaped them. These are the connections no human analyst has time to trace, and they are the
-          edges of the live map.
-        </li>
-        <li>
-          <strong>Persistence.</strong> Today, research has to land at the right time. An investor who finds the right
+          <strong>All the time.</strong> Today, research has to land at the right time. An investor who finds the right
           deal at the wrong time, or a strategy team whose findings arrive after the decision window, watches the work
           go stale on a shelf. AI can keep that research alive and current until the time is right. It also fixes
           turnover: analysts move on and teams reshuffle, and today the knowledge leaves with them. Living research
@@ -238,6 +208,17 @@ export default function WhiteSailPhilosophy() {
       <p>
         Put together, every company gets a living research spine: thesis, drivers and risks, timeline, evidence, open
         questions, numbers and comps. It keeps compounding while your team is away from the desk.
+      </p>
+      <h2 id="why-now">Why Now</h2>
+      <p>
+        For the first time, research labor is becoming effectively unlimited. Models read filings, transcripts, and
+        alternative data at near-zero marginal cost. Agents run long, multi-step research on their own for hours.
+        Reasoning models test an argument against the evidence instead of just summarizing it. And compute keeps
+        getting cheaper.
+      </p>
+      <p>
+        The first firms with no capacity limits will see what everyone else can’t, and everyone else will have to
+        follow. It’s obvious this is coming. We want to be the ones building it.
       </p>
       <p>
         We’re about to start publishing concrete deep dives and examples of what this looks like in practice. The

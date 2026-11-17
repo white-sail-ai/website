@@ -195,7 +195,6 @@ export default function WhiteSailPhilosophy() {
           fund does, pulling alternative signals at scale and combining them with its own proprietary judgment. That
           means following every company’s customers, suppliers, and shareholders, and the decisions that shaped them.
           These are the connections no human analyst has time to trace, and they are the edges of the live map.
-          <ResearchChain />
         </li>
         <li>
           <strong>All the time.</strong> Today, research has to land at the right time. An investor who finds the right
@@ -205,6 +204,7 @@ export default function WhiteSailPhilosophy() {
           stays.
         </li>
       </ol>
+      <ResearchChain />
       <p>
         Put together, every company gets a living research spine: thesis, drivers and risks, timeline, evidence, open
         questions, numbers and comps. It keeps compounding while your team is away from the desk.

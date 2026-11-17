@@ -234,7 +234,6 @@
 @container (max-width: 899px) {
   .flow {
     display: block;
-    max-width: 34rem;
   }
 
   .team {

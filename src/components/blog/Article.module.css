@@ -21,7 +21,7 @@
 }
 
 .head {
-  max-width: 46rem;
+  max-width: 40rem;
 }
 
 .tag {
@@ -70,7 +70,9 @@
 }
 
 /* The text column. Its children are the essay's blocks; a figure may break out to full width. */
+/* One column for text, figures, and rules alike, so every left and right edge lines up. */
 .body {
+  max-width: 40rem;
   margin-top: clamp(40px, 6vh, 64px);
   padding-top: clamp(32px, 5vh, 48px);
   border-top: 1.5px solid var(--navy);
@@ -80,10 +82,6 @@
 
 .body > * {
   max-width: 40rem;
-}
-
-.body > figure {
-  max-width: none;
 }
 
 .body h2 {

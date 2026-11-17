@@ -10,7 +10,10 @@ export function Footer() {
       <span>
         © {year} {site.name}
       </span>
-      <nav className={styles.legal} aria-label="Legal">
+      <nav className={styles.legal} aria-label="Footer">
+        <Link href="/blog" className={`hit-area ${styles.link}`}>
+          Blog
+        </Link>
         <Link href="/privacy" className={`hit-area ${styles.link}`}>
           Privacy
         </Link>

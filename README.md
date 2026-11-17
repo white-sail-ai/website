@@ -21,6 +21,8 @@ src/
     page.tsx          home: header, a hero screen (map behind, headline panel on top,
                       attributes strip at the bottom), Who we are, Built for, then the footer
     privacy/, terms/  legal pages (drafts; see Open items)
+    blog/             the blog index, and one folder per post (its text in page.tsx, its
+                      share card in opengraph-image.png); posts are listed in lib/posts.ts
     icon.svg          favicon (the sail on a navy tile)
   components/
     Header, Footer    the header sits on the navy page, so the logo reads as in the app
@@ -31,6 +33,9 @@ src/
     MarketMap         canvas "live market map" filling the hero behind the content
     WhoWeAre          deep navy band below the hero: the lab, then Applied AI Engineers,
                       Market Analysts, and the Always-on Agents Fleet
+  components/blog/    Article (a post's frame), ResearchWorkflow (the investing figure),
+                      Questions (the Q&A), FollowAlong (the newsletter call to action)
+  lib/posts.ts        the posts' titles, subtitles and dates, newest first
   lib/site.ts         site name, headline, description, contact address, email links
   lib/forms.ts        posts the early-access and newsletter forms to the Worker
   lib/analytics.ts    track(): custom PostHog events for the calls to action

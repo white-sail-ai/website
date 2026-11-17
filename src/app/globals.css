@@ -11,6 +11,8 @@
   /* Paper a shade down for bands, and a shade up for dialogs and cards. */
   --deep: #efefe9;
   --raised: #fdfdfb;
+  /* Form fields: a step brighter than the dialogs they sit in. */
+  --field: #ffffff;
   --muted: rgb(26 50 99 / 0.74);
   --rule: rgb(26 50 99 / 0.16);
   --error: #8c4a06;

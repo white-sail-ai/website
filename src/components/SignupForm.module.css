@@ -25,7 +25,7 @@
   padding: 12px 14px;
   border: 1px solid rgb(26 50 99 / 0.6);
   border-radius: var(--radius);
-  background: var(--paper);
+  background: var(--field);
   color: var(--ink);
   font: inherit;
   font-size: 1rem; /* 16px+ stops iOS zooming on focus */
@@ -94,7 +94,7 @@
   padding: 18px;
   border: 1px solid var(--rule);
   border-top: 2px solid var(--amber);
-  background: var(--paper);
+  background: var(--field);
 }
 
 .done strong {

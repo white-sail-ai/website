@@ -25,7 +25,7 @@
   padding: 16px 18px;
   border: 1px solid rgb(26 50 99 / 0.3);
   border-radius: var(--radius);
-  background: var(--paper);
+  background: var(--field);
   cursor: pointer;
   transition:
     border-color 0.2s var(--ease),

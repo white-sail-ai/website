@@ -8,7 +8,7 @@
   overflow: auto;
   border: 1.5px solid var(--navy);
   border-radius: 2px;
-  background: var(--raised);
+  background: var(--paper);
   color: var(--navy);
   font-size: 1.0625rem;
   box-shadow: 0 32px 80px -32px rgb(18 34 74 / 0.5);

@@ -1,0 +1,24 @@
+/* Framed like the hero's title block, with an amber rule down its left edge. */
+.box {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  max-width: 40rem;
+  margin-top: clamp(56px, 8vw, 88px);
+  padding: clamp(24px, 3.4vw, 36px);
+  border: 1.5px solid var(--navy);
+  box-shadow: inset 5px 0 0 var(--amber);
+  background: var(--raised);
+}
+
+.box .title {
+  margin: 0;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+.text a {
+  white-space: nowrap;
+}

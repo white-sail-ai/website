@@ -18,6 +18,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  // Lets pages give Open Graph and canonical URLs as paths.
+  metadataBase: new URL(site.url),
   title: `${site.name} | ${site.headline.join(" ")}`,
   description: site.description,
   openGraph: {

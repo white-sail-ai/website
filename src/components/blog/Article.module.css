@@ -1,0 +1,202 @@
+/* A blog post: the legal pages' readable column, set a step larger for long reading, under the
+   section heads' uppercase tag and rule. */
+
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* The navy band stays at the top while the post scrolls, so its amber line can track reading. */
+.band {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.main {
+  padding: clamp(44px, 9vh, 104px) var(--inset) clamp(64px, 12vh, 128px);
+}
+
+.head {
+  max-width: 46rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.tagLink {
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s var(--ease);
+}
+
+.tagLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.rule {
+  flex: 1;
+  max-width: 160px;
+  margin-left: 4px;
+  border-top: 1px solid rgb(26 50 99 / 0.55);
+}
+
+.title {
+  margin-top: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(2.375rem, 6vw, 4.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.subtitle {
+  margin-top: clamp(16px, 2vw, 24px);
+  max-width: 36em;
+  font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* The text column. Its children are the essay's blocks; a figure may break out to full width. */
+.body {
+  margin-top: clamp(40px, 6vh, 64px);
+  padding-top: clamp(32px, 5vh, 48px);
+  border-top: 1.5px solid var(--navy);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.body > * {
+  max-width: 40rem;
+}
+
+.body > figure {
+  max-width: none;
+}
+
+.body h2 {
+  margin: 2.6em 0 0.7em;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.body > h2:first-child {
+  margin-top: 0;
+}
+
+.body p + p,
+.body ul + p,
+.body ol + p,
+.body p + ul,
+.body p + ol {
+  margin-top: 1em;
+}
+
+.body ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.body ul li::marker {
+  color: var(--amber);
+}
+
+.body li + li {
+  margin-top: 0.6em;
+}
+
+/* Numbered points take the sections' amber-ringed step markers. */
+.body ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: point;
+}
+
+.body ol > li {
+  position: relative;
+  padding-left: 48px;
+  counter-increment: point;
+}
+
+.body ol > li + li {
+  margin-top: 1.1em;
+}
+
+.body ol > li::before {
+  content: counter(point);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  aspect-ratio: 1;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.body strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.body a {
+  text-decoration: underline;
+  text-decoration-color: rgb(26 50 99 / 0.45);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+  transition: text-decoration-color 0.2s var(--ease);
+}
+
+.body a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* A run of short lines, set apart: the rhetorical questions in Why This Matters. */
+.body .questions {
+  margin-block: 1.4em;
+  padding-left: 20px;
+  border-left: 2.5px solid var(--amber);
+}
+
+.body .questions p + p {
+  margin-top: 0.5em;
+}
+
+.cite {
+  margin-left: 0.15em;
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+.body .cite a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.body .cite a:hover {
+  text-decoration: underline;
+}

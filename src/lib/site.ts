@@ -2,6 +2,7 @@
 // speaks to everyone who acts on its research, not only investors.
 export const site = {
   name: "White Sail Labs",
+  url: "https://white-sail.ai",
   email: "abotzer@white-sail.ai",
   headline: ["Human decisions.", "Better informed."],
   subline: "By limitless agentic market research.",

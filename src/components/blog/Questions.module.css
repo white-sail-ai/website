@@ -1,0 +1,102 @@
+/* Questions as ruled rows, each with a plus that turns to a minus as the answer opens. */
+.list {
+  max-width: 40rem;
+  border-top: 1.5px solid var(--navy);
+}
+
+.item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 64px;
+  padding-block: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:hover .question {
+  text-decoration-color: rgb(26 50 99 / 0.45);
+}
+
+.question {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--ink);
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s var(--ease);
+}
+
+.icon {
+  position: relative;
+  flex: none;
+  width: 30px;
+  aspect-ratio: 1;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 1.75px;
+  translate: -50% -50%;
+  background: var(--navy);
+  transition: rotate 0.3s var(--ease);
+}
+
+.icon::after {
+  rotate: 90deg;
+}
+
+.item[open] .icon::after {
+  rotate: 0deg;
+}
+
+.answer {
+  padding: 0 52px 22px 0;
+}
+
+/* Where the browser can, the answer slides open rather than appearing at once. */
+@supports selector(::details-content) {
+  @media (prefers-reduced-motion: no-preference) {
+    .item {
+      interpolate-size: allow-keywords;
+    }
+
+    .item::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size 0.35s var(--ease),
+        content-visibility 0.35s allow-discrete;
+    }
+
+    .item[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .answer {
+    padding-right: 0;
+  }
+}

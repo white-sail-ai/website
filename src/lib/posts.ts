@@ -1,4 +1,8 @@
-// The blog's posts, newest first. Each post's text lives in its own page under src/app/blog/.
+import fs from "node:fs";
+import path from "node:path";
+
+// The blog's posts, read from content/blog/*.md at build time. Each file starts with a front
+// matter block (title, subtitle, date) and the rest is the post's Markdown.
 export type Post = {
   slug: string;
   title: string;
@@ -6,21 +10,46 @@ export type Post = {
   subtitle: string;
   /** ISO date the post went live. */
   published: string;
+  /** The post's Markdown, without the front matter. */
+  body: string;
 };
 
-export const posts: Post[] = [
-  {
-    slug: "the-white-sail-philosophy",
-    title: "The White Sail Philosophy",
-    subtitle:
-      "How we think about financial markets research, and why we’re building a live, connected map of how money moves.",
-    published: "2026-11-17",
-  },
-];
+const DIR = path.join(process.cwd(), "content/blog");
+
+function read(file: string): Post {
+  const raw = fs.readFileSync(path.join(DIR, file), "utf8");
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!match) throw new Error(`${file}: missing the --- front matter block`);
+  const fields = Object.fromEntries(
+    match[1]
+      .split(/\r?\n/)
+      .map((line) => line.match(/^(\w+):\s*(.*)$/))
+      .filter((m): m is RegExpMatchArray => m !== null)
+      .map(([, key, value]) => [key, value.trim().replace(/^["'](.*)["']$/, "$1")]),
+  );
+  for (const key of ["title", "subtitle", "date"]) {
+    if (!fields[key]) throw new Error(`${file}: front matter needs a "${key}"`);
+  }
+  return {
+    slug: file.replace(/\.md$/, ""),
+    title: fields.title,
+    subtitle: fields.subtitle,
+    published: fields.date,
+    // Notes to the writer, in <!-- --> comments, never reach the page.
+    body: match[2].replace(/<!--[\s\S]*?-->\n?/g, ""),
+  };
+}
+
+/** Every post, newest first. */
+export const posts: Post[] = fs
+  .readdirSync(DIR)
+  .filter((file) => file.endsWith(".md"))
+  .map(read)
+  .sort((a, b) => b.published.localeCompare(a.published));
 
 export function getPost(slug: string): Post {
   const post = posts.find((p) => p.slug === slug);
-  if (!post) throw new Error(`No post with slug "${slug}"`);
+  if (!post) throw new Error(`No post at content/blog/${slug}.md`);
   return post;
 }
 

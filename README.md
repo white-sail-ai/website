@@ -21,8 +21,7 @@ src/
     page.tsx          home: header, a hero screen (map behind, headline panel on top,
                       attributes strip at the bottom), Who we are, Built for, then the footer
     privacy/, terms/  legal pages (drafts; see Open items)
-    blog/             the blog index, and one folder per post (its text in page.tsx, its
-                      share card in opengraph-image.png); posts are listed in lib/posts.ts
+    blog/             the blog index, and blog/[slug]/ which renders each post's Markdown
     icon.svg          favicon (the sail on a navy tile)
   components/
     Header, Footer    the header sits on the navy page, so the logo reads as in the app
@@ -35,7 +34,10 @@ src/
                       Market Analysts, and the Always-on Agents Fleet
   components/blog/    Article (a post's frame), ResearchWorkflow (the investing figure),
                       Questions (the Q&A), FollowAlong (the newsletter call to action)
-  lib/posts.ts        the posts' titles, subtitles and dates, newest first
+  components/blog/PostBody.tsx  turns a post's Markdown into the page (figures, Q&A, newsletter box)
+  lib/posts.ts        reads content/blog/*.md: front matter, then the post's Markdown
+content/blog/         one Markdown file per post; see Writing a blog post below
+public/blog/og/       each post's 1200 x 630 share card, named <slug>.png
   lib/site.ts         site name, headline, description, contact address, email links
   lib/forms.ts        posts the early-access and newsletter forms to the Worker
   lib/analytics.ts    track(): custom PostHog events for the calls to action
@@ -46,6 +48,35 @@ public/.nojekyll      tells GitHub Pages to serve the _next/ folder as is
 ```
 
 The hero fills the first screen (`100dvh`, header included) and its open middle row, where the map shows through and reacts to the pointer, takes whatever height the headline and attributes leave. On screens too short for the hero the map keeps a 72px strip and the hero grows. Who we are sits below on a deeper navy band, then Built for closes the page with the two calls to action again; the header's "Who we are" link scrolls to it (hidden below 372px, where the header only has room for Careers). On phones the attributes become a row you swipe through and the headline is sized to the screen width.
+
+## Writing a blog post
+
+Each post is one Markdown file in `content/blog/`. Its file name is its address:
+`the-white-sail-philosophy.md` is published at `/blog/the-white-sail-philosophy`. The file starts
+with a front matter block:
+
+```
+---
+title: The White Sail Philosophy
+subtitle: The italic line under the title, also used as the page description.
+date: 2026-11-17
+---
+```
+
+Then write ordinary Markdown: `## Headings`, paragraphs, `**bold**`, lists and links. A few things
+have a special meaning:
+
+- `![Short description](figure:money-loop)` on a line of its own places a figure. The figures are
+  `money-loop`, `partial-views`, `research-workflow`, `capacity-funnel` and `research-chain`
+  (drawn in `src/components/blog/`).
+- A `>` quote block is set apart with an amber rule.
+- `[[1]](https://…)` becomes a superscript footnote link.
+- Under `## Q&A`, each `### Question` opens to the text below it.
+- A `## Follow Along` section becomes the framed newsletter box with the sign-up button.
+- `<!-- comments -->` are notes to yourself and never appear on the page.
+
+To publish, open a pull request with the file and merge it. For a share card, add
+`public/blog/og/<slug>.png` (1200 x 630); without one, links show the title and subtitle only.
 
 ## Early access and newsletter
 

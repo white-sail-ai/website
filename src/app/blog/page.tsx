@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { PostCover } from "@/components/blog/PostCover";
 import { Header } from "@/components/Header";
 import { formatDate, posts } from "@/lib/posts";
 import { site } from "@/lib/site";
@@ -27,11 +28,14 @@ export default function Blog() {
           {posts.map((post) => (
             <li key={post.slug}>
               <Link href={`/blog/${post.slug}`} className={styles.post}>
-                <time dateTime={post.published} className={styles.date}>
-                  {formatDate(post.published)}
-                </time>
-                <span className={styles.name}>{post.title}</span>
-                <span className={styles.subtitle}>{post.subtitle}</span>
+                <PostCover slug={post.slug} className={styles.cover} />
+                <span className={styles.text}>
+                  <time dateTime={post.published} className={styles.date}>
+                    {formatDate(post.published)}
+                  </time>
+                  <span className={styles.name}>{post.title}</span>
+                  <span className={styles.subtitle}>{post.subtitle}</span>
+                </span>
               </Link>
             </li>
           ))}

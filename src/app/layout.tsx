@@ -10,10 +10,11 @@ const zenKaku = Zen_Kaku_Gothic_Antique({
   subsets: ["latin"],
 });
 
-// Only the logo's wordmark is set in Cormorant Garamond, in spaced capitals.
+// Cormorant Garamond: the logo's wordmark, in spaced capitals, and the blog's titles.
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
-  weight: ["600"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
 

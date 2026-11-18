@@ -20,13 +20,17 @@
   padding: clamp(44px, 9vh, 104px) var(--inset) clamp(64px, 12vh, 128px);
 }
 
+/* The title block sits centred over the column, set like a printed essay's title page. */
 .head {
   max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .tag {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   font-family: var(--font-display);
   font-size: 0.8125rem;
@@ -46,24 +50,30 @@
   text-decoration-color: currentColor;
 }
 
+/* A short rule either side of the tag. */
+.tag::before,
 .rule {
-  flex: 1;
-  max-width: 160px;
-  margin-left: 4px;
+  content: "";
+  width: 40px;
+  margin-inline: 4px;
   border-top: 1px solid rgb(26 50 99 / 0.55);
 }
 
 .title {
   margin-top: clamp(18px, 2.4vw, 28px);
-  font-size: clamp(2.375rem, 6vw, 4.25rem);
-  letter-spacing: -0.03em;
-  line-height: 1.02;
+  font-family: var(--font-wordmark);
+  font-size: clamp(2.875rem, 7vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
 }
 
 .subtitle {
-  margin-top: clamp(16px, 2vw, 24px);
-  max-width: 36em;
-  font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
+  max-width: 30em;
+  margin: clamp(16px, 2vw, 24px) auto 0;
+  font-family: var(--font-wordmark);
+  font-size: clamp(1.3125rem, 2vw, 1.5rem);
+  font-weight: 500;
   font-style: italic;
   line-height: 1.5;
   color: var(--muted);
@@ -73,6 +83,7 @@
 /* One column for text, figures, and rules alike, so every left and right edge lines up. */
 .body {
   max-width: 40rem;
+  margin-inline: auto;
   margin-top: clamp(40px, 6vh, 64px);
   padding-top: clamp(32px, 5vh, 48px);
   border-top: 1.5px solid var(--navy);

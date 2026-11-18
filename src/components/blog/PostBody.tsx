@@ -2,17 +2,15 @@ import { Fragment, type ReactNode } from "react";
 import Markdown, { defaultUrlTransform, type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Cite, Lines } from "./Article";
-import { CapacityFunnel, MoneyLoop, PartialViews, ResearchChain } from "./Figures";
+import { DecisionChain, MoneyLoop, PartialViews, ResearchChain } from "./Figures";
 import { FollowAlong } from "./FollowAlong";
 import { Questions, type Question } from "./Questions";
-import { ResearchWorkflow } from "./ResearchWorkflow";
 
 /** The figures a post can place with ![alt](figure:name) on a line of its own. */
 const FIGURES: Record<string, () => ReactNode> = {
   "money-loop": MoneyLoop,
   "partial-views": PartialViews,
-  "research-workflow": ResearchWorkflow,
-  "capacity-funnel": CapacityFunnel,
+  "decision-chain": DecisionChain,
   "research-chain": ResearchChain,
 };
 

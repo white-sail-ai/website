@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import styles from "./Figures.module.css";
 
 // The essay's smaller figures, drawn in the chart's marks: navy ink, amber accents, on raised paper.
@@ -27,7 +27,7 @@ export function MoneyLoop() {
     { x: 70, y: 150, title: "Reshape", line: "the flow" },
   ];
   return (
-    <Frame label="The loop: money flows, people perceive and predict it, decide, and so reshape the flow." caption="The loop financial markets research tries to see, and that its decisions feed back into.">
+    <Frame label="Money flows, people perceive and predict it, decide, and so reshape the flow." caption="The cycle financial markets research tries to see, and that its decisions feed back into.">
       <svg viewBox="0 0 400 300" className={styles.svg} aria-hidden="true">
         <defs>{arrow("loop-arrow")}</defs>
                 {[
@@ -38,12 +38,6 @@ export function MoneyLoop() {
         ].map((d) => (
           <path key={d} d={d} fill="none" stroke="var(--navy)" strokeWidth="1.5" markerEnd="url(#loop-arrow)" />
         ))}
-        <text x="200" y="146" textAnchor="middle" className={styles.centre}>
-          And the loop
-        </text>
-        <text x="200" y="166" textAnchor="middle" className={styles.centre}>
-          goes on.
-        </text>
         {nodes.map((n, i) => (
           <g key={n.title}>
             <circle cx={n.x} cy={n.y - 8} r="5" fill={i === 0 ? "var(--amber)" : "var(--navy)"} />
@@ -147,35 +141,6 @@ export function PartialViews() {
   );
 }
 
-/** How few companies make it from the universe to in-depth research. Orders of magnitude only. */
-export function CapacityFunnel() {
-  const steps = [
-    { value: "~50,000", label: "listed companies worldwide" },
-    { value: "~1,500", label: "fit the team’s three theses" },
-    { value: "~60", label: "make the screened shortlist" },
-    { value: "~6", label: "get researched in depth" },
-  ];
-  return (
-    <Frame
-      label="From about 50,000 listed companies, about 1,500 fit a team's theses, about 60 make the shortlist, and about 6 are researched in depth."
-      caption="Illustrative orders of magnitude for one investment team. The cut at each step is capacity, not conviction."
-    >
-      <ol className={styles.funnel}>
-        {steps.map((s, i) => (
-          <li key={s.value} className={styles.step} style={{ "--w": `${100 - i * 22}%` } as CSSProperties}>
-            <span className={styles.value}>{s.value}</span>
-            <span className={styles.stepLabel}>{s.label}</span>
-          </li>
-        ))}
-      </ol>
-      <p className={styles.funnelNote}>
-        <span className={styles.big}>0.01%</span>
-        <span>of the universe gets a full model, built on a fraction of the available data.</span>
-      </p>
-    </Frame>
-  );
-}
-
 // A company at the centre, its customers, suppliers and shareholders around it, and theirs beyond.
 function Chain({ full }: { full: boolean }) {
   const ring = (n: number, r: number, offset: number) =>
@@ -234,6 +199,36 @@ export function ResearchChain() {
           </p>
         </div>
       </div>
+    </Frame>
+  );
+}
+
+/** The path from analysis to a capital decision, as a chain of files, and what it leaves out. */
+export function DecisionChain() {
+  const steps = [
+    { name: "Analyst", note: "Limited hours" },
+    { name: "Model.xlsx", note: "A snapshot" },
+    { name: "Memo.docx", note: "A snapshot" },
+    { name: "Deck.pptx", note: "A snapshot" },
+    { name: "Decision", note: "Made at one moment" },
+  ];
+  return (
+    <Frame
+      label="An analyst's work passes through a model, a memo, and a deck before it reaches a decision. The reasoning behind the decision is rarely recorded."
+      caption="The same chain serves a fund, a strategy team, or a consultancy. Each hand-off is a snapshot."
+    >
+      <ol className={styles.chain}>
+        {steps.map((step, i) => (
+          <li key={step.name} className={styles.link} data-last={i === steps.length - 1 ? "" : undefined}>
+            <span className={styles.file}>{step.name}</span>
+            <span className={styles.fileNote}>{step.note}</span>
+          </li>
+        ))}
+      </ol>
+      <p className={styles.unrecorded}>
+        <strong>Rarely recorded</strong>
+        <span>The assumptions, the options set aside, and the reasons why.</span>
+      </p>
     </Frame>
   );
 }

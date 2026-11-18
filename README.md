@@ -67,7 +67,7 @@ Then write ordinary Markdown: `## Headings`, paragraphs, `**bold**`, lists and l
 have a special meaning:
 
 - `![Short description](figure:money-loop)` on a line of its own places a figure. The figures are
-  `money-loop`, `partial-views`, `research-workflow`, `capacity-funnel` and `research-chain`
+  `money-loop`, `partial-views`, `decision-chain` and `research-chain`
   (drawn in `src/components/blog/`).
 - A `>` quote block is set apart with an amber rule.
 - `[[1]](https://…)` becomes a superscript footnote link.

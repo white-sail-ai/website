@@ -4,6 +4,7 @@ import { Footer } from "../Footer";
 import { Header } from "../Header";
 import { RevealObserver } from "../section/RevealObserver";
 import { formatDate, type Post } from "@/lib/posts";
+import { Contents, type Heading } from "./Contents";
 import { site } from "@/lib/site";
 import styles from "./Article.module.css";
 
@@ -12,7 +13,7 @@ import styles from "./Article.module.css";
  * is read), a title block with the subtitle, a readable column, and the footer. Figures inside the
  * column may run wider than the text (see Article.module.css).
  */
-export function Article({ post, children }: { post: Post; children: ReactNode }) {
+export function Article({ post, contents = [], children }: { post: Post; contents?: Heading[]; children: ReactNode }) {
   // Structured data, so search engines read the page as a dated article by the lab.
   const jsonLd = {
     "@context": "https://schema.org",
@@ -44,7 +45,10 @@ export function Article({ post, children }: { post: Post; children: ReactNode })
             <h1 className={styles.title}>{post.title}</h1>
             <p className={styles.subtitle}>{post.subtitle}</p>
           </header>
-          <div className={styles.body}>{children}</div>
+          <div className={styles.layout}>
+            {contents.length > 2 && <Contents items={contents} />}
+            <div className={styles.body}>{children}</div>
+          </div>
         </article>
       </main>
       <Footer />

@@ -2,6 +2,7 @@ import { Fragment, type ReactNode } from "react";
 import Markdown, { defaultUrlTransform, type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Cite, Lines, Notes } from "./Article";
+import type { Heading } from "./Contents";
 import { DecisionChain, MoneyLoop, PartialViews, ResearchChain } from "./Figures";
 import { FollowAlong } from "./FollowAlong";
 import { Questions, type Question } from "./Questions";
@@ -135,4 +136,12 @@ export function PostBody({ markdown }: { markdown: string }) {
       {notes.length > 0 && <Notes items={notes.map((note, i) => <Md key={i}>{note}</Md>)} />}
     </>
   );
+}
+
+/** The post's ## sections, for its contents list. The newsletter box isn't a section to read. */
+export function headings(markdown: string): Heading[] {
+  return [...markdown.matchAll(/^## (.+)$/gm)]
+    .map((m) => m[1].trim())
+    .filter((title) => title !== "Follow Along")
+    .map((title) => ({ id: title === "Q&A" ? "q-and-a" : slugify(title), title }));
 }

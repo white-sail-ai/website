@@ -265,3 +265,32 @@
 .cite a {
   scroll-margin-top: calc(var(--header-h) + 24px);
 }
+
+/* The text column, centred, with the margins either side free for the contents list. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40rem) minmax(0, 1fr);
+}
+
+.layout > .body {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+}
+
+@media (max-width: 1179px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .layout > * {
+    grid-column: 1 !important;
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  .layout > .body {
+    grid-row: auto;
+  }
+}

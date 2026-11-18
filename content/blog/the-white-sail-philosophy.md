@@ -82,7 +82,7 @@ The global economy is vast, but it is finite. Fewer than 4,000 US companies are 
 
 The questions repeat too. Different teams ask much the same things about the same companies and markets: who supplies whom, where demand is moving, what changes when rates or regulations shift.
 
-At Unit 8200, we learned that when the universe is finite and the questions repeat, research can be faster, cheaper, and better at the same time. Work done once serves many questions, and every new finding makes the rest more useful. That is what makes a world model of the economy a business opportunity.
+At Unit 8200, we learned that when the universe is finite and the questions repeat, research can be faster, cheaper, and better at the same time. Work done once serves many questions, and every new finding makes the rest more useful. That is what makes a world model of the economy a buildable opportunity.
 
 ## How We Think About It at White Sail Labs
 

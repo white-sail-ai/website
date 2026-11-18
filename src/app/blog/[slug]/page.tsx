@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import { Article } from "@/components/blog/Article";
-import { PostBody } from "@/components/blog/PostBody";
+import { PostBody, headings } from "@/components/blog/PostBody";
 import { getPost, posts } from "@/lib/posts";
 import { site } from "@/lib/site";
 
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
 export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
   const post = getPost((await params).slug);
   return (
-    <Article post={post}>
+    <Article post={post} contents={headings(post.body)}>
       <PostBody markdown={post.body} />
     </Article>
   );

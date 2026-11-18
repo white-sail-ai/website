@@ -9,21 +9,10 @@ How this file becomes the page (src/components/blog/PostBody.tsx). This note its
 - Figures: a line of their own like ![Short description](figure:money-loop). The names are
   money-loop, partial-views, decision-chain and research-chain.
 - A > quote block is set apart with an amber rule (used for the rhetorical questions).
-- A link written [[1]](url) becomes a superscript footnote marker.
+- Footnotes: write [^1] in the text and a line starting [^1]: at the bottom of the file. They are
+  numbered in the order you give them and listed under Notes at the end of the page.
 - Under ## Q&A, each ### heading is a question that opens to the text below it.
 - The ## Follow Along section becomes the framed newsletter box, with the sign-up button.
-
-Sources behind the numbers, checked November 2026:
-[1] Peter Brown quote: eFinancialCareers, Sept 2023.
-[2] US private nonresidential fixed investment, 2025: $4,251bn. BEA, via FRED series PNFIA.
-[3] US M&A, 2025: $2.3tn announced. LSEG data, via Wells Fargo M&A Market Pulse, Jan 2026 (also HSF Kramer).
-[4] Private fund net assets, 2025 Q4: $19.0tn. SEC, Private Fund Statistics (Form PF).
-[5] Financial market data and analysis spend, 2025: $49.2bn. Burton-Taylor (TP ICAP), via FOW.
-[6] Insights industry, 2024: $153bn (other ESOMAR editions say $147bn). ESOMAR, via Research World.
-[7] Chip shortage cost to automakers, 2021: $210bn revenue, a forecast. AlixPartners, via CNBC.
-[8] US listed companies, Dec 2025: Nasdaq 2,325 and NYSE 1,588 domestic listings. WFE.
-[9] Balyasny: about 2,000 agents, about 5,000 tasks a day. Dmitry Balyasny to The National, Dec 2025.
-[10] EQT Motherbrain, built since 2016. EQT.
 -->
 
 ## Follow the Money
@@ -32,24 +21,24 @@ Every dollar earned comes from somewhere, and every dollar spent goes somewhere.
 
 ![Money flows, is perceived, drives decisions, and the decisions reshape the flow](figure:money-loop)
 
-Understanding how money moves, so you can decide what to do about it, is financial markets research. Investors use it to allocate capital, companies to set strategy, and governments to shape policy. Whatever the setting, it serves the same end: a capital decision.
+Understanding how money moves, so you can decide what to do about it, is capital markets research. Investors use it to allocate capital, companies to set strategy, and governments to shape policy. Whatever the setting, it serves the same end: a capital decision.
 
 The flow follows rules: the logic of business, finance, and accounting. Occasionally an unexpected event reshuffles the system. These events are surprising, but not random, and the way each one ripples through the system follows logic too.
 
-It’s no coincidence that applied physicists and mathematicians end up as quants. Renaissance Technologies CEO Peter Brown says the firm hires “mathematicians, physicists and computer scientists with no background in finance”[[1]](https://www.efinancialcareers.com/news/2023/09/renaissance-technologies-culture). Markets resemble a physical test environment: a closed chamber of particles of different kinds and sizes, bouncing around until they collide and change course. Every so often the chamber gets shaken or turned upside down, and everything reshuffles.
+It’s no coincidence that applied physicists and mathematicians end up as quants.[^1] Markets resemble a physical test environment: a closed chamber of particles of different kinds and sizes, bouncing around until they collide and change course. Every so often the chamber gets shaken or turned upside down, and everything reshuffles.
 
-That makes financial markets a great fit for a world model: an AI model that captures how a system works well enough to simulate what happens when something changes. Markets have explicit rules, many interacting agents, and feedback loops where decisions reshape the flow. Few systems are so rule-bound, so data-rich, and so quick to react to being understood.
+That makes financial markets a great fit for a world model: an AI model that captures how a system works well enough to simulate what happens when something changes. Markets have explicit rules, many interacting agents, and feedback loops where decisions reshape the flow. Finance is also quantifiable and self-verifiable: nearly everything in it is measured in money, and markets keep score, so every prediction is eventually checked against what actually happened. Few systems are so rule-bound, so data-rich, and so quick to react to being understood.
 
-The global economy is so complex that no one has ever held a full picture of it, let alone a live one. We’ve only been able to study it in pieces:
+However, the global economy is so complex that no one has ever held a full picture of it, let alone a live one. We’ve only been able to study it in pieces:
 
 * **Economics** looks at the whole through theory, because the whole can’t be observed directly. Its models are good enough to guide policy.
 * **Finance** looks at one part closely enough to act on it, understanding a few companies or markets well enough to make investment decisions.
 
-Each is a response to the same limit: the system is bigger than any team can see.
+Each is a response to the same limit: the system is bigger than any team of humans can see.
 
 ![The same economy seen three ways: economics in outline, finance in one small part, and the whole live map](figure:partial-views)
 
-We want to build the whole: a live, connected map of how money moves between every company, market, and policy. In AI terms, a world model of the global economy. That is the vision behind White Sail Labs, and the rest of this essay is how we think about getting there.
+With agentic AI, this is about to change.
 
 ## Why This Matters
 
@@ -61,11 +50,11 @@ We tend to assume the decisions that shape our lives are made by presidents, min
 >
 > If Microsoft hadn’t invested in Apple in 1997?
 
-The sums are large. In the US alone, businesses invested about $4.25 trillion in equipment, buildings, and software in 2025[[2]](https://fred.stlouisfed.org/series/PNFIA), and companies agreed about $2.3 trillion in mergers and acquisitions[[3]](https://www.wellsfargomedia.com/wholesale/PDS/WellsFargoMAMarketPulseABannerYearforDealmaking.pdf). Private funds reporting to the SEC held about $19 trillion in net assets[[4]](https://www.sec.gov/files/investment/private-fund-statistics-2025-q4.pdf). The research meant to inform those decisions is a much smaller industry: about $49 billion a year on financial market data and analysis[[5]](https://www.fow.com/insights/market-data-spend-hits-usd49-2bn-as-ai-volatility-and-algos-drive-growth), and about $150 billion on market research and insights worldwide[[6]](https://researchworld.com/articles/inside-the-153bn-insights-industry).
+The sums are large. In the US alone, businesses invested about $4.25 trillion in equipment, buildings, and software in 2025,[^2] and companies agreed about $2.3 trillion in mergers and acquisitions.[^3] Private funds reporting to the SEC held about $19 trillion in net assets.[^4] The industry built to inform those decisions is huge on its own: about $49 billion a year on financial market data and analysis,[^5] and about $150 billion on market research and insights worldwide.[^6]
 
-When these decisions go wrong, the cost spreads far beyond the people who made them. The mortgage-backed securities boom was, at its core, a failure of financial markets research: the risks were connected in ways too few decision-makers could see.
+When these decisions go wrong, the cost spreads far beyond the people who made them. The mortgage-backed securities boom was, at its core, a failure of capital markets research: the risks were connected in ways too few decision-makers could see.
 
-It isn’t only finance. When demand collapsed in early 2020, carmakers cut their chip orders, and chipmakers moved that capacity to laptops and phones. When car sales recovered faster than expected, the chips weren’t there. AlixPartners estimated the shortage would cost the auto industry $210 billion in revenue in 2021[[7]](https://www.cnbc.com/2021/09/23/chip-shortage-expected-to-cost-auto-industry-210-billion-in-2021.html). Each cut made sense on the information at hand. The consequences ran several links up the supply chain, where few were looking.
+It isn’t only finance. When demand collapsed in early 2020, carmakers cut their chip orders, and chipmakers moved that capacity to laptops and phones. When car sales recovered faster than expected, the chips weren’t there. AlixPartners estimated the shortage would cost the auto industry $210 billion in revenue in 2021.[^7] Each cut made sense on the information at hand. The consequences ran several links up the supply chain, where few were looking.
 
 Better-informed capital decisions mean fewer of these shocks, and fewer shocks mean more stable economies.
 
@@ -83,43 +72,41 @@ Following a company’s customers, suppliers, and shareholders, and the decision
 
 ## How AI Helps Today
 
-A wave of serious, talented teams is already building AI for financial markets research. Their products read documents, answer questions, summarize calls, and draft memos, and the people using them are faster for it. That deserves real respect.
+A wave of serious, talented teams is already building AI for capital markets research. Their products read documents, answer questions, summarize calls, and draft memos, and the people using them are faster for it. That deserves real respect. They work best when you know what to ask.
 
-They work best when you know what to ask. We’re building something different: a world model of the economy that keeps researching on its own. For the people who use it, that means insights they didn’t know to look for, delivered before they ask.
+We take a different approach: a world model of the economy that keeps researching on its own. Structuring a market from scratch each time someone asks a question is slow and expensive. A US annual report runs to about 55,000 words on average.[^8] Reading one for each listed US company comes to roughly 290 million tokens, on the order of a thousand dollars in model costs, plus the time to process it all, before any reasoning starts, and the work starts over with every new question.[^9] A world model does that work once, keeps it current, and answers from what it already knows. For the people who use it, that means insights they didn’t know to look for, delivered before they ask.
 
 ## A Finite Economy
 
-The global economy is vast, but it is finite. Fewer than 4,000 US companies are listed on its two main stock exchanges[[8]](https://focus.world-exchanges.org/issue/december-2025/market-statistics). Private companies, markets, and policies add many more, but the set of things worth understanding can be counted, and business models repeat.
+The global economy is vast, but it is finite. Fewer than 4,000 US companies are listed on its two main stock exchanges.[^10] Private companies, markets, and policies add many more, but the set of things worth understanding can be counted, and business models repeat.
 
 The questions repeat too. Different teams ask much the same things about the same companies and markets: who supplies whom, where demand is moving, what changes when rates or regulations shift.
 
-At Unit 8200, we learned that when the universe is finite and the questions repeat, research can be faster, cheaper, and better at the same time. Work done once serves many questions, and every new finding makes the rest more useful. That is what makes a world model of the economy buildable.
+At Unit 8200, we learned that when the universe is finite and the questions repeat, research can be faster, cheaper, and better at the same time. Work done once serves many questions, and every new finding makes the rest more useful. That is what makes a world model of the economy a business opportunity.
 
 ## How We Think About It at White Sail Labs
 
-If research labor were unlimited, how would we redefine financial markets research?
+If research labor were unlimited, how would we redefine capital markets research?
 
-1. **In depth.** Every investor, company, and public body can research the way a quant hedge fund does, pulling unconventional signals at scale and combining them with its own judgment. That means following every company’s customers, suppliers, and shareholders, and the decisions that shaped them. These are the connections no team has time to trace, and they are the edges of the live map.
-2. **At scale.** Screening and watchlists are history. If 1,000 companies, suppliers, or markets are relevant to your question, research all of them with AI and let it surface the most promising ones for your final judgment.
-3. **All the time.** Today, research has to land at the right time. A team that finds the right opportunity at the wrong time, or whose findings arrive after the decision window, watches the work go stale. AI can keep that research alive and current until the time is right, and keep it with the organization when people move on.
+1. **In depth.** Every investor, company, and public body would be able to research the way a quant hedge fund does, pulling alternative signals at scale and combining them with its own judgment. That would mean following every company’s customers, suppliers, and shareholders, and the decisions that shaped them. These are the connections no team has time to trace, and they would be the edges of the live map.
+2. **At scale.** Screening and watchlists would be history. If 1,000 companies, suppliers, or markets were relevant to your question, AI would research all of them and surface the most promising ones for your final judgment.
+3. **All the time.** Today, research has to land at the right time for a deal or investment to happen. A team that finds the right opportunity at the wrong time, or whose findings arrive after the decision window, watches the work go stale. AI would keep that research alive and current until the time is right, and keep it with the organization when people move on.
 
 ![Research reach around one company, today and with unlimited research labor](figure:research-chain)
 
-Put together, every company gets a living research record: thesis, drivers and risks, timeline, evidence, open questions, numbers and comps. It keeps compounding while your team is away from the desk.
+Put together, every company would get a living research record: thesis, drivers and risks, timeline, evidence, open questions, numbers and comps. It would keep compounding while your team is away from the desk.
 
 ## Why Now
 
 For the first time, research labor is becoming effectively unlimited. Models read filings, transcripts, and alternative data at near-zero marginal cost. Agents run long, multi-step research on their own for hours. Reasoning models test an argument against the evidence instead of just summarizing it. And compute keeps getting cheaper.
 
-The largest firms are already working this way. Balyasny, a multi-strategy hedge fund, says it runs about 2,000 AI agents handling some 5,000 tasks a day[[9]](https://www.thenationalnews.com/podcasts/inside-brief/2025/12/10/dmitry-balyasny-on-abu-dhabi-expansion-ai-agents-and-2026-outlook/). EQT, one of the world’s largest private equity firms, has been building its in-house data platform, Motherbrain, since 2016[[10]](https://eqtgroup.com/about/motherbrain). Each took years and dedicated teams. Most organizations have neither.
+The largest firms are already trying to build such an infrastructure internally. Balyasny, a multi-strategy hedge fund, says it runs about 2,000 AI agents handling some 5,000 tasks a day.[^11] EQT, one of the world’s largest private equity firms, has been building its in-house data platform, Motherbrain, since 2016.[^12] Each took years and dedicated teams. Most organizations have neither.
 
 The first organizations with no capacity limits will see what everyone else can’t, and everyone else will have to follow. It’s obvious this is coming. We want to be the ones building it.
 
-We’re about to start publishing concrete deep dives and examples of what this looks like in practice. The first one asks: is there an AI bubble?
-
 ## Q&A
 
-### What do you mean by financial markets research?
+### What do you mean by capital markets research?
 
 Understanding how money moves so you can decide what to do about it. Investors do it to allocate capital, companies to set strategy, and governments to shape policy.
 
@@ -138,3 +125,16 @@ To create more stable and thriving economies by making the decisions that move c
 ## Follow Along
 
 Sign up for our newsletter at [white-sail.ai](https://white-sail.ai/) to get the deep dives as they come out.
+
+[^1]: Renaissance Technologies CEO Peter Brown says the firm hires “mathematicians, physicists and computer scientists with no background in finance.” [eFinancialCareers, September 2023](https://www.efinancialcareers.com/news/2023/09/renaissance-technologies-culture).
+[^2]: US private nonresidential fixed investment, 2025: $4,251 billion. [BEA, via FRED](https://fred.stlouisfed.org/series/PNFIA).
+[^3]: US announced M&A, 2025: $2.3 trillion, from LSEG data. [Wells Fargo, M&A Market Pulse, January 2026](https://www.wellsfargomedia.com/wholesale/PDS/WellsFargoMAMarketPulseABannerYearforDealmaking.pdf).
+[^4]: Private fund net assets, Q4 2025: $19.0 trillion, from Form PF filings. [SEC, Private Fund Statistics](https://www.sec.gov/files/investment/private-fund-statistics-2025-q4.pdf).
+[^5]: Global spending on financial market data and analysis, 2025: $49.2 billion, per Burton-Taylor. [FOW](https://www.fow.com/insights/market-data-spend-hits-usd49-2bn-as-ai-volatility-and-algos-drive-growth).
+[^6]: Global insights industry, 2024: $153 billion, per ESOMAR (other ESOMAR editions put it at $147 billion). [Research World](https://researchworld.com/articles/inside-the-153bn-insights-industry).
+[^7]: A 2021 forecast by AlixPartners. [CNBC, September 2021](https://www.cnbc.com/2021/09/23/chip-shortage-expected-to-cost-auto-industry-210-billion-in-2021.html).
+[^8]: Mean length of a 10-K: 55,236 words. [Journal of Business Ethics, 2023](https://link.springer.com/article/10.1007/s10551-023-05350-y).
+[^9]: Our estimate: about 4,000 companies × 55,000 words ≈ 220 million words, or roughly 290 million tokens at about 1.3 tokens per word. At a few dollars per million input tokens, that is on the order of $1,000, for reading alone.
+[^10]: Domestic listed companies, December 2025: Nasdaq 2,325 and NYSE 1,588. [World Federation of Exchanges](https://focus.world-exchanges.org/issue/december-2025/market-statistics).
+[^11]: Dmitry Balyasny, interviewed by [The National, December 2025](https://www.thenationalnews.com/podcasts/inside-brief/2025/12/10/dmitry-balyasny-on-abu-dhabi-expansion-ai-agents-and-2026-outlook/).
+[^12]: [EQT, Motherbrain](https://eqtgroup.com/about/motherbrain).

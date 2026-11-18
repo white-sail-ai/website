@@ -1,7 +1,7 @@
 import { Fragment, type ReactNode } from "react";
 import Markdown, { defaultUrlTransform, type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Cite, Lines } from "./Article";
+import { Cite, Lines, Notes } from "./Article";
 import { DecisionChain, MoneyLoop, PartialViews, ResearchChain } from "./Figures";
 import { FollowAlong } from "./FollowAlong";
 import { Questions, type Question } from "./Questions";
@@ -93,6 +93,21 @@ function questions(markdown: string): Question[] {
  * questions, and "## Follow Along" becomes the newsletter box. Everything else is plain Markdown.
  */
 export function PostBody({ markdown }: { markdown: string }) {
+  // Footnotes: [^id]: lines at the end hold the notes; [^id] in the text marks where each is cited.
+  // They are numbered in the order they are defined, and rendered as Notes after everything else.
+  const notes: string[] = [];
+  const numbers = new Map<string, number>();
+  markdown = markdown.replace(/^\[\^([^\]]+)\]:[ \t]*(.+)$\n?/gm, (_, id: string, text: string) => {
+    notes.push(text.trim());
+    numbers.set(id, notes.length);
+    return "";
+  });
+  markdown = markdown.replace(/\[\^([^\]]+)\]/g, (match, id: string) => {
+    const n = numbers.get(id);
+    if (!n) throw new Error(`Footnote [^${id}] is cited but never defined`);
+    return `[[${n}]](#note-${n})`;
+  });
+
   // Split at each ## heading, keeping the heading with its section.
   const sections = markdown.split(/^(?=## )/m);
   return (
@@ -117,6 +132,7 @@ export function PostBody({ markdown }: { markdown: string }) {
         }
         return <Md key={i}>{section}</Md>;
       })}
+      {notes.length > 0 && <Notes items={notes.map((note, i) => <Md key={i}>{note}</Md>)} />}
     </>
   );
 }

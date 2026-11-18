@@ -27,7 +27,7 @@ export function MoneyLoop() {
     { x: 70, y: 150, title: "Reshape", line: "the flow" },
   ];
   return (
-    <Frame label="Money flows, people perceive and predict it, decide, and so reshape the flow." caption="The cycle financial markets research tries to see, and that its decisions feed back into.">
+    <Frame label="Money flows, people perceive and predict it, decide, and so reshape the flow." caption="The cycle capital markets research tries to see, and that its decisions feed back into.">
       <svg viewBox="0 0 400 300" className={styles.svg} aria-hidden="true">
         <defs>{arrow("loop-arrow")}</defs>
                 {[

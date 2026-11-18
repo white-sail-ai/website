@@ -70,7 +70,8 @@ have a special meaning:
   `money-loop`, `partial-views`, `decision-chain` and `research-chain`
   (drawn in `src/components/blog/`).
 - A `>` quote block is set apart with an amber rule.
-- `[[1]](https://…)` becomes a superscript footnote link.
+- Footnotes: write `[^1]` in the text and a line `[^1]: The note, with a [link](https://…).` at the
+  end of the file. They're numbered in the order defined and listed under Notes at the end of the page.
 - Under `## Q&A`, each `### Question` opens to the text below it.
 - A `## Follow Along` section becomes the framed newsletter box with the sign-up button.
 - `<!-- comments -->` are notes to yourself and never appear on the page.

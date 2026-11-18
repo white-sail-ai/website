@@ -61,7 +61,12 @@ export function Article({ post, children }: { post: Post; children: ReactNode })
 export function Cite({ n, href }: { n: number; href: string }) {
   return (
     <sup className={styles.cite}>
-      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Source ${n}`}>
+      <a
+        id={href.startsWith("#") ? `ref-${n}` : undefined}
+        href={href}
+        {...(href.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        aria-label={`Note ${n}`}
+      >
         [{n}]
       </a>
     </sup>
@@ -71,4 +76,23 @@ export function Cite({ n, href }: { n: number; href: string }) {
 /** A run of short lines set apart from the text, such as a string of rhetorical questions. */
 export function Lines({ children }: { children: ReactNode }) {
   return <div className={styles.questions}>{children}</div>;
+}
+
+/** The numbered notes at the end of a post, each linking back to where it's cited. */
+export function Notes({ items }: { items: ReactNode[] }) {
+  return (
+    <section className={styles.notes} aria-labelledby="notes">
+      <h2 id="notes">Notes</h2>
+      <ol>
+        {items.map((item, i) => (
+          <li key={i} id={`note-${i + 1}`}>
+            {item}{" "}
+            <a href={`#ref-${i + 1}`} className={styles.back} aria-label={`Back to note ${i + 1} in the text`}>
+              ↩
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
 }

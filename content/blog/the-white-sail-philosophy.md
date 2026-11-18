@@ -1,6 +1,6 @@
 ---
 title: The White Sail Philosophy
-subtitle: How we think about capital decisions, and why we’re building a live, connected map of how money moves.
+subtitle: How world models will power the capital decisions of the future.
 date: 2026-11-17
 ---
 

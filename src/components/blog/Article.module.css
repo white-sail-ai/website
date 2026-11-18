@@ -62,10 +62,17 @@
 .title {
   margin-top: clamp(18px, 2.4vw, 28px);
   font-family: var(--font-wordmark);
-  font-size: clamp(2.875rem, 7vw, 5rem);
+  /* One line always: scale with the viewport on small screens, and let the title
+     run wider than the 40rem column (centred on it) on large ones. */
+  font-size: clamp(1.5rem, 7.2vw, 4.5rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1;
+  white-space: nowrap;
+  width: max-content;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .subtitle {

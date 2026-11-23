@@ -15,7 +15,34 @@ function hash(text: string) {
   return h;
 }
 
-export function PostCover({ slug, className }: { slug: string; className?: string }) {
+// The report's cover: a rising line that carries on as a dashed projection inside a widening band,
+// with a bubble beside it, on a deep navy field.
+function ChartCover({ slug, className }: { slug: string; className?: string }) {
+  const id = `cover-${slug}`;
+  return (
+    <svg className={className} viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#1a3263" />
+          <stop offset="1" stopColor="#2a7f8e" />
+        </linearGradient>
+      </defs>
+      <rect width="480" height="300" fill={`url(#${id})`} />
+      {[70, 130, 190, 250].map((y) => (
+        <path key={y} d={`M0 ${y} H480`} stroke="#fcf7f3" strokeWidth="1" opacity="0.12" />
+      ))}
+      <path d="M250 190 L 330 150 L 410 96 L 480 40 L 480 150 L 410 160 L 330 176 Z" fill="#fab95b" opacity="0.28" />
+      <path d="M30 258 C 90 252 130 236 170 218 S 230 196 250 190" fill="none" stroke="#fcf7f3" strokeWidth="4" strokeLinecap="round" />
+      <path d="M250 190 C 290 170 330 150 370 124 S 440 76 480 58" fill="none" stroke="#fab95b" strokeWidth="4" strokeLinecap="round" strokeDasharray="2 11" />
+      <circle cx="250" cy="190" r="7" fill="#fcf7f3" />
+      <circle cx="388" cy="92" r="44" fill="#fab95b" opacity="0.9" />
+      <circle cx="388" cy="92" r="44" fill="none" stroke="#fcf7f3" strokeWidth="2" opacity="0.7" />
+    </svg>
+  );
+}
+
+export function PostCover({ slug, kind, className }: { slug: string; kind?: string; className?: string }) {
+  if (kind === "chart") return <ChartCover slug={slug} className={className} />;
   const h = hash(slug);
   const p = PALETTES[h % PALETTES.length];
   const id = `cover-${slug}`;

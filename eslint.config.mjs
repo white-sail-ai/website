@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "worker/**",
+    // Built files published as they are: the report's page under public/blog/, and any worktree
+    // checked out inside the repo.
+    "public/blog/*/assets/**",
+    ".claude/**",
   ]),
 ]);
 

@@ -79,6 +79,13 @@ have a special meaning:
 To publish, open a pull request with the file and merge it. For a share card, add
 `public/blog/og/<slug>.png` (1200 x 630); without one, links show the title and subtitle only.
 
+A **linked post** has a `link:` line in its front matter (a path on this site) and no post page: the
+blog lists it like any other post, and its card opens the link. The AI-bubble report is one:
+`content/blog/is-there-an-ai-bubble.md` links to `/blog/is-there-an-ai-bubble/`, a folder of plain
+files under `public/blog/` that the app repo's `scripts/publish-report.mjs` writes (the report's page
+built in snapshot mode, reading a `report.json` beside it; nothing runs at request time). To refresh
+the report, run that script against the website checkout, commit the folder and open a pull request.
+
 ## Early access and newsletter
 
 The site is static, so the two forms post to the Worker in `worker/`, which keeps the Notion, Slack and Resend secrets. Setup steps are in `worker/README.md`. The build reads the Worker's address from the `FORMS_URL` repository variable; without it the forms show an error message.

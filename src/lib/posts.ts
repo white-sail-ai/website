@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 // The blog's posts, read from content/blog/*.md at build time. Each file starts with a front
-// matter block (title, subtitle, date) and the rest is the post's Markdown.
+// matter block (title, subtitle, date, and for a linked post its link) and the rest is the post's
+// Markdown. A linked post is listed on the blog page like any other but opens its link instead of
+// a post page: the AI-bubble report, a folder of plain files under public/blog/<slug>/.
 export type Post = {
   slug: string;
   title: string;
@@ -10,6 +12,10 @@ export type Post = {
   subtitle: string;
   /** ISO date the post went live. */
   published: string;
+  /** Where a linked post opens (a path on this site); no post page is made for it. */
+  link?: string;
+  /** A drawn cover for the blog page other than the generated sail ("chart"). */
+  cover?: string;
   /** The post's Markdown, without the front matter. */
   body: string;
 };
@@ -35,6 +41,8 @@ function read(file: string): Post {
     title: fields.title,
     subtitle: fields.subtitle,
     published: fields.date,
+    link: fields.link || undefined,
+    cover: fields.cover || undefined,
     // Notes to the writer, in <!-- --> comments, never reach the page.
     body: match[2].replace(/<!--[\s\S]*?-->\n?/g, ""),
   };

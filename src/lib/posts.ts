@@ -14,6 +14,8 @@ export type Post = {
   published: string;
   /** Where a linked post opens (a path on this site); no post page is made for it. */
   link?: string;
+  /** A drawn cover for the blog page other than the generated sail ("chart"). */
+  cover?: string;
   /** The post's Markdown, without the front matter. */
   body: string;
 };
@@ -40,6 +42,7 @@ function read(file: string): Post {
     subtitle: fields.subtitle,
     published: fields.date,
     link: fields.link || undefined,
+    cover: fields.cover || undefined,
     // Notes to the writer, in <!-- --> comments, never reach the page.
     body: match[2].replace(/<!--[\s\S]*?-->\n?/g, ""),
   };

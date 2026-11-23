@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 function PostCard({ post }: { post: Post }) {
   return (
     <>
-      <PostCover slug={post.slug} className={styles.cover} />
+      <PostCover slug={post.slug} kind={post.cover} className={styles.cover} />
       <span className={styles.text}>
         <time dateTime={post.published} className={styles.date}>
           {formatDate(post.published)}

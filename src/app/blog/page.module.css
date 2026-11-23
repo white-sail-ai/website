@@ -23,23 +23,19 @@
 }
 
 .list {
-  max-width: 46rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 36px);
   margin: clamp(32px, 5vh, 56px) 0 0;
   padding: 0;
   list-style: none;
-  border-top: 1.5px solid var(--navy);
-}
-
-.list li {
-  border-bottom: 1px solid var(--rule);
 }
 
 .post {
   display: grid;
-  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(18px, 3vw, 32px);
-  padding-block: clamp(22px, 3vw, 32px);
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  height: 100%;
 }
 
 .cover {
@@ -56,13 +52,8 @@
 
 .text {
   display: grid;
+  align-content: start;
   gap: 6px;
-}
-
-@media (max-width: 560px) {
-  .post {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .date {

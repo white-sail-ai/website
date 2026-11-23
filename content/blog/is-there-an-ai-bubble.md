@@ -3,6 +3,7 @@ title: Is there an AI bubble?
 subtitle: A live report that follows the money from the chipmakers to the people, companies and governments who pay for AI, tested against public filings and data.
 date: 2026-11-23
 link: /blog/is-there-an-ai-bubble/
+cover: chart
 ---
 
 <!--

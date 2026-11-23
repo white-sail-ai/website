@@ -6,13 +6,14 @@ import { PostBody, headings } from "@/components/blog/PostBody";
 import { getPost, posts } from "@/lib/posts";
 import { site } from "@/lib/site";
 
-// One page per Markdown file in content/blog/. Its share card, if any, is public/blog/og/<slug>.png
+// One page per Markdown file in content/blog/, except a linked post, whose link opens something
+// else (the report's folder under public/blog/). Its share card, if any, is public/blog/og/<slug>.png
 // (1200 x 630).
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+  return posts.filter((post) => !post.link).map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
